@@ -1,0 +1,7 @@
+D:\Rolon\practicaProgramcionII\MiAplicacion\Ejercicio 3\bin\Debug\Ejercicio 3.exe.config
+D:\Rolon\practicaProgramcionII\MiAplicacion\Ejercicio 3\bin\Debug\Ejercicio 3.exe
+D:\Rolon\practicaProgramcionII\MiAplicacion\Ejercicio 3\bin\Debug\Ejercicio 3.pdb
+D:\Rolon\practicaProgramcionII\MiAplicacion\Ejercicio 3\obj\Debug\Ejercicio 3.csprojAssemblyReference.cache
+D:\Rolon\practicaProgramcionII\MiAplicacion\Ejercicio 3\obj\Debug\Ejercicio 3.csproj.CoreCompileInputs.cache
+D:\Rolon\practicaProgramcionII\MiAplicacion\Ejercicio 3\obj\Debug\Ejercicio 3.exe
+D:\Rolon\practicaProgramcionII\MiAplicacion\Ejercicio 3\obj\Debug\Ejercicio 3.pdb
