@@ -1,0 +1,7 @@
+D:\Rolon\practicaProgramcionII\MiAplicacion\MiAplicacion\obj\Debug\MiAplicacion.csprojAssemblyReference.cache
+D:\Rolon\practicaProgramcionII\MiAplicacion\MiAplicacion\obj\Debug\MiAplicacion.csproj.CoreCompileInputs.cache
+D:\Rolon\practicaProgramcionII\MiAplicacion\MiAplicacion\bin\Debug\MiAplicacion.exe.config
+D:\Rolon\practicaProgramcionII\MiAplicacion\MiAplicacion\bin\Debug\MiAplicacion.exe
+D:\Rolon\practicaProgramcionII\MiAplicacion\MiAplicacion\bin\Debug\MiAplicacion.pdb
+D:\Rolon\practicaProgramcionII\MiAplicacion\MiAplicacion\obj\Debug\MiAplicacion.exe
+D:\Rolon\practicaProgramcionII\MiAplicacion\MiAplicacion\obj\Debug\MiAplicacion.pdb
