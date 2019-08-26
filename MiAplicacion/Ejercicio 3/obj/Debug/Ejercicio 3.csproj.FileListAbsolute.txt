@@ -5,3 +5,5 @@ D:\Rolon\practicaProgramcionII\MiAplicacion\Ejercicio 3\obj\Debug\Ejercicio 3.cs
 D:\Rolon\practicaProgramcionII\MiAplicacion\Ejercicio 3\obj\Debug\Ejercicio 3.csproj.CoreCompileInputs.cache
 D:\Rolon\practicaProgramcionII\MiAplicacion\Ejercicio 3\obj\Debug\Ejercicio 3.exe
 D:\Rolon\practicaProgramcionII\MiAplicacion\Ejercicio 3\obj\Debug\Ejercicio 3.pdb
+C:\Users\Fabian\Documents\Programacion y Laboratorio II\practicaProgramacionII\MiAplicacion\Ejercicio 3\obj\Debug\Ejercicio 3.exe
+C:\Users\Fabian\Documents\Programacion y Laboratorio II\practicaProgramacionII\MiAplicacion\Ejercicio 3\obj\Debug\Ejercicio 3.pdb

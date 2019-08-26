@@ -10,7 +10,6 @@ namespace MiAplicacion
     {
         static void Main(string[] args)
         {
-            Console.Title = "Ejercicio Nro 1";
             string variable;
             int res;
             int max = int.MinValue;
@@ -42,7 +41,6 @@ namespace MiAplicacion
             Console.WriteLine("El promedio es : {0}", promedio);
             Console.WriteLine("El maximo es : {0}", max);
             Console.WriteLine("El minimo es : {0}", min);
-
             Console.ReadKey();
 
         }

@@ -1,0 +1,7 @@
+C:\Users\Fabian\Documents\Programacion y Laboratorio II\practicaProgramacionII\MiAplicacion\Ejercicio 4\bin\Debug\Ejercicio 4.exe.config
+C:\Users\Fabian\Documents\Programacion y Laboratorio II\practicaProgramacionII\MiAplicacion\Ejercicio 4\bin\Debug\Ejercicio 4.exe
+C:\Users\Fabian\Documents\Programacion y Laboratorio II\practicaProgramacionII\MiAplicacion\Ejercicio 4\bin\Debug\Ejercicio 4.pdb
+C:\Users\Fabian\Documents\Programacion y Laboratorio II\practicaProgramacionII\MiAplicacion\Ejercicio 4\obj\Debug\Ejercicio 4.csprojAssemblyReference.cache
+C:\Users\Fabian\Documents\Programacion y Laboratorio II\practicaProgramacionII\MiAplicacion\Ejercicio 4\obj\Debug\Ejercicio 4.csproj.CoreCompileInputs.cache
+C:\Users\Fabian\Documents\Programacion y Laboratorio II\practicaProgramacionII\MiAplicacion\Ejercicio 4\obj\Debug\Ejercicio 4.exe
+C:\Users\Fabian\Documents\Programacion y Laboratorio II\practicaProgramacionII\MiAplicacion\Ejercicio 4\obj\Debug\Ejercicio 4.pdb

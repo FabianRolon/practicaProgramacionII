@@ -1,0 +1,7 @@
+C:\Users\Fabian\Documents\Programacion y Laboratorio II\practicaProgramacionII\MiAplicacion\Ejercicio1\bin\Debug\Ejercicio1.exe.config
+C:\Users\Fabian\Documents\Programacion y Laboratorio II\practicaProgramacionII\MiAplicacion\Ejercicio1\bin\Debug\Ejercicio1.exe
+C:\Users\Fabian\Documents\Programacion y Laboratorio II\practicaProgramacionII\MiAplicacion\Ejercicio1\bin\Debug\Ejercicio1.pdb
+C:\Users\Fabian\Documents\Programacion y Laboratorio II\practicaProgramacionII\MiAplicacion\Ejercicio1\obj\Debug\Ejercicio1.csprojAssemblyReference.cache
+C:\Users\Fabian\Documents\Programacion y Laboratorio II\practicaProgramacionII\MiAplicacion\Ejercicio1\obj\Debug\Ejercicio1.csproj.CoreCompileInputs.cache
+C:\Users\Fabian\Documents\Programacion y Laboratorio II\practicaProgramacionII\MiAplicacion\Ejercicio1\obj\Debug\Ejercicio1.exe
+C:\Users\Fabian\Documents\Programacion y Laboratorio II\practicaProgramacionII\MiAplicacion\Ejercicio1\obj\Debug\Ejercicio1.pdb

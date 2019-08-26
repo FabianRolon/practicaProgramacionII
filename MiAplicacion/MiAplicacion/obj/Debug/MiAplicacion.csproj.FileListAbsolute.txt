@@ -5,3 +5,5 @@ D:\Rolon\practicaProgramcionII\MiAplicacion\MiAplicacion\bin\Debug\MiAplicacion.
 D:\Rolon\practicaProgramcionII\MiAplicacion\MiAplicacion\bin\Debug\MiAplicacion.pdb
 D:\Rolon\practicaProgramcionII\MiAplicacion\MiAplicacion\obj\Debug\MiAplicacion.exe
 D:\Rolon\practicaProgramcionII\MiAplicacion\MiAplicacion\obj\Debug\MiAplicacion.pdb
+C:\Users\Fabian\Documents\Programacion y Laboratorio II\practicaProgramacionII\MiAplicacion\MiAplicacion\obj\Debug\MiAplicacion.exe
+C:\Users\Fabian\Documents\Programacion y Laboratorio II\practicaProgramacionII\MiAplicacion\MiAplicacion\obj\Debug\MiAplicacion.pdb
