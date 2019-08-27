@@ -12,25 +12,34 @@ namespace Ejercicio_5
         {
             Console.Title = "Ejercicio nro 5";
             Console.ForegroundColor = ConsoleColor.Red;
-            string variable;
-            int aux;
-          //  int i, j;
-          //  int contador = 0;
+            int maxIngresado;
+            int sumaAnteriores = 0;
+            int sumaPosteriores = 0;
+            int centroNumerico;
+            int anteriores;
+            int posteriores;
+            Console.WriteLine("Ingrese numero maximo a evaluar:");
+            maxIngresado = int.Parse(Console.ReadLine());
 
-            do
+            Console.WriteLine("Centros numericos:");
+
+            for (centroNumerico = 2; centroNumerico <= maxIngresado; centroNumerico++)
             {
-                Console.Write("Ingrese un numero: ");
-                variable = Console.ReadLine();
-                if (int.TryParse(variable, out aux))
+                sumaAnteriores = 0;
+                sumaPosteriores = 0;
+                for (anteriores = 0; anteriores < centroNumerico; anteriores++)
                 {
-                    if (aux < 0)
+                    sumaAnteriores += anteriores;
+                }
+                for (posteriores = centroNumerico + 1; sumaPosteriores < sumaAnteriores; posteriores++)
+                {
+                    sumaPosteriores += posteriores;
+                    if (sumaPosteriores == sumaAnteriores)
                     {
-                        Console.WriteLine("ERROR! Reingresar numero");
+                        Console.WriteLine("{0}", centroNumerico);
                     }
                 }
-            } while (aux < 0);
-
-            
+            }
             Console.ReadKey();
         }
     }
