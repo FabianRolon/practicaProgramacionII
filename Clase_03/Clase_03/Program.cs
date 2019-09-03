@@ -10,7 +10,9 @@ namespace Clase_03
     {
         static void Main(string[] args)
         {
-            Alumno alumno = new Alumno("Rolon", 21, "Fabian");
+            Alumno alumnoUno = new Alumno("Rolon", 21, "Fabian");
+            Alumno alumnoDos = new Alumno("Fernadez", 25, "Leandro");
+            Alumno alumnoTres = new Alumno("Benitez", 27, "Martin");
 
         }
     }
