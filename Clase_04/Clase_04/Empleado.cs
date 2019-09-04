@@ -24,7 +24,7 @@ namespace Clase_04
             this.sueldoBruto = sueldoBruto;
         }
 
-        public Empleado(string nombre, string apellido, double sueldoBruto, double sueldoNeto, double jubilacion, double ley19032, double obraSocial) 
+        public Empleado(string nombre, string apellido, double sueldoBruto, double sueldoNeto, double jubilacion, double ley19032, double obraSocial)
             : this(nombre, apellido, sueldoBruto)
         {
             this.sueldoNeto = sueldoNeto;
@@ -67,5 +67,13 @@ namespace Clase_04
             this.sueldoBruto += (this.sueldoBruto * valorAumento * 0.01);
             this.CalcularNeto();
         }
+
+        public static Empleado operator +(Empleado empleado , float aumento)
+        {
+            empleado.Aumento(aumento);
+
+            return empleado;
+        }
+
     }
 }
