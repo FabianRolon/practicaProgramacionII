@@ -36,5 +36,10 @@ namespace Ejercicio_20
         {
             return new Pesos(dolares.cantidad * Pesos.GetCotizacion());
         }
+
+        public static explicit operator Euro(Dolar dolares)
+        {
+            return new Euro(dolares.cantidad * Euro.GetCotizacion());
+        }
     }
 }

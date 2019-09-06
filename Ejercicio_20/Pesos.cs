@@ -48,8 +48,7 @@ namespace Ejercicio_20
 
         public static implicit operator Pesos(double pesos)
         {
-            Pesos auxPesos = new Pesos(pesos);
-            return auxPesos;
+            return new Pesos(pesos);
         }
         #endregion
 
@@ -57,6 +56,66 @@ namespace Ejercicio_20
         {
 
             return new Pesos(pesos.cantidad + ((Pesos)dolares).cantidad);
+        }
+
+        public static Pesos operator -(Pesos pesos, Dolar dolares)
+        {
+            return new Pesos(pesos.cantidad - ((Pesos)dolares).cantidad);
+        }
+
+        public static Pesos operator +(Pesos pesos, Euro euros)
+        {
+            return new Pesos(pesos.cantidad + ((Pesos)euros).cantidad);
+        }
+
+        public static Pesos operator -(Pesos pesos, Euro euros)
+        {
+            return new Pesos(pesos.cantidad - ((Pesos)euros).cantidad);
+        }
+
+        public static bool operator ==(Pesos pesos, Dolar dolares)
+        {
+            if (pesos.cantidad == ((Pesos)dolares).GetCantidad())
+            {
+                return true; 
+            }
+            else
+                return false;
+        }
+
+        public static bool operator !=(Pesos pesos, Dolar dolares)
+        {
+            return !(pesos == dolares);
+        }
+
+        public static bool operator ==(Pesos pesos, Euro euros)
+        {
+            if (pesos.cantidad == ((Pesos)euros).GetCantidad())
+            {
+                return true;
+            }
+            else
+                return false;
+        }
+
+        public static bool operator !=(Pesos pesos, Euro euros)
+        {
+            return !(pesos == euros);
+        }
+
+        public static bool operator ==(Pesos pesosUno, Pesos pesosDos)
+        {
+            if (pesosUno.cantidad == pesosDos.cantidad)
+            {
+                return true;
+            }
+            else
+                return false;
+        }
+
+        public static bool operator !=(Pesos pesosUno, Pesos pesosDos)
+        {
+            return !(pesosUno == pesosDos);
         }
 
 
