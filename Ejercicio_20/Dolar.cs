@@ -33,7 +33,7 @@ namespace Ejercicio_20
 
         public static explicit operator Pesos(Dolar dolares)
         {
-            return new Pesos(dolares.cantidad / Dolar.cotizRespectoDolar);
+            return new Pesos(dolares.cantidad * Pesos.GetCotizacion());
         }
     }
 }

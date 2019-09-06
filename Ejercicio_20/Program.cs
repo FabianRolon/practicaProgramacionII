@@ -11,12 +11,12 @@ namespace Ejercicio_20
         static void Main(string[] args)
         {
             Pesos pesosUno = new Pesos(200);
+            Pesos pesosDos = new Pesos(100);
             Dolar dolarUno = new Dolar(20);
             Pesos suma = pesosUno + dolarUno;
+            double sumaLoca = dolarUno.GetCantidad() * Pesos.GetCotizacion();
 
-            double var = suma.GetCantidad();
-
-            Console.WriteLine("La suma de 20 dolares y 200 pesos da: {0} pesos", var);
+            Console.WriteLine("La suma de {0} pesos y {1} Dolares da: {2} pesos", pesosUno.GetCantidad(), dolarUno.GetCantidad(), suma.GetCantidad());
             Console.ReadKey();
         }
     }

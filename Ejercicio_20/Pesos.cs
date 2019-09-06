@@ -16,6 +16,7 @@ namespace Ejercicio_20
             Pesos.cotizRespectoDolar = 55.93;
         }
         public Pesos(double cantidad)
+            :this()
         {
             this.cantidad = cantidad;
         }
