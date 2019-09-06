@@ -36,6 +36,11 @@ namespace Ejercicio_20
             return this.cantidad;
         }
 
+        public static implicit operator Euro(double euros)
+        {
+            return new Euro(euros);
+        }
+
         public static explicit operator Pesos(Euro euros)
         {
             return new Pesos(((Dolar)euros).GetCantidad() * Pesos.GetCotizacion());
@@ -45,6 +50,9 @@ namespace Ejercicio_20
         {
             return new Dolar(euros.cantidad * Euro.GetCotizacion());
         }
-
+        public static Euro operator +(Euro euros, Pesos pesos)
+        {
+            return new Euro(euros.cantidad + ((Euro)pesos).cantidad);
+        }
     }
 }
