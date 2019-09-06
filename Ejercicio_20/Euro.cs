@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ejercicio_20
 {
-    class Euro
+    public class Euro
     {
         double cantidad;
         static double cotizRespectoDolar = 1.16;

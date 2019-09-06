@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ejercicio_20
 {
-    class Pesos
+    public class Pesos
     {
         double cantidad;
         static double cotizRespectoDolar;
@@ -52,9 +52,13 @@ namespace Ejercicio_20
         }
         #endregion
 
-        /*public static Pesos operator +(Pesos pesos, Dolar dolares)
+        public static Pesos operator +(Pesos pesos, Dolar dolares)
         {
-            return 
-        }*/
+
+            return new Pesos(pesos.cantidad + ((Pesos)dolares).cantidad);
+        }
+
+
     }
+
 }

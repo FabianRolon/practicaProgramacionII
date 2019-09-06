@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ejercicio_20
 {
-    class Dolar
+    public class Dolar
     {
         double cantidad;
         static double cotizRespectoDolar;
@@ -24,6 +24,16 @@ namespace Ejercicio_20
             : this(cantidad)
         {
             Dolar.cotizRespectoDolar = cotizacion;
+        }
+
+        public double GetCantidad()
+        {
+            return this.cantidad;
+        }
+
+        public static explicit operator Pesos(Dolar dolares)
+        {
+            return new Pesos(dolares.cantidad / Dolar.cotizRespectoDolar);
         }
     }
 }
