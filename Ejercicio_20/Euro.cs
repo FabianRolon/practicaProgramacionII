@@ -9,10 +9,14 @@ namespace Ejercicio_20
     public class Euro
     {
         double cantidad;
-        static double cotizRespectoDolar = 1.16;
+        static double cotizRespectoDolar;
 
-        Euro() { }
+        Euro()
+        {
+            Euro.cotizRespectoDolar = 1.16;
+        }
         public Euro(double cantidad)
+            :this()
         {
             this.cantidad = cantidad;
         }

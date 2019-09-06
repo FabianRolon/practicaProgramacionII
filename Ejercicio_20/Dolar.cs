@@ -16,6 +16,7 @@ namespace Ejercicio_20
             Dolar.cotizRespectoDolar = 1;
         }
         public Dolar(double cantidad)
+            :this()
         {
             this.cantidad = cantidad;
         }
