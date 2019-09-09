@@ -8,6 +8,7 @@ namespace Entidades
 {
     class Numero
     {
+        #region Constructores
         double numero;
 
         public Numero()
@@ -22,9 +23,10 @@ namespace Entidades
 
         public Numero(string strNumero)
         {
-            
+            this.numero = double.Parse(strNumero);
         }
-
+        #endregion
+        #region Set y Validar
         private double ValidarNumero(string strNumero)
         {
             double auxNumero;
@@ -36,9 +38,49 @@ namespace Entidades
                 return 0;
         }
 
-        public void SetNumero(string strNumero)
+        #endregion
+        #region Operadores
+        public static double operator +(Numero numeroUno, Numero numeroDos)
         {
-            this.numero = ValidarNumero(strNumero);
+            return numeroUno.numero + numeroDos.numero;
         }
+
+        public static double operator -(Numero numeroUno, Numero numeroDos)
+        {
+            return numeroUno.numero - numeroDos.numero;
+        }
+
+        public static double operator *(Numero numeroUno, Numero numeroDos)
+        {
+            return numeroUno.numero * numeroDos.numero;
+        }
+
+        public static double operator /(Numero numeroUno, Numero numeroDos)
+        {
+            if(numeroDos.numero != 0)
+            {
+                return numeroUno.numero / numeroDos.numero;
+            }
+            else
+                return double.MinValue;
+        }
+        #endregion
+        #region Conversores
+        public string DecimalBinario(string numero)
+        {
+            return Convert.ToString(Convert.ToByte(numero));
+        }
+        public string DecimalBinario(double numero)
+        {
+            return DecimalBinario(Convert.ToString(numero));
+        }
+        #endregion
+
+        public string SetNumero
+        {
+            set { numero = ValidarNumero(value); }
+        }
+        
+
     }
 }
