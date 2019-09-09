@@ -18,7 +18,7 @@ namespace Entidades
 
         public Numero(double numero)
         {
-            this.numero =  numero;
+            this.numero = numero;
         }
 
         public Numero(string strNumero)
@@ -57,7 +57,7 @@ namespace Entidades
 
         public static double operator /(Numero numeroUno, Numero numeroDos)
         {
-            if(numeroDos.numero != 0)
+            if (numeroDos.numero != 0)
             {
                 return numeroUno.numero / numeroDos.numero;
             }
@@ -68,11 +68,35 @@ namespace Entidades
         #region Conversores
         public string DecimalBinario(string numero)
         {
-            return Convert.ToString(Convert.ToByte(numero));
+            return Convert.ToByte(numero).ToString();
         }
-        public string DecimalBinario(double numero)
+        public string DecimalBinario()
         {
-            return DecimalBinario(Convert.ToString(numero));
+            double numero = this.numero;
+
+            if (numero > 0 && numero % 2 == 0)
+            {
+                string resultado = "";
+                do
+                {
+                    resultado = (numero % 2) + resultado;
+                    numero = (int)numero / 2;
+                } while (numero > 0);
+                return resultado;
+            }
+            else
+                return "Valor inválido";
+        }
+
+        public string BinarioDecimal()
+        {
+            string numero = this.numero.ToString();
+            if (this.numero > 0)
+            {
+                return Convert.ToInt64(numero, 2).ToString();
+            }
+            else
+                return "Valor invalido";
         }
         #endregion
 
@@ -80,7 +104,7 @@ namespace Entidades
         {
             set { numero = ValidarNumero(value); }
         }
-        
+
 
     }
 }

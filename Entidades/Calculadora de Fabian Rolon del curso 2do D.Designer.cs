@@ -89,6 +89,7 @@
             this.button2.TabIndex = 2;
             this.button2.Text = "Cerrar";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // button3
             // 
@@ -98,6 +99,7 @@
             this.button3.TabIndex = 2;
             this.button3.Text = "Limpiar";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.Button3_Click);
             // 
             // button4
             // 
@@ -107,6 +109,7 @@
             this.button4.TabIndex = 2;
             this.button4.Text = "Decimal a Binario";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.Button4_Click);
             // 
             // button5
             // 
@@ -116,12 +119,13 @@
             this.button5.TabIndex = 2;
             this.button5.Text = "Binario a Decimal";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.Button5_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(439, 9);
+            this.label1.Location = new System.Drawing.Point(348, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 42);
             this.label1.TabIndex = 3;
