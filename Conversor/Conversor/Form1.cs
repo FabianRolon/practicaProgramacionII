@@ -16,6 +16,7 @@ namespace Conversor
         public Conversor()
         {
             InitializeComponent();
+            btnLock.Image = System.Drawing.Image.FromFile(@"C:\Users\Fabian\Downloads\Lock-Lock-icon.png");
         }
 
         private void btnLock_Click(object sender, EventArgs e)
@@ -34,6 +35,7 @@ namespace Conversor
                 txtPesoDolar.Enabled = false;
                 txtPesoEuro.Enabled = false;
                 txtPesoPeso.Enabled = false;
+                btnLock.Image = System.Drawing.Image.FromFile(@"C:\Users\Fabian\Downloads\Lock-Lock-icon.png");
             }
             else
             {
@@ -49,6 +51,7 @@ namespace Conversor
                 txtPesoDolar.Enabled = true;
                 txtPesoEuro.Enabled = true;
                 txtPesoPeso.Enabled = true;
+                btnLock.Image = System.Drawing.Image.FromFile(@"C:\Users\Fabian\Downloads\Lock-Unlock-icon.png");
             }
             
         }

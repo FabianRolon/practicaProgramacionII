@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,34 +19,34 @@ namespace Entidades
             InitializeComponent();
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+        private void BtnCalcular_Click_1(object sender, EventArgs e)
         {
-            Numero numeroUno = new Numero(textBox1.Text);
-            Numero numeroDos = new Numero(textBox2.Text);
-            this.label1.Text = Calculadora.Operar(numeroUno, numeroDos, comboBox1.Text).ToString();
-
+            Numero numeroUno = new Numero(txtNumeroUno.Text);
+            Numero numeroDos = new Numero(txtNumeroDos.Text);
+            this.label1.Text = Calculadora.Operar(numeroUno, numeroDos, cbOperador.Text).ToString();
         }
 
-        private void Button4_Click(object sender, EventArgs e)
+        private void BtnLimpiar_Click(object sender, EventArgs e)
+        {
+            this.txtNumeroUno.Text = "";
+            this.txtNumeroDos.Text = "";
+            this.label1.Text = "0";
+            cbOperador.Text = "";
+        }
+
+        private void BtnCerrar_Click_1(object sender, EventArgs e)
+        {
+            MessageBox.Show("Gracias, vuelva pronto ", "Chau", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Application.Exit();
+        }
+
+        private void BtnDecimalBinario_Click(object sender, EventArgs e)
         {
             Numero numeroUno = new Numero(label1.Text);
             this.label1.Text = numeroUno.DecimalBinario();
         }
 
-        private void Button3_Click(object sender, EventArgs e)
-        {
-            this.textBox1.Text = "";
-            this.textBox2.Text = "";
-            this.label1.Text = "0";
-            comboBox1.Text = "";
-        }
-
-        private void Button2_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void Button5_Click(object sender, EventArgs e)
+        private void BtnBinarioDecimal_Click_1(object sender, EventArgs e)
         {
             Numero numeroUno = new Numero(label1.Text);
             this.label1.Text = numeroUno.BinarioDecimal();

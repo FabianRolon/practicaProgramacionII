@@ -31,7 +31,7 @@ namespace Clase_06
         {
             if (int.TryParse(textBox3.Text, out int dni))
             {
-                Persona unaPersona = new Persona((textBox1.Text), (textBox2.Text), dni, , cbxProvincia.Text, chkbxVive.Checked);
+                Persona unaPersona = new Persona((textBox1.Text), (textBox2.Text), dni, ObtenerSexo() , cbxProvincia.Text, chkbxVive.Checked);
                 for (int i = 0; i < personas.Length; i++)
                 {
                     if (personas[i] == null)
@@ -54,9 +54,8 @@ namespace Clase_06
                 {
                     return item.Text;
                 }
-                else
-                    return "Otro";
             }
+            return " ";
         }
 
         private void btnMostrar_Click(object sender, EventArgs e)

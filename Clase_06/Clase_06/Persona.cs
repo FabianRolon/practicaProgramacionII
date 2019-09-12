@@ -11,23 +11,23 @@ namespace Clase_06
         string nombre;
         string apellido;
         int dni;
-        bool vitalidad;
+        /*bool vitalidad;
         string genero;
-        string provincia;
+        string provincia;*/
 
-        public Persona(string nombre, string apellido, int dni, string genero, string provincia, bool vive)
+        public Persona(string nombre, string apellido, int dni)/*, string genero, string provincia, bool vive)*/
         {
             this.nombre = nombre;
             this.apellido = apellido;
             this.dni = dni;
-            this.genero = genero;
+            /*this.genero = genero;
             this.provincia = provincia;
-            this.vitalidad = vive;
+            this.vitalidad = vive;*/
         }
         
         public string Mostrar()
         {
-            return this.nombre +" "+ this.apellido + " " + this.dni + " " +this.genero + " " +this.provincia + " " +this.vitalidad.ToString();
+            return this.nombre +" "+ this.apellido + " " + this.dni/* + " " +this.genero + " " +this.provincia + " " +this.vitalidad.ToString()*/;
         }
     }
 
