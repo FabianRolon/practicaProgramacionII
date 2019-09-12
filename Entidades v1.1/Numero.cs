@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-
     class Numero
     {
         #region Constructores
         double numero;
 
         /// <summary>
-        /// Genera una instancia con valor "cero".
+        /// Genera una instancia del tipo Numero con valor "cero".
         /// </summary>
         public Numero()
         {
@@ -36,7 +35,7 @@ namespace Entidades
             SetNumero = strNumero;
         }
         #endregion
-        #region Set y Validar
+        #region Set y Validaciones
         /// <summary>
         /// Propiedad que inicializa un objeto del tipo Numero validando que sea correcto.
         /// </summary>
@@ -62,7 +61,11 @@ namespace Entidades
             else
                 return 0;
         }
-
+        /// <summary>
+        /// Metodo que valida si un dato del tipo 'string' sea un binario. 
+        /// </summary>
+        /// <param name="strNumero"></param>
+        /// <returns></returns>
         public bool ValidarBinario(string strNumero)
         {
             for (int i = 0; i < strNumero.Length; i++)
@@ -77,21 +80,42 @@ namespace Entidades
 
         #endregion
         #region Operadores
+        /// <summary>
+        /// Metodo estático de sobrecarga del operador 'suma' que suma los atributos numero entre dos objetos del tipo Numero.
+        /// </summary>
+        /// <param name="numeroUno"></param>
+        /// <param name="numeroDos"></param>
+        /// <returns></returns>
         public static double operator +(Numero numeroUno, Numero numeroDos)
         {
             return numeroUno.numero + numeroDos.numero;
         }
-
+        /// <summary>
+        /// Metodo estático de sobrecarga del operador 'resta' que resta los atributos numero entre dos objetos del tipo Numero.
+        /// </summary>
+        /// <param name="numeroUno"></param>
+        /// <param name="numeroDos"></param>
+        /// <returns></returns>
         public static double operator -(Numero numeroUno, Numero numeroDos)
         {
             return numeroUno.numero - numeroDos.numero;
         }
-
+        /// <summary>
+        /// Metodo estático de sobrecarga del operador 'multiplicar' que multiplica los atributos numero entre dos objetos del tipo Numero.
+        /// </summary>
+        /// <param name="numeroUno"></param>
+        /// <param name="numeroDos"></param>
+        /// <returns></returns>
         public static double operator *(Numero numeroUno, Numero numeroDos)
         {
             return numeroUno.numero * numeroDos.numero;
         }
-
+        /// <summary>
+        /// Metodo estático de sobrecarga del operador 'division' que divide los atributos numero entre dos objetos del tipo Numero.
+        /// </summary>
+        /// <param name="numeroUno"></param>
+        /// <param name="numeroDos"></param>
+        /// <returns></returns>
         public static double operator /(Numero numeroUno, Numero numeroDos)
         {
             if (numeroDos.numero != 0)
@@ -103,10 +127,19 @@ namespace Entidades
         }
         #endregion
         #region Conversores
+        /// <summary>
+        /// Convierte un dato del tipo string a un string en decimal.
+        /// </summary>
+        /// <param name="numero"></param>
+        /// <returns></returns>
         public string DecimalBinario(string numero)
         {
             return Convert.ToByte(numero).ToString();
         }
+        /// <summary>
+        /// Convierte el atributo numero del tipo double de un objeto de tipo Numero en string binario.
+        /// </summary>
+        /// <returns></returns>
         public string DecimalBinario()
         {
             int numero = (int)this.numero;
@@ -124,7 +157,10 @@ namespace Entidades
             else
                 return "Valor inválido";
         }
-
+        /// <summary>
+        /// Convierte el atributo numero del tipo string de un objeto de tipo Numero en binario.
+        /// </summary>
+        /// <returns></returns>
         public string BinarioDecimal()
         {
             string bufferNumero = this.numero.ToString();
@@ -141,8 +177,5 @@ namespace Entidades
                 return "Valor inválido";
         }
         #endregion
-
-
-
     }
 }

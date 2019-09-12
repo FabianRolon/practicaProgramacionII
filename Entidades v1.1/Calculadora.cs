@@ -8,6 +8,12 @@ namespace Entidades
 {
     static class Calculadora
     {
+        #region Validar y Operar
+        /// <summary>
+        /// Recibe un operador del tipo string y valida si es una operacion válida.
+        /// </summary>
+        /// <param name="operador"></param>
+        /// <returns></returns>
         private static string ValidarOperador(string operador)
         {
             switch (operador)
@@ -24,7 +30,13 @@ namespace Entidades
                     return "+";
             }
         }
-
+        /// <summary>
+        /// Recibe dos objetos del tipo numero y un operador y realiza la operacion recibida entre los atributos de los mismos. 
+        /// </summary>
+        /// <param name="numeroUno"></param>
+        /// <param name="NumeroDos"></param>
+        /// <param name="operador"></param>
+        /// <returns></returns>
         public static double Operar(Numero numeroUno, Numero NumeroDos, string operador)
         {
             switch (Calculadora.ValidarOperador(operador))
@@ -43,3 +55,4 @@ namespace Entidades
         }
     }
 }
+#endregion
