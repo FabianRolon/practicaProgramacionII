@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Conversor));
             this.txtEuroEuro = new System.Windows.Forms.TextBox();
             this.txtEuroDolar = new System.Windows.Forms.TextBox();
             this.txtEuroPeso = new System.Windows.Forms.TextBox();
@@ -59,6 +58,7 @@
             // 
             // txtEuroEuro
             // 
+            this.txtEuroEuro.Enabled = false;
             this.txtEuroEuro.Location = new System.Drawing.Point(282, 83);
             this.txtEuroEuro.Name = "txtEuroEuro";
             this.txtEuroEuro.Size = new System.Drawing.Size(100, 20);
@@ -66,6 +66,7 @@
             // 
             // txtEuroDolar
             // 
+            this.txtEuroDolar.Enabled = false;
             this.txtEuroDolar.Location = new System.Drawing.Point(405, 83);
             this.txtEuroDolar.Name = "txtEuroDolar";
             this.txtEuroDolar.Size = new System.Drawing.Size(100, 20);
@@ -73,6 +74,7 @@
             // 
             // txtEuroPeso
             // 
+            this.txtEuroPeso.Enabled = false;
             this.txtEuroPeso.Location = new System.Drawing.Point(523, 83);
             this.txtEuroPeso.Name = "txtEuroPeso";
             this.txtEuroPeso.Size = new System.Drawing.Size(100, 20);
@@ -80,6 +82,7 @@
             // 
             // txtDolarEuro
             // 
+            this.txtDolarEuro.Enabled = false;
             this.txtDolarEuro.Location = new System.Drawing.Point(282, 109);
             this.txtDolarEuro.Name = "txtDolarEuro";
             this.txtDolarEuro.Size = new System.Drawing.Size(100, 20);
@@ -87,6 +90,7 @@
             // 
             // txtDolarDolar
             // 
+            this.txtDolarDolar.Enabled = false;
             this.txtDolarDolar.Location = new System.Drawing.Point(405, 109);
             this.txtDolarDolar.Name = "txtDolarDolar";
             this.txtDolarDolar.Size = new System.Drawing.Size(100, 20);
@@ -94,6 +98,7 @@
             // 
             // txtDolarPeso
             // 
+            this.txtDolarPeso.Enabled = false;
             this.txtDolarPeso.Location = new System.Drawing.Point(523, 109);
             this.txtDolarPeso.Name = "txtDolarPeso";
             this.txtDolarPeso.Size = new System.Drawing.Size(100, 20);
@@ -101,6 +106,7 @@
             // 
             // txtPesoEuro
             // 
+            this.txtPesoEuro.Enabled = false;
             this.txtPesoEuro.Location = new System.Drawing.Point(282, 135);
             this.txtPesoEuro.Name = "txtPesoEuro";
             this.txtPesoEuro.Size = new System.Drawing.Size(100, 20);
@@ -108,6 +114,7 @@
             // 
             // txtPesoDolar
             // 
+            this.txtPesoDolar.Enabled = false;
             this.txtPesoDolar.Location = new System.Drawing.Point(405, 135);
             this.txtPesoDolar.Name = "txtPesoDolar";
             this.txtPesoDolar.Size = new System.Drawing.Size(100, 20);
@@ -115,6 +122,7 @@
             // 
             // txtPesoPeso
             // 
+            this.txtPesoPeso.Enabled = false;
             this.txtPesoPeso.Location = new System.Drawing.Point(523, 135);
             this.txtPesoPeso.Name = "txtPesoPeso";
             this.txtPesoPeso.Size = new System.Drawing.Size(100, 20);
@@ -125,21 +133,24 @@
             this.txtCotiEuro.Location = new System.Drawing.Point(282, 23);
             this.txtCotiEuro.Name = "txtCotiEuro";
             this.txtCotiEuro.Size = new System.Drawing.Size(100, 20);
-            this.txtCotiEuro.TabIndex = 0;
+            this.txtCotiEuro.TabIndex = 8;
+            this.txtCotiEuro.Leave += new System.EventHandler(this.TxtCotiEuro_Leave);
             // 
             // txtCotiDolar
             // 
             this.txtCotiDolar.Location = new System.Drawing.Point(405, 23);
             this.txtCotiDolar.Name = "txtCotiDolar";
             this.txtCotiDolar.Size = new System.Drawing.Size(100, 20);
-            this.txtCotiDolar.TabIndex = 0;
+            this.txtCotiDolar.TabIndex = 9;
+            this.txtCotiDolar.Leave += new System.EventHandler(this.TxtCotiDolar_Leave);
             // 
             // txtCotiPeso
             // 
             this.txtCotiPeso.Location = new System.Drawing.Point(523, 23);
             this.txtCotiPeso.Name = "txtCotiPeso";
             this.txtCotiPeso.Size = new System.Drawing.Size(100, 20);
-            this.txtCotiPeso.TabIndex = 0;
+            this.txtCotiPeso.TabIndex = 10;
+            this.txtCotiPeso.Leave += new System.EventHandler(this.TxtCotiPeso_Leave);
             // 
             // txtCantidadEuro
             // 
@@ -153,14 +164,14 @@
             this.txtCantidadDolar.Location = new System.Drawing.Point(84, 106);
             this.txtCantidadDolar.Name = "txtCantidadDolar";
             this.txtCantidadDolar.Size = new System.Drawing.Size(100, 20);
-            this.txtCantidadDolar.TabIndex = 0;
+            this.txtCantidadDolar.TabIndex = 1;
             // 
             // txtCantidadPesos
             // 
             this.txtCantidadPesos.Location = new System.Drawing.Point(84, 131);
             this.txtCantidadPesos.Name = "txtCantidadPesos";
             this.txtCantidadPesos.Size = new System.Drawing.Size(100, 20);
-            this.txtCantidadPesos.TabIndex = 0;
+            this.txtCantidadPesos.TabIndex = 2;
             // 
             // lblCotizacion
             // 
@@ -207,7 +218,7 @@
             this.btnConvertirEuro.Location = new System.Drawing.Point(190, 81);
             this.btnConvertirEuro.Name = "btnConvertirEuro";
             this.btnConvertirEuro.Size = new System.Drawing.Size(75, 23);
-            this.btnConvertirEuro.TabIndex = 2;
+            this.btnConvertirEuro.TabIndex = 3;
             this.btnConvertirEuro.Text = "->";
             this.btnConvertirEuro.UseVisualStyleBackColor = true;
             this.btnConvertirEuro.Click += new System.EventHandler(this.btnConvertirEuro_Click);
@@ -217,7 +228,7 @@
             this.btnConvertirDolar.Location = new System.Drawing.Point(190, 104);
             this.btnConvertirDolar.Name = "btnConvertirDolar";
             this.btnConvertirDolar.Size = new System.Drawing.Size(75, 23);
-            this.btnConvertirDolar.TabIndex = 2;
+            this.btnConvertirDolar.TabIndex = 4;
             this.btnConvertirDolar.Text = "->";
             this.btnConvertirDolar.UseVisualStyleBackColor = true;
             this.btnConvertirDolar.Click += new System.EventHandler(this.btnConvertirDolar_Click);
@@ -227,19 +238,20 @@
             this.btnConvertirPeso.Location = new System.Drawing.Point(190, 127);
             this.btnConvertirPeso.Name = "btnConvertirPeso";
             this.btnConvertirPeso.Size = new System.Drawing.Size(75, 23);
-            this.btnConvertirPeso.TabIndex = 2;
+            this.btnConvertirPeso.TabIndex = 5;
             this.btnConvertirPeso.Text = "->";
             this.btnConvertirPeso.UseVisualStyleBackColor = true;
             this.btnConvertirPeso.Click += new System.EventHandler(this.btnConvertirPeso_Click);
             // 
             // btnLock
             // 
-            this.btnLock.Image = ((System.Drawing.Image)(resources.GetObject("btnLock.Image")));
+            this.btnLock.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnLock.Image = global::Conversor.Properties.Resources.bloqueado;
             this.btnLock.ImageKey = "(ninguno)";
             this.btnLock.Location = new System.Drawing.Point(190, 13);
             this.btnLock.Name = "btnLock";
             this.btnLock.Size = new System.Drawing.Size(75, 41);
-            this.btnLock.TabIndex = 2;
+            this.btnLock.TabIndex = 7;
             this.btnLock.UseVisualStyleBackColor = true;
             this.btnLock.Click += new System.EventHandler(this.btnLock_Click);
             // 

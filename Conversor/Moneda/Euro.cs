@@ -13,7 +13,7 @@ namespace Moneda
 
         Euro()
         {
-            Euro.cotizRespectoDolar = 1.16;
+
         }
         public Euro(double cantidad)
             :this()
@@ -25,6 +25,15 @@ namespace Moneda
             : this(cantidad)
         {
             Euro.cotizRespectoDolar = cotizacion;
+        }
+
+        public static void SetCotizacion(string numero)
+        {
+            if (!double.TryParse(numero, out double auxNumero))
+            {
+            }
+            else
+                Euro.cotizRespectoDolar = auxNumero;
         }
 
         public static double GetCotizacion()
@@ -44,7 +53,9 @@ namespace Moneda
         public static explicit operator Pesos(Euro euros)
         {
             Dolar d1 = (Dolar)euros;
-            return new Pesos(d1.GetCantidad() * Pesos.GetCotizacion());
+            Pesos auxPesos = new Pesos(0);
+            Pesos p1 = new Pesos(d1.GetCantidad() * Pesos.GetCotizacion());
+            return p1;
         }
 
         public static explicit operator Dolar(Euro euros)

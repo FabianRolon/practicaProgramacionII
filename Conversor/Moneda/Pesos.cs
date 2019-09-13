@@ -13,7 +13,7 @@ namespace Moneda
 
         Pesos()
         {
-            Pesos.cotizRespectoDolar = 55.93;
+         
         }
         public Pesos(double cantidad)
             :this()
@@ -25,6 +25,15 @@ namespace Moneda
             : this(cantidad)
         {
             Pesos.cotizRespectoDolar = cotizacion;
+        }
+
+        public static void SetCotizacion(string numero)
+        {
+            if (!double.TryParse(numero, out double auxNumero))
+            {
+            }
+            else
+                Pesos.cotizRespectoDolar = auxNumero;
         }
 
         public double GetCantidad()

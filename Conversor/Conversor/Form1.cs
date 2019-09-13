@@ -16,44 +16,32 @@ namespace Conversor
         public Conversor()
         {
             InitializeComponent();
-            btnLock.Image = System.Drawing.Image.FromFile(@"C:\Users\Fabian\Downloads\Lock-Lock-icon.png");
+            btnLock.BackgroundImage = Image.FromFile(@"C:\Users\Calidad\Desktop\Programas\Program\practicaProgramacionII\Conversor\bloqueado (1).png");
+            txtCotiEuro.Text = "1,16";
+            txtCotiPeso.Text = "55,93";
+            txtCotiDolar.Text = "1";
+            Euro.SetCotizacion(txtCotiEuro.Text);
+            Dolar.SetCotizacion(txtCotiDolar.Text);
+            Pesos.SetCotizacion(txtCotiPeso.Text);
         }
 
         private void btnLock_Click(object sender, EventArgs e)
         {
-            if (txtPesoPeso.Enabled)
+            if (txtCotiDolar.Enabled)
             {
                 txtCotiDolar.Enabled = false;
                 txtCotiEuro.Enabled = false;
                 txtCotiPeso.Enabled = false;
-                txtDolarDolar.Enabled = false;
-                txtDolarEuro.Enabled = false;
-                txtDolarPeso.Enabled = false;
-                txtEuroDolar.Enabled = false;
-                txtEuroEuro.Enabled = false;
-                txtEuroPeso.Enabled = false;
-                txtPesoDolar.Enabled = false;
-                txtPesoEuro.Enabled = false;
-                txtPesoPeso.Enabled = false;
-                btnLock.Image = System.Drawing.Image.FromFile(@"C:\Users\Fabian\Downloads\Lock-Lock-icon.png");
+                btnLock.BackgroundImage = Image.FromFile(@"C:\Users\Calidad\Desktop\Programas\Program\practicaProgramacionII\Conversor\bloqueado.png");
             }
             else
             {
                 txtCotiDolar.Enabled = true;
                 txtCotiEuro.Enabled = true;
                 txtCotiPeso.Enabled = true;
-                txtDolarDolar.Enabled = true;
-                txtDolarEuro.Enabled = true;
-                txtDolarPeso.Enabled = true;
-                txtEuroDolar.Enabled = true;
-                txtEuroEuro.Enabled = true;
-                txtEuroPeso.Enabled = true;
-                txtPesoDolar.Enabled = true;
-                txtPesoEuro.Enabled = true;
-                txtPesoPeso.Enabled = true;
-                btnLock.Image = System.Drawing.Image.FromFile(@"C:\Users\Fabian\Downloads\Lock-Unlock-icon.png");
+                btnLock.BackgroundImage = Image.FromFile(@"C:\Users\Calidad\Desktop\Programas\Program\practicaProgramacionII\Conversor\Conversor\Resources\bloqueado (1).png");
             }
-            
+
         }
 
         private void btnConvertirEuro_Click(object sender, EventArgs e)
@@ -84,6 +72,24 @@ namespace Conversor
             txtPesoEuro.Text = e1.GetCantidad().ToString();
             txtPesoDolar.Text = d1.GetCantidad().ToString();
             txtPesoPeso.Text = p1.GetCantidad().ToString();
+        }
+
+        private void TxtCotiPeso_Leave(object sender, EventArgs e)
+        {
+            Pesos.SetCotizacion(txtCotiPeso.Text);
+            txtCotiPeso.Text = Pesos.GetCotizacion().ToString();
+        }
+
+        private void TxtCotiDolar_Leave(object sender, EventArgs e)
+        {
+            Dolar.SetCotizacion(txtDolarDolar.Text);
+            txtCotiDolar.Text = Dolar.GetCotizacion().ToString();
+        }
+
+        private void TxtCotiEuro_Leave(object sender, EventArgs e)
+        {
+            Euro.SetCotizacion(txtCotiEuro.Text);
+            txtCotiEuro.Text = Euro.GetCotizacion().ToString();
         }
     }
 }

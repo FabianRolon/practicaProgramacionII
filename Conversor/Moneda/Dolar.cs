@@ -13,7 +13,7 @@ namespace Moneda
 
         Dolar()
         {
-            Dolar.cotizRespectoDolar = 1;
+
         }
         public Dolar(double cantidad)
             : this()
@@ -27,9 +27,23 @@ namespace Moneda
             Dolar.cotizRespectoDolar = cotizacion;
         }
 
+        public static void SetCotizacion(string numero)
+        {
+            if (!double.TryParse(numero, out double auxNumero))
+            {
+            }
+            else
+                Dolar.cotizRespectoDolar = auxNumero;
+        }
+
         public double GetCantidad()
         {
             return this.cantidad;
+        }
+
+        public static double GetCotizacion()
+        {
+            return Dolar.cotizRespectoDolar;
         }
 
         public static implicit operator Dolar(double dolares)
