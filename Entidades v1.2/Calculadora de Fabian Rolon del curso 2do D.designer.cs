@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Calculadora_de_Fabian_Rolon_del_curso_2do_D));
             this.txtNumeroUno = new System.Windows.Forms.TextBox();
             this.txtNumeroDos = new System.Windows.Forms.TextBox();
             this.cbOperador = new System.Windows.Forms.ComboBox();
-            this.btnCalcular = new System.Windows.Forms.Button();
+            this.btnOperar = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnDecimalBinario = new System.Windows.Forms.Button();
@@ -71,18 +72,18 @@
             this.cbOperador.Size = new System.Drawing.Size(163, 47);
             this.cbOperador.TabIndex = 1;
             // 
-            // btnCalcular
+            // btnOperar
             // 
-            this.btnCalcular.BackColor = System.Drawing.Color.Black;
-            this.btnCalcular.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCalcular.ForeColor = System.Drawing.Color.Red;
-            this.btnCalcular.Location = new System.Drawing.Point(12, 117);
-            this.btnCalcular.Name = "btnCalcular";
-            this.btnCalcular.Size = new System.Drawing.Size(192, 62);
-            this.btnCalcular.TabIndex = 4;
-            this.btnCalcular.Text = "Calcular";
-            this.btnCalcular.UseVisualStyleBackColor = false;
-            this.btnCalcular.Click += new System.EventHandler(this.BtnCalcular_Click_1);
+            this.btnOperar.BackColor = System.Drawing.Color.Black;
+            this.btnOperar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOperar.ForeColor = System.Drawing.Color.Red;
+            this.btnOperar.Location = new System.Drawing.Point(12, 117);
+            this.btnOperar.Name = "btnOperar";
+            this.btnOperar.Size = new System.Drawing.Size(192, 62);
+            this.btnOperar.TabIndex = 4;
+            this.btnOperar.Text = "Operar";
+            this.btnOperar.UseVisualStyleBackColor = false;
+            this.btnOperar.Click += new System.EventHandler(this.BtnOperar_Click_1);
             // 
             // btnCerrar
             // 
@@ -158,11 +159,12 @@
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.btnBinarioDecimal);
             this.Controls.Add(this.btnDecimalBinario);
-            this.Controls.Add(this.btnCalcular);
+            this.Controls.Add(this.btnOperar);
             this.Controls.Add(this.cbOperador);
             this.Controls.Add(this.txtNumeroDos);
             this.Controls.Add(this.txtNumeroUno);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Calculadora_de_Fabian_Rolon_del_curso_2do_D";
@@ -178,7 +180,7 @@
         private System.Windows.Forms.TextBox txtNumeroUno;
         private System.Windows.Forms.TextBox txtNumeroDos;
         private System.Windows.Forms.ComboBox cbOperador;
-        private System.Windows.Forms.Button btnCalcular;
+        private System.Windows.Forms.Button btnOperar;
         private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Button btnDecimalBinario;
