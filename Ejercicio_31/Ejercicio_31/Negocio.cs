@@ -50,7 +50,7 @@ namespace Ejercicio_31
                 if (c == cliente)
                 {
                     return true;
-                }    
+                }
             }
             return false;
         }
@@ -65,6 +65,17 @@ namespace Ejercicio_31
             if (n != c)
             {
                 n.clientes.Enqueue(c);
+                return true;
+            }
+            else
+                return false;
+        }
+
+        public static bool operator ~(Negocio n)
+        {
+            PuestoAtencion puesto = new PuestoAtencion(PuestoAtencion.Puesto.Caja1);
+            if (puesto.Atender(n.Cliente))
+            {
                 return true;
             }
             else
