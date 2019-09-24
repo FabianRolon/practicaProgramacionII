@@ -6,11 +6,18 @@ using System.Threading.Tasks;
 
 namespace CentralitaHerencia
 {
-    class Llamada
+    public class Llamada
     {
-        protected float duracion;
-        protected string nroDestino;
         protected string nroOrigen;
+        protected string nroDestino;
+        protected float duracion;
+
+        public Llamada(string nroOrigen, string nroDestino, float duracion)
+        {
+            this.nroOrigen = nroOrigen;
+            this.nroDestino = nroDestino;
+            this.duracion = duracion;
+        }
 
         public float Duracion
         {
@@ -20,6 +27,33 @@ namespace CentralitaHerencia
             }
         }
 
+        public string NroDestino
+        {
+            get
+            {
+                return nroDestino;
+            }
+        }
 
+        public string NroOrigen
+        {
+            get
+            {
+                return nroOrigen;
+            }
+        }
+
+
+        public string Mostrar()
+        {
+            StringBuilder str = new StringBuilder();
+            str.AppendFormat("Numero de Origen: {0}\n Numero de Destino: {1}\n Duracion: {2}\n", NroOrigen, NroDestino, Duracion);
+            return str.ToString();
+        }
+
+        public int OrdenarPorDuracion(Llamada llamada1, Llamada llamada2)
+        {
+            return 1;
+        }
     }
 }
