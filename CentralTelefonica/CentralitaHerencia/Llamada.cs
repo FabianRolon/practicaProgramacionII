@@ -12,6 +12,13 @@ namespace CentralitaHerencia
         protected string nroDestino;
         protected float duracion;
 
+        public enum TipoLlamada
+        {
+            Local,
+            Provincial,
+            Todas
+        }
+
         public Llamada(string nroOrigen, string nroDestino, float duracion)
         {
             this.nroOrigen = nroOrigen;
@@ -51,9 +58,9 @@ namespace CentralitaHerencia
             return str.ToString();
         }
 
-        public int OrdenarPorDuracion(Llamada llamada1, Llamada llamada2)
+        public static int OrdenarPorDuracion(Llamada llamada1, Llamada llamada2)
         {
-            return 1;
+            return llamada1.Duracion.CompareTo(llamada2.Duracion);
         }
     }
 }

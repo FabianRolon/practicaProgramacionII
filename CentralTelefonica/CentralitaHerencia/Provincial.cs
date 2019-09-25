@@ -12,7 +12,10 @@ namespace CentralitaHerencia
 
         public float CostoLlamada
         {
-            get { return myVar; }
+            get
+            {
+                return CalcularCosto();
+            }
         }
 
         public Provincial(string origen, Franja miFranja, float duracion, string destino) :base(origen, destino, duracion)
@@ -48,6 +51,11 @@ namespace CentralitaHerencia
             }
         }
 
-        public
+        public new string  Mostrar()
+        {
+            StringBuilder str = new StringBuilder();
+            str.AppendFormat("Numero de Origen: {0}\n Numero de Destino: {1}\n Duracion: {2}\n Costo Llamada {3} Franja horaria: {4}", NroOrigen, NroDestino, Duracion, CostoLlamada, franjaHoraria);
+            return str.ToString();
+        }
     }
 }
