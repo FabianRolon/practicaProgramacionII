@@ -12,7 +12,7 @@ namespace Entidades
         private float peso;
         private Posicion posicion;
 
-        public Jugador(string apellido, int dni, int edad, string nombre, float altura, float peso, Posicion posicion) :base(apellido, dni, edad, nombre)
+        public Jugador(string nombre, string apellido, int edad, int dni, float peso, float altura,  Posicion posicion) :base(nombre, apellido, edad, dni)
         {
             this.altura = altura;
             this.peso = peso;
@@ -52,8 +52,21 @@ namespace Entidades
 
         public bool ValidarEstadoFisico()
         {
-            float imc = Peso / Altura * Altura;
+            float imc;
+            imc = ((float)peso / (altura * altura));
             if (imc >= 18.5 && imc <= 25)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public override bool ValidarAptitud()
+        {
+            if(Edad <= 40 && ValidarEstadoFisico())
             {
                 return true;
             }

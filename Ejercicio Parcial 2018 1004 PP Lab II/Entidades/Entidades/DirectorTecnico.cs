@@ -10,9 +10,9 @@ namespace Entidades
     {
         private int añosExperiencia;
 
-        public DirectorTecnico(string apellido, int dni, int edad, string nombre, int añosExperiencia) : base(apellido, dni, edad, nombre)
+        public DirectorTecnico(string nombre, string apellido, int edad, int dni, int añosExperiencia) : base(nombre, apellido, edad, dni)
         {
-            añosExperiencia = AñosExperiencia;
+            this.añosExperiencia = añosExperiencia;
         }
 
         public int AñosExperiencia
@@ -35,7 +35,7 @@ namespace Entidades
 
         public override bool ValidarAptitud()
         {
-            if(añosExperiencia >= 2 && Edad <= 65)
+            if(this.añosExperiencia >= 2 && Edad <= 65)
             {
                 return true;
             }

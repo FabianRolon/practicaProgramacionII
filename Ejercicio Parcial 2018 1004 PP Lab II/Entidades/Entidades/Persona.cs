@@ -13,7 +13,7 @@ namespace Entidades
         private int edad;
         private string nombre;
 
-        public Persona(string apellido, int dni, int edad, string nombre)
+        public Persona(string nombre, string apellido, int edad, int dni)
         {
             this.apellido = apellido;
             this.dni = dni;
