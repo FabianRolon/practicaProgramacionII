@@ -9,7 +9,7 @@ namespace Entidades
     public class Equipo
     {
         private const int cantidadMaximaJugadores = 6;
-        private DirectorTecnico directorTecnico = null;
+        private DirectorTecnico directorTecnico;
         private List<Jugador> jugadores;
         string nombre;
 
@@ -44,17 +44,18 @@ namespace Entidades
         public static explicit operator string(Equipo e)
         {
             StringBuilder str = new StringBuilder();
-            str.AppendLine("DATOS DE EQUIPO\n");
-            str.AppendLine("Nombre de Equipo: " + e.Nombre);
+            str.AppendLine("DATOS DE EQUIPO\n\n");
+            str.AppendLine("Nombre de Equipo: " + e.Nombre + "\n");
+            str.AppendLine("Director Tecnico\n");
             if (e.directorTecnico != null)
-            {
+            {               
                 str.AppendLine(e.directorTecnico.Mostrar());
             }
             else
             {
-                str.AppendLine("Sin DT Asignado");
+                str.AppendLine("Sin DT Asignado\n");
             }
-
+            str.AppendLine("Lista de Jugadores\n");
             foreach (Jugador item in e.jugadores)
             {
                 str.AppendLine(item.Mostrar());

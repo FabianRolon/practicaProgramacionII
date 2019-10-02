@@ -30,7 +30,7 @@ namespace Entidades
 
         public override string Mostrar()
         {
-            return base.Mostrar() + "Años Experiencia:" + this.AñosExperiencia.ToString();
+            return base.Mostrar() + "Años Experiencia:" + this.AñosExperiencia.ToString() + "\n";
         }
 
         public override bool ValidarAptitud()
