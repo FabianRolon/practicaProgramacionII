@@ -24,7 +24,7 @@ namespace Entidades
         protected string Mostrar()
         {
             StringBuilder str = new StringBuilder();
-            str.AppendFormat("Nombre: {0}\nOrbira: {1}\nRotacion: {2}\n", nombre, duracionOrbita, duracionRotacion);
+            str.AppendFormat("Nombre: {0}\nOrbira: {1}\nRotacion: {2}", nombre, duracionOrbita, duracionRotacion);
             return str.ToString();
         }
 

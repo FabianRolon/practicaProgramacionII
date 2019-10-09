@@ -15,6 +15,7 @@ namespace Entidades
         public Planeta(int duraOrbita, int duraRotacion, string nombre)
             : base(duraOrbita, duraRotacion, nombre)
         {
+            satelites = new List<Astro>();
         }
 
         public Planeta(int duraOrbita, int duraRotacion, string nombre, int cantSatelites, Tipo tipo)
@@ -28,7 +29,7 @@ namespace Entidades
         {
             get
             {
-                return new List<Astro>();
+                return satelites;
             }
         }
 
@@ -96,6 +97,11 @@ namespace Entidades
             StringBuilder str = new StringBuilder();
             str.AppendLine(base.Mostrar());
             str.AppendFormat("Cantidad de satelites: {0}\nTipo: {1}\n", cantSatelites, tipo);
+            str.AppendLine("Satelites del planeta: ");
+            foreach (Satelite sat in Satelites)
+            {
+                str.AppendLine(sat.ToString());
+            }
             return str.ToString();
         }
     }

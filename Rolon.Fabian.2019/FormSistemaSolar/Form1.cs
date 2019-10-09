@@ -24,8 +24,7 @@ namespace FormSistemaSolar
         {
             if (txtNombrePlaneta.Text != "" && txtOrbitaPlaneta.Text != "" && numRotacion.Value > 0 && numSatelite.Value != 0 && cmbTipo.Text != "")
             {
-                Planeta planeta = new Planeta(int.Parse(txtOrbitaPlaneta.Text), (int)numRotacion.Value, txtNombrePlaneta.Text, (int)numSatelite.Value);
-                
+                Planeta planeta = new Planeta(int.Parse(txtOrbitaPlaneta.Text), (int)numRotacion.Value, txtNombrePlaneta.Text, (int)numSatelite.Value, (Tipo)cmbTipo.SelectedItem);
                 planetas.Add(planeta);
                 cmbPlanetas.Items.Add(txtNombrePlaneta.Text);
             }
@@ -40,7 +39,6 @@ namespace FormSistemaSolar
             foreach (Planeta planeta in planetas)
             {
                 richTextBox1.AppendText(planeta.ToString());
-                
             }
             
         }
@@ -56,6 +54,15 @@ namespace FormSistemaSolar
             if(cmbPlanetas.Text != "")
             {
                 Satelite satelite = new Satelite((int)numOrbitaSatelite.Value, (int)numRotacionSatelite.Value, txtNombreSatelite.Text);
+
+                foreach (Planeta planet in planetas)
+                {
+                    string a = cmbPlanetas.Text;
+                    if (planet.ToString().Contains(a))
+                    {
+                        planet.Satelites.Add(satelite);
+                    }
+                }
             }
         }
     }
