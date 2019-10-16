@@ -1,6 +1,6 @@
 ﻿namespace FormSistemaSolar
 {
-    partial class Form1
+    partial class FormSistemaSolar
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -51,6 +51,7 @@
             this.numSatelite = new System.Windows.Forms.NumericUpDown();
             this.numOrbitaSatelite = new System.Windows.Forms.NumericUpDown();
             this.numRotacionSatelite = new System.Windows.Forms.NumericUpDown();
+            this.btnAbrirVnetana = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numRotacion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSatelite)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numOrbitaSatelite)).BeginInit();
@@ -104,17 +105,17 @@
             // 
             // txtNombrePlaneta
             // 
-            this.txtNombrePlaneta.Location = new System.Drawing.Point(164, 19);
+            this.txtNombrePlaneta.Location = new System.Drawing.Point(168, 19);
             this.txtNombrePlaneta.Name = "txtNombrePlaneta";
             this.txtNombrePlaneta.Size = new System.Drawing.Size(156, 20);
-            this.txtNombrePlaneta.TabIndex = 5;
+            this.txtNombrePlaneta.TabIndex = 1;
             // 
             // txtOrbitaPlaneta
             // 
-            this.txtOrbitaPlaneta.Location = new System.Drawing.Point(164, 52);
+            this.txtOrbitaPlaneta.Location = new System.Drawing.Point(168, 52);
             this.txtOrbitaPlaneta.Name = "txtOrbitaPlaneta";
             this.txtOrbitaPlaneta.Size = new System.Drawing.Size(156, 20);
-            this.txtOrbitaPlaneta.TabIndex = 6;
+            this.txtOrbitaPlaneta.TabIndex = 2;
             // 
             // lblPlaneta
             // 
@@ -127,11 +128,12 @@
             // 
             // cmbPlanetas
             // 
+            this.cmbPlanetas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPlanetas.FormattingEnabled = true;
             this.cmbPlanetas.Location = new System.Drawing.Point(503, 19);
             this.cmbPlanetas.Name = "cmbPlanetas";
             this.cmbPlanetas.Size = new System.Drawing.Size(192, 21);
-            this.cmbPlanetas.TabIndex = 8;
+            this.cmbPlanetas.TabIndex = 7;
             // 
             // lblNombreSatelite
             // 
@@ -147,7 +149,7 @@
             this.txtNombreSatelite.Location = new System.Drawing.Point(503, 52);
             this.txtNombreSatelite.Name = "txtNombreSatelite";
             this.txtNombreSatelite.Size = new System.Drawing.Size(192, 20);
-            this.txtNombreSatelite.TabIndex = 9;
+            this.txtNombreSatelite.TabIndex = 8;
             // 
             // lblTiempoOrbitaSatelite
             // 
@@ -169,18 +171,19 @@
             // 
             // cmbTipo
             // 
+            this.cmbTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTipo.FormattingEnabled = true;
-            this.cmbTipo.Location = new System.Drawing.Point(164, 148);
+            this.cmbTipo.Location = new System.Drawing.Point(168, 148);
             this.cmbTipo.Name = "cmbTipo";
             this.cmbTipo.Size = new System.Drawing.Size(156, 21);
-            this.cmbTipo.TabIndex = 14;
+            this.cmbTipo.TabIndex = 5;
             // 
             // btnAgregarPlaneta
             // 
             this.btnAgregarPlaneta.Location = new System.Drawing.Point(15, 188);
             this.btnAgregarPlaneta.Name = "btnAgregarPlaneta";
             this.btnAgregarPlaneta.Size = new System.Drawing.Size(305, 32);
-            this.btnAgregarPlaneta.TabIndex = 15;
+            this.btnAgregarPlaneta.TabIndex = 6;
             this.btnAgregarPlaneta.Text = "Agregar Planeta";
             this.btnAgregarPlaneta.UseVisualStyleBackColor = true;
             this.btnAgregarPlaneta.Click += new System.EventHandler(this.btnAgregarPlaneta_Click);
@@ -190,7 +193,7 @@
             this.btnAgregarSatelite.Location = new System.Drawing.Point(390, 188);
             this.btnAgregarSatelite.Name = "btnAgregarSatelite";
             this.btnAgregarSatelite.Size = new System.Drawing.Size(305, 32);
-            this.btnAgregarSatelite.TabIndex = 15;
+            this.btnAgregarSatelite.TabIndex = 11;
             this.btnAgregarSatelite.Text = "Agregar Satelite";
             this.btnAgregarSatelite.UseVisualStyleBackColor = true;
             this.btnAgregarSatelite.Click += new System.EventHandler(this.btnAgregarSatelite_Click);
@@ -200,7 +203,7 @@
             this.btnInfo.Location = new System.Drawing.Point(15, 225);
             this.btnInfo.Name = "btnInfo";
             this.btnInfo.Size = new System.Drawing.Size(680, 42);
-            this.btnInfo.TabIndex = 16;
+            this.btnInfo.TabIndex = 12;
             this.btnInfo.Text = "Mostrar Informacion";
             this.btnInfo.UseVisualStyleBackColor = true;
             this.btnInfo.Click += new System.EventHandler(this.btnInfo_Click);
@@ -210,51 +213,80 @@
             this.btnMoverAstros.Location = new System.Drawing.Point(15, 273);
             this.btnMoverAstros.Name = "btnMoverAstros";
             this.btnMoverAstros.Size = new System.Drawing.Size(680, 35);
-            this.btnMoverAstros.TabIndex = 17;
+            this.btnMoverAstros.TabIndex = 13;
             this.btnMoverAstros.Text = "Mover Astros";
             this.btnMoverAstros.UseVisualStyleBackColor = true;
+            this.btnMoverAstros.Click += new System.EventHandler(this.BtnMoverAstros_Click);
             // 
             // richTextBox1
             // 
             this.richTextBox1.Location = new System.Drawing.Point(709, 15);
             this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
             this.richTextBox1.Size = new System.Drawing.Size(285, 292);
             this.richTextBox1.TabIndex = 18;
             this.richTextBox1.Text = "";
+            this.richTextBox1.ZoomFactor = 2F;
             // 
             // numRotacion
             // 
             this.numRotacion.Location = new System.Drawing.Point(168, 85);
+            this.numRotacion.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
             this.numRotacion.Name = "numRotacion";
             this.numRotacion.Size = new System.Drawing.Size(152, 20);
-            this.numRotacion.TabIndex = 19;
+            this.numRotacion.TabIndex = 3;
             // 
             // numSatelite
             // 
             this.numSatelite.Location = new System.Drawing.Point(168, 120);
             this.numSatelite.Name = "numSatelite";
             this.numSatelite.Size = new System.Drawing.Size(152, 20);
-            this.numSatelite.TabIndex = 19;
+            this.numSatelite.TabIndex = 4;
             // 
             // numOrbitaSatelite
             // 
             this.numOrbitaSatelite.Location = new System.Drawing.Point(503, 85);
+            this.numOrbitaSatelite.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
             this.numOrbitaSatelite.Name = "numOrbitaSatelite";
             this.numOrbitaSatelite.Size = new System.Drawing.Size(152, 20);
-            this.numOrbitaSatelite.TabIndex = 19;
+            this.numOrbitaSatelite.TabIndex = 9;
             // 
             // numRotacionSatelite
             // 
             this.numRotacionSatelite.Location = new System.Drawing.Point(503, 122);
+            this.numRotacionSatelite.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
             this.numRotacionSatelite.Name = "numRotacionSatelite";
             this.numRotacionSatelite.Size = new System.Drawing.Size(152, 20);
-            this.numRotacionSatelite.TabIndex = 19;
+            this.numRotacionSatelite.TabIndex = 10;
             // 
-            // Form1
+            // btnAbrirVnetana
+            // 
+            this.btnAbrirVnetana.Location = new System.Drawing.Point(15, 314);
+            this.btnAbrirVnetana.Name = "btnAbrirVnetana";
+            this.btnAbrirVnetana.Size = new System.Drawing.Size(680, 33);
+            this.btnAbrirVnetana.TabIndex = 19;
+            this.btnAbrirVnetana.Text = "Abrir Ventana Nueva";
+            this.btnAbrirVnetana.UseVisualStyleBackColor = true;
+            this.btnAbrirVnetana.Click += new System.EventHandler(this.btnAbrirVnetana_Click);
+            // 
+            // FormSistemaSolar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1005, 328);
+            this.ClientSize = new System.Drawing.Size(1005, 371);
+            this.Controls.Add(this.btnAbrirVnetana);
             this.Controls.Add(this.numSatelite);
             this.Controls.Add(this.numRotacionSatelite);
             this.Controls.Add(this.numOrbitaSatelite);
@@ -278,7 +310,9 @@
             this.Controls.Add(this.lblOrbitaPlaneta);
             this.Controls.Add(this.lblNombreSatelite);
             this.Controls.Add(this.lblNombrePlaneta);
-            this.Name = "Form1";
+            this.MaximizeBox = false;
+            this.Name = "FormSistemaSolar";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fabian Rolon";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numRotacion)).EndInit();
@@ -315,6 +349,7 @@
         private System.Windows.Forms.NumericUpDown numSatelite;
         private System.Windows.Forms.NumericUpDown numOrbitaSatelite;
         private System.Windows.Forms.NumericUpDown numRotacionSatelite;
+        private System.Windows.Forms.Button btnAbrirVnetana;
     }
 }
 
