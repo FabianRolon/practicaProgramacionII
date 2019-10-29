@@ -18,7 +18,7 @@ namespace VistaForm
         {
             InitializeComponent();
         }
-
+        
         private void ButtonCrear_Click(object sender, EventArgs e)
         {
             directorTecnico = new DirectorTecnico(textBoxNombre.Text, textBoxApellido.Text, int.Parse(numericUpDownEdad.Value.ToString()), (int)numericUpDownDni.Value, (int)numericUpDownExperiencia.Value) ;

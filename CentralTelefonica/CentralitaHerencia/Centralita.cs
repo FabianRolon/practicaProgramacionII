@@ -15,15 +15,30 @@ namespace CentralitaHerencia
         {
             listaDeLlamada = new List<Llamada>();
         }
-        public Centralita(string nombreEmpresa) :this()
+        public Centralita(string nombreEmpresa) 
+            :this()
         {
             this.razonSocial = nombreEmpresa;
         }
 
-        private static float CalcularGanancia(Llamada.TipoLlamada tipo)
+         
+
+        public List<Llamada> Llamadas
         {
-            foreach()
-            return 0;
+            get
+            {
+                return listaDeLlamada;
+            }
+
+        }
+
+
+        private float CalcularGanancia(Llamada.TipoLlamada tipo)
+        {
+            foreach (Llamada llamadas in listaDeLlamada)
+            {
+                if()
+            }
         }
 
     }
