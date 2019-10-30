@@ -70,9 +70,9 @@ namespace ejercicioClase21
             return sb.ToString();
         }
 
-        void Serializar()
+        public void Serializar()
         {
-            string path = AppDomain.CurrentDomain.BaseDirectory + @"Y:\mensajes";
+            string path = @"C:\Users\Fabian\Documents\Programacion y Laboratorio II\practicaProgramacionII\ClaseArchivos\Mensajes\" + DateTime.Now.ToLongDateString() + ".xml";
             XmlTextWriter wr = new XmlTextWriter(path, Encoding.UTF8);
             XmlSerializer ser;
             ser = new XmlSerializer(typeof(Mensaje));
@@ -82,7 +82,7 @@ namespace ejercicioClase21
         public static List<Mensaje> Deserializar()
         {
             List<Mensaje> salida = new List<Mensaje>();
-            foreach (string item in Directory.GetFiles(@"Y:\Mensajes\", "*.xml"))
+            foreach (string item in Directory.GetFiles(@"C:\Users\Fabian\Documents\Programacion y Laboratorio II\practicaProgramacionII\ClaseArchivos\Mensajes\"))
             {
                 XmlTextReader xmlText = new XmlTextReader(item);
                 XmlSerializer ser = new XmlSerializer(typeof(Mensaje));

@@ -21,32 +21,12 @@ namespace ClaseArchivos
             mensajes = new List<Mensaje>();
         }
 
-        private void BtnEnter_Click(object sender, EventArgs e)
-        {
-            if(txtMensaje.Text != "" && txtUsuario.Text != "")
-            {
-                Mensaje mensaje = new Mensaje(txtUsuario.Text, txtMensaje.Text, DateTime.Now);
-                mensajes.Add(mensaje);
-                txtMensaje.Text = "";
-                txtUsuario.Text = "";
-            }
-            else
-            {
-                MessageBox.Show("Error, los campos estan vacios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void BtnRefresh_Click(object sender, EventArgs e)
-        {
-            this.cargar();
-        }
-
-        void limpiar()
+        void Limpiar()
         {
             this.txtMensaje.Text = "";
             this.txtUsuario.Text = "";
         }
-        void cargar()
+        void Cargar()
         {
 
             try
@@ -61,6 +41,27 @@ namespace ClaseArchivos
             catch (Exception e)
             { MessageBox.Show(e.Message); }
 
+        }
+
+        private void BtnEnter_Click(object sender, EventArgs e)
+        {
+            if (txtMensaje.Text != "" && txtUsuario.Text != "")
+            {
+                Mensaje mensaje = new Mensaje(txtUsuario.Text, txtMensaje.Text, DateTime.Now);
+                try
+                {
+                    mensaje.Serializar();
+                }
+                catch (Exception ex)
+                { MessageBox.Show(ex.Message); }
+                this.Limpiar();
+                this.Cargar();
+            }           
+        }
+
+        private void BtnRefresh_Click(object sender, EventArgs e)
+        {
+            this.Cargar();
         }
     }
 }
