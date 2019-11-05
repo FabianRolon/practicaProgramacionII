@@ -35,9 +35,25 @@ namespace CentralitaHerencia
 
         private float CalcularGanancia(Llamada.TipoLlamada tipo)
         {
-            foreach (Llamada llamadas in listaDeLlamada)
             {
-                if()
+                float sumador = 0;
+                if (tipo == Llamada.TipoLlamada.Local || tipo == Llamada.TipoLlamada.Todas)
+                {
+                    foreach (Llamada llamada in listaDeLlamada)
+                    {
+                        if (llamada is Local)
+                            sumador += ((Local)llamada).CostoLlamada;
+                    }
+                }
+                if (tipo == Llamada.TipoLlamada.Provincial || tipo == Llamada.TipoLlamada.Todas)
+                {
+                    foreach (Llamada llamada in listaDeLlamada)
+                    {
+                        if (llamada is Provincial)
+                            sumador += ((Provincial)llamada).CostoLlamada;
+                    }
+                }
+                return sumador;
             }
         }
 
