@@ -74,6 +74,7 @@ namespace Repaso
                     {
                         e.productos[i] = p;
                         flag = true;
+                        break;
                     }
                 }
                 return flag;

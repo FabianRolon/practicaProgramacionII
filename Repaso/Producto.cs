@@ -43,13 +43,20 @@ namespace Repaso
 
         public static bool operator ==(Producto p1, Producto p2)
         {
-            if (p1.GetMarca() == p2.GetMarca() && p1.codigoDeBarra == p2.codigoDeBarra)
-            {
-                return true;
-            }
-            else 
+            if (p1 is null || p2 is null)
             {
                 return false;
+            }
+            else
+            {
+                if (p1.GetMarca() == p2.GetMarca() && p1.codigoDeBarra == p2.codigoDeBarra)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
         }
 
