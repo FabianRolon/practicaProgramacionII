@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29306.81
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entidades", "Entidades\Entidades.csproj", "{5A2D9710-C800-41C9-89DF-9224F9ABDFEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculadorDeConsumoElectrico", "CalculadorDeConsumoElectrico\CalculadorDeConsumoElectrico.csproj", "{43F97151-B7AA-4E68-8DDE-22CDBACA10B0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5A2D9710-C800-41C9-89DF-9224F9ABDFEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A2D9710-C800-41C9-89DF-9224F9ABDFEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A2D9710-C800-41C9-89DF-9224F9ABDFEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A2D9710-C800-41C9-89DF-9224F9ABDFEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43F97151-B7AA-4E68-8DDE-22CDBACA10B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43F97151-B7AA-4E68-8DDE-22CDBACA10B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43F97151-B7AA-4E68-8DDE-22CDBACA10B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43F97151-B7AA-4E68-8DDE-22CDBACA10B0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BB9D3AD2-8612-4FBA-BEC9-8FE29A9A3AFA}
+	EndGlobalSection
+EndGlobal
