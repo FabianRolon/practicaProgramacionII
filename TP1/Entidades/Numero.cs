@@ -18,17 +18,22 @@ namespace Entidades
 			this.numero = 0;
 		}
 		/// <summary>
+		/// Inicializa una instancia del tipo Numero ingresando un 'string' dentro se valida que sea un valor correcto.
+		/// </summary>
+		/// <param name="strNumero"></param>
+		public Numero(string strNumero)
+			:this()
+		{
+			SetNumero = strNumero;
+		}
+		/// <summary>
 		/// Inicializa una instancia del tipo Numero ingresando un numero de tipo 'double' sin validar.
 		/// </summary>
 		/// <param name="numero"></param>
 		public Numero(double numero)
+			:this(numero.ToString())
 		{
 			this.numero = numero;
-		}
-
-		public Numero(string strNumero)
-		{
-			SetNumero = strNumero;
 		}
         #endregion
         #region Set y validaciones
@@ -42,9 +47,8 @@ namespace Entidades
 				numero = ValidarNumero(value);
 			}
 		}
-
 		/// <summary>
-		/// Metodo de clase que valida un dato del tipo 'string' se pueda convertir en un dato del tipo 'double' correcto.
+		/// Metodo que valida un dato del tipo 'string' se pueda convertir en un dato del tipo 'double' correcto.
 		/// </summary>
 		/// <param name="strNumero"></param>
 		/// <returns>Retorna el resultado si sale bien, 0 caso contrario</returns>
