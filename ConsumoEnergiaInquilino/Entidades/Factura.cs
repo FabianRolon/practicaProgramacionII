@@ -45,7 +45,7 @@ namespace Entidades
 
         public double CalculoCargoFijo(Factura f)
         {
-            return 30 * f.precioUnitarioCf;     
+            return f.precioUnitarioCf;     
         }
 
         public double CalculoCargoVariable(Factura f)
@@ -70,9 +70,9 @@ namespace Entidades
 
         public double TotalPagar(Factura f)
         {
-            return ContribucionMunicipal(f) + ContribucionPrivincial(f) + CalculoIva(f);
+            return CalculoCargoFijo(f) + CalculoCargoVariable(f) + ContribucionMunicipal(f) + ContribucionPrivincial(f) + CalculoIva(f);
         }
-        
+
         /// <summary>
         /// Restar dos facturas respectivamente 
         /// </summary>
