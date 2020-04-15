@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CalculadoraConsumo));
             this.txtCargoFijo = new System.Windows.Forms.TextBox();
             this.txtValorKwh = new System.Windows.Forms.TextBox();
@@ -45,16 +44,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtProvincial = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnGuardar = new System.Windows.Forms.Button();
-            this.btnCargar = new System.Windows.Forms.Button();
-            this.facturaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.btnCerrar = new System.Windows.Forms.Button();
+            this.colIdFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Consumo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaLiquidacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalAPagar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnCerrar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.facturaBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // txtCargoFijo
@@ -106,7 +103,7 @@
             // btnCalcular
             // 
             this.btnCalcular.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
-            this.btnCalcular.Location = new System.Drawing.Point(424, 390);
+            this.btnCalcular.Location = new System.Drawing.Point(624, 336);
             this.btnCalcular.Name = "btnCalcular";
             this.btnCalcular.Size = new System.Drawing.Size(194, 48);
             this.btnCalcular.TabIndex = 4;
@@ -194,50 +191,19 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colIdFactura,
             this.Consumo,
             this.fechaLiquidacion,
             this.totalAPagar});
             this.dataGridView1.Location = new System.Drawing.Point(12, 174);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(406, 236);
+            this.dataGridView1.Size = new System.Drawing.Size(447, 236);
             this.dataGridView1.TabIndex = 12;
             // 
-            // btnGuardar
+            // colIdFactura
             // 
-            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
-            this.btnGuardar.Location = new System.Drawing.Point(624, 390);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(194, 48);
-            this.btnGuardar.TabIndex = 13;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.UseVisualStyleBackColor = true;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // btnCargar
-            // 
-            this.btnCargar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
-            this.btnCargar.Location = new System.Drawing.Point(265, 119);
-            this.btnCargar.Name = "btnCargar";
-            this.btnCargar.Size = new System.Drawing.Size(194, 48);
-            this.btnCargar.TabIndex = 14;
-            this.btnCargar.Text = "Cargar";
-            this.btnCargar.UseVisualStyleBackColor = true;
-            this.btnCargar.Click += new System.EventHandler(this.btnCargar_Click);
-            // 
-            // facturaBindingSource
-            // 
-            this.facturaBindingSource.DataSource = typeof(Entidades.Factura);
-            // 
-            // btnCerrar
-            // 
-            this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
-            this.btnCerrar.Location = new System.Drawing.Point(829, 390);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(194, 48);
-            this.btnCerrar.TabIndex = 15;
-            this.btnCerrar.Text = "Cerrar";
-            this.btnCerrar.UseVisualStyleBackColor = true;
-            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
+            this.colIdFactura.HeaderText = "ID";
+            this.colIdFactura.Name = "colIdFactura";
             // 
             // Consumo
             // 
@@ -259,13 +225,34 @@
             this.totalAPagar.Name = "totalAPagar";
             this.totalAPagar.ReadOnly = true;
             // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
+            this.btnGuardar.Location = new System.Drawing.Point(829, 336);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(194, 48);
+            this.btnGuardar.TabIndex = 13;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // btnCerrar
+            // 
+            this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
+            this.btnCerrar.Location = new System.Drawing.Point(829, 390);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(194, 48);
+            this.btnCerrar.TabIndex = 15;
+            this.btnCerrar.Text = "Cerrar";
+            this.btnCerrar.UseVisualStyleBackColor = true;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
+            // 
             // CalculadoraConsumo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1035, 450);
             this.Controls.Add(this.btnCerrar);
-            this.Controls.Add(this.btnCargar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label3);
@@ -290,7 +277,6 @@
             this.Text = "Consumo Energía Eléctrica";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.facturaBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -314,9 +300,8 @@
         private System.Windows.Forms.TextBox txtProvincial;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnGuardar;
-        private System.Windows.Forms.Button btnCargar;
-        private System.Windows.Forms.BindingSource facturaBindingSource;
         private System.Windows.Forms.Button btnCerrar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colIdFactura;
         private System.Windows.Forms.DataGridViewTextBoxColumn Consumo;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaLiquidacion;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalAPagar;

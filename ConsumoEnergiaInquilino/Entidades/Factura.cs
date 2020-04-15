@@ -12,6 +12,7 @@ namespace Entidades
     [Serializable]
     public class Factura
     {
+        int idFactura = 0;
         private int consumo;
         static double iva = 0.21;
         double precioUnitarioCf;
@@ -36,6 +37,11 @@ namespace Entidades
             this.municipal = municipal;
             this.provincial = provincial;
             this.fechaIngreso = fechaIngreso;
+        }
+        public Factura(int consumo, double precioUnitarioCf, double precioUnitarioCv, double municipal, double provincial, DateTime fechaIngreso, int idFactura)
+           : this(consumo, precioUnitarioCf, precioUnitarioCv, municipal, provincial, fechaIngreso)
+        {
+            this.idFactura = idFactura;
         }
 
         public double PrecioUnitarioCf
@@ -71,6 +77,18 @@ namespace Entidades
             set
             {
                 fechaIngreso = value;
+            }
+        }
+
+        public int IdFactura
+        {
+            get
+            {
+                return idFactura;
+            }
+            set
+            {
+                idFactura = value;
             }
         }
 
@@ -137,6 +155,6 @@ namespace Entidades
             {
                 return 2;
             }
-        }
+        }  
     }
 }
