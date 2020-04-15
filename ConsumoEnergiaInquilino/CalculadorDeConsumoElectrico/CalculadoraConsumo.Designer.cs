@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CalculadoraConsumo));
             this.txtCargoFijo = new System.Windows.Forms.TextBox();
             this.txtValorKwh = new System.Windows.Forms.TextBox();
@@ -40,22 +41,26 @@
             this.lblLecturaMedidor = new System.Windows.Forms.Label();
             this.txtLecturaMedidor = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtMunicipal = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtProvincial = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnCargar = new System.Windows.Forms.Button();
+            this.facturaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnCerrar = new System.Windows.Forms.Button();
             this.Consumo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LecturaMedidor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.consumoInquilino = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaLiquidacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalAPagar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.facturaBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // txtCargoFijo
             // 
             this.txtCargoFijo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
-            this.txtCargoFijo.Location = new System.Drawing.Point(388, 54);
+            this.txtCargoFijo.Location = new System.Drawing.Point(649, 51);
             this.txtCargoFijo.Name = "txtCargoFijo";
             this.txtCargoFijo.Size = new System.Drawing.Size(169, 31);
             this.txtCargoFijo.TabIndex = 0;
@@ -63,7 +68,7 @@
             // txtValorKwh
             // 
             this.txtValorKwh.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
-            this.txtValorKwh.Location = new System.Drawing.Point(577, 54);
+            this.txtValorKwh.Location = new System.Drawing.Point(838, 51);
             this.txtValorKwh.Name = "txtValorKwh";
             this.txtValorKwh.Size = new System.Drawing.Size(169, 31);
             this.txtValorKwh.TabIndex = 0;
@@ -72,7 +77,7 @@
             // 
             this.lblCargoFijo.AutoSize = true;
             this.lblCargoFijo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCargoFijo.Location = new System.Drawing.Point(383, 26);
+            this.lblCargoFijo.Location = new System.Drawing.Point(644, 23);
             this.lblCargoFijo.Name = "lblCargoFijo";
             this.lblCargoFijo.Size = new System.Drawing.Size(111, 25);
             this.lblCargoFijo.TabIndex = 1;
@@ -82,7 +87,7 @@
             // 
             this.lblPrecioPond.AutoSize = true;
             this.lblPrecioPond.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
-            this.lblPrecioPond.Location = new System.Drawing.Point(572, 26);
+            this.lblPrecioPond.Location = new System.Drawing.Point(833, 23);
             this.lblPrecioPond.Name = "lblPrecioPond";
             this.lblPrecioPond.Size = new System.Drawing.Size(122, 25);
             this.lblPrecioPond.TabIndex = 2;
@@ -101,7 +106,7 @@
             // btnCalcular
             // 
             this.btnCalcular.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
-            this.btnCalcular.Location = new System.Drawing.Point(594, 390);
+            this.btnCalcular.Location = new System.Drawing.Point(424, 390);
             this.btnCalcular.Name = "btnCalcular";
             this.btnCalcular.Size = new System.Drawing.Size(194, 48);
             this.btnCalcular.TabIndex = 4;
@@ -133,7 +138,7 @@
             // 
             this.lblLecturaMedidor.AutoSize = true;
             this.lblLecturaMedidor.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
-            this.lblLecturaMedidor.Location = new System.Drawing.Point(578, 218);
+            this.lblLecturaMedidor.Location = new System.Drawing.Point(839, 181);
             this.lblLecturaMedidor.Name = "lblLecturaMedidor";
             this.lblLecturaMedidor.Size = new System.Drawing.Size(168, 25);
             this.lblLecturaMedidor.TabIndex = 7;
@@ -142,7 +147,7 @@
             // txtLecturaMedidor
             // 
             this.txtLecturaMedidor.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
-            this.txtLecturaMedidor.Location = new System.Drawing.Point(583, 246);
+            this.txtLecturaMedidor.Location = new System.Drawing.Point(838, 209);
             this.txtLecturaMedidor.Name = "txtLecturaMedidor";
             this.txtLecturaMedidor.Size = new System.Drawing.Size(169, 31);
             this.txtLecturaMedidor.TabIndex = 0;
@@ -151,81 +156,122 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(383, 103);
+            this.label2.Location = new System.Drawing.Point(644, 100);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(158, 25);
             this.label2.TabIndex = 9;
             this.label2.Text = "Tasa Municipal";
             // 
-            // textBox1
+            // txtMunicipal
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
-            this.textBox1.Location = new System.Drawing.Point(388, 131);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(169, 31);
-            this.textBox1.TabIndex = 8;
+            this.txtMunicipal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
+            this.txtMunicipal.Location = new System.Drawing.Point(649, 128);
+            this.txtMunicipal.Name = "txtMunicipal";
+            this.txtMunicipal.Size = new System.Drawing.Size(169, 31);
+            this.txtMunicipal.TabIndex = 8;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(572, 103);
+            this.label3.Location = new System.Drawing.Point(833, 100);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(160, 25);
             this.label3.TabIndex = 11;
             this.label3.Text = "Tasa Provincial";
             // 
-            // textBox2
+            // txtProvincial
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
-            this.textBox2.Location = new System.Drawing.Point(577, 131);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(169, 31);
-            this.textBox2.TabIndex = 10;
+            this.txtProvincial.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
+            this.txtProvincial.Location = new System.Drawing.Point(838, 128);
+            this.txtProvincial.Name = "txtProvincial";
+            this.txtProvincial.Size = new System.Drawing.Size(169, 31);
+            this.txtProvincial.TabIndex = 10;
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Consumo,
-            this.LecturaMedidor,
-            this.consumoInquilino,
+            this.fechaLiquidacion,
             this.totalAPagar});
             this.dataGridView1.Location = new System.Drawing.Point(12, 174);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(447, 236);
+            this.dataGridView1.Size = new System.Drawing.Size(406, 236);
             this.dataGridView1.TabIndex = 12;
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
+            this.btnGuardar.Location = new System.Drawing.Point(624, 390);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(194, 48);
+            this.btnGuardar.TabIndex = 13;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // btnCargar
+            // 
+            this.btnCargar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
+            this.btnCargar.Location = new System.Drawing.Point(265, 119);
+            this.btnCargar.Name = "btnCargar";
+            this.btnCargar.Size = new System.Drawing.Size(194, 48);
+            this.btnCargar.TabIndex = 14;
+            this.btnCargar.Text = "Cargar";
+            this.btnCargar.UseVisualStyleBackColor = true;
+            this.btnCargar.Click += new System.EventHandler(this.btnCargar_Click);
+            // 
+            // facturaBindingSource
+            // 
+            this.facturaBindingSource.DataSource = typeof(Entidades.Factura);
+            // 
+            // btnCerrar
+            // 
+            this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
+            this.btnCerrar.Location = new System.Drawing.Point(829, 390);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(194, 48);
+            this.btnCerrar.TabIndex = 15;
+            this.btnCerrar.Text = "Cerrar";
+            this.btnCerrar.UseVisualStyleBackColor = true;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // Consumo
             // 
             this.Consumo.HeaderText = "Consumo";
             this.Consumo.Name = "Consumo";
+            this.Consumo.ReadOnly = true;
             // 
-            // LecturaMedidor
+            // fechaLiquidacion
             // 
-            this.LecturaMedidor.HeaderText = "Lectura Medidor";
-            this.LecturaMedidor.Name = "LecturaMedidor";
-            // 
-            // consumoInquilino
-            // 
-            this.consumoInquilino.HeaderText = "Consumo Inquilino";
-            this.consumoInquilino.Name = "consumoInquilino";
+            this.fechaLiquidacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.fechaLiquidacion.HeaderText = "Fecha Liquidacion";
+            this.fechaLiquidacion.Name = "fechaLiquidacion";
+            this.fechaLiquidacion.ReadOnly = true;
+            this.fechaLiquidacion.Width = 109;
             // 
             // totalAPagar
             // 
             this.totalAPagar.HeaderText = "Total a Pagar";
             this.totalAPagar.Name = "totalAPagar";
+            this.totalAPagar.ReadOnly = true;
             // 
             // CalculadoraConsumo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1035, 450);
+            this.Controls.Add(this.btnCerrar);
+            this.Controls.Add(this.btnCargar);
+            this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtProvincial);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtMunicipal);
             this.Controls.Add(this.lblLecturaMedidor);
             this.Controls.Add(this.lblResultado);
             this.Controls.Add(this.label1);
@@ -244,6 +290,7 @@
             this.Text = "Consumo Energía Eléctrica";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.facturaBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -262,13 +309,16 @@
         private System.Windows.Forms.Label lblLecturaMedidor;
         private System.Windows.Forms.TextBox txtLecturaMedidor;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtMunicipal;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtProvincial;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.Button btnCargar;
+        private System.Windows.Forms.BindingSource facturaBindingSource;
+        private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.DataGridViewTextBoxColumn Consumo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LecturaMedidor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn consumoInquilino;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fechaLiquidacion;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalAPagar;
     }
 }
