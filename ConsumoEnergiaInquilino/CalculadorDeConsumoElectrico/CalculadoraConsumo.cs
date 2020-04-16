@@ -38,10 +38,6 @@ namespace CalculadorDeConsumoElectrico
         public void Limpiar()
         {
             txtLecturaMedidor.Text = "";
-            txtCargoFijo.Text = "";
-            txtValorKwh.Text = "";
-            txtMunicipal.Text = "";
-            txtProvincial.Text = "";
         }
 
         public int GenerarId()
@@ -73,18 +69,40 @@ namespace CalculadorDeConsumoElectrico
             dataGridView1.Rows[n].Cells[2].Value = factura.FechaIngreso.ToString();
             dataGridView1.Rows[n].Cells[3].Value = factura.TotalPagar(factura).ToString();
         }
-
-        public void UltimaFactura()
+        public bool ValidarNumero()
         {
-            
+            double lecturaMedidor;
+            double cargofijo;
+            double valorKwh;
+            double municipal;
+            double provincial;
+
+            if(double.TryParse(txtLecturaMedidor.Text, out lecturaMedidor) && double.TryParse(txtCargoFijo.Text, out cargofijo) && double.TryParse(txtValorKwh.Text, out valorKwh) && double.TryParse(txtMunicipal.Text, out municipal) && double.TryParse(txtProvincial.Text, out provincial))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public int UltimaFactura()
+        {
+            int indice = facturas.Count() - 1;
+            return indice;
         }
         #endregion
         private void BtnCalcular_Click(object sender, EventArgs e)
         {
             if (Vacio())
             {
-                Factura f = new Factura(int.Parse(txtLecturaMedidor.Text), double.Parse(txtCargoFijo.Text), double.Parse(txtValorKwh.Text), double.Parse(txtMunicipal.Text), double.Parse(txtProvincial.Text), DateTime.Now);
-                lblResultado.Text = f.TotalPagar(f).ToString() + "$";
+                if (ValidarNumero())
+                {
+                    Factura f = new Factura(int.Parse(txtLecturaMedidor.Text), double.Parse(txtCargoFijo.Text), double.Parse(txtValorKwh.Text), double.Parse(txtMunicipal.Text), double.Parse(txtProvincial.Text), DateTime.Now);
+                    lblResultado.Text = f.TotalPagar(f).ToString() + "$"; 
+                }
+                else
+                {
+                    MessageBox.Show("Solo se admiten numeros", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
             else
             {
@@ -98,38 +116,47 @@ namespace CalculadorDeConsumoElectrico
             string path = auxPath + @"\ConsumoElectricoInquilino.fabi";
             if (Vacio())
             {
-                Factura f = new Factura(int.Parse(txtLecturaMedidor.Text), double.Parse(txtCargoFijo.Text), double.Parse(txtValorKwh.Text), double.Parse(txtMunicipal.Text), double.Parse(txtProvincial.Text), DateTime.Now, GenerarId());
-                facturas.Add(f);
 
-                try
+                if (ValidarNumero())
                 {
-                    //SaveFileDialog dialogo = new SaveFileDialog(); //abre ventana para elegir donde guardar el archivo
-                    if (!(path is null)) //espera el resultado Ok, sino el usuario canceló
+                    Factura f = new Factura(int.Parse(txtLecturaMedidor.Text), double.Parse(txtCargoFijo.Text), double.Parse(txtValorKwh.Text), double.Parse(txtMunicipal.Text), double.Parse(txtProvincial.Text), DateTime.Now, GenerarId());
+                    facturas.Add(f);
+
+                    try
                     {
-                        FileStream st = new FileStream(path, FileMode.Create); //dialogo.FileName es la ruta completa donde se eligio guardar, FileMode.Create crea el archivo o lo reemplaza si ya existe
-                        BinaryFormatter binfor = new BinaryFormatter(); //permite hacer la serializacion
-                        binfor.Serialize(st, facturas); //Se le pasa a la instacia de binnaryFormatter el stream creado y el objeto a serializar
-                        st.Close();
-                        MessageBox.Show("Correcto");
-
-                        dataGridView1.Rows.Clear();
-
-                        foreach (Factura factura in facturas)
+                        //SaveFileDialog dialogo = new SaveFileDialog(); //abre ventana para elegir donde guardar el archivo
+                        if (!(path is null)) //espera el resultado Ok, sino el usuario canceló
                         {
-                            CargarDataGridView(factura);
-                        }
+                            FileStream st = new FileStream(path, FileMode.Create); //dialogo.FileName es la ruta completa donde se eligio guardar, FileMode.Create crea el archivo o lo reemplaza si ya existe
+                            BinaryFormatter binfor = new BinaryFormatter(); //permite hacer la serializacion
+                            binfor.Serialize(st, facturas); //Se le pasa a la instacia de binnaryFormatter el stream creado y el objeto a serializar
+                            st.Close();
+                            MessageBox.Show("Correcto");
 
-                        Limpiar();
+                            dataGridView1.Rows.Clear();
+
+                            foreach (Factura factura in facturas)
+                            {
+                                CargarDataGridView(factura);
+                            }
+
+                            Limpiar();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Se canceló la operación");
+                        }
                     }
-                    else
+                    catch (Exception)
                     {
-                        MessageBox.Show("Se canceló la operación");
+                        MessageBox.Show("ERROR");
                     }
                 }
-                catch (Exception)
+                else 
                 {
-                    MessageBox.Show("ERROR");
-                } 
+                    MessageBox.Show("Solo se admiten numeros", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
             }
             else
             {
@@ -152,11 +179,16 @@ namespace CalculadorDeConsumoElectrico
                     facturas = (List<Factura>)binfor.Deserialize(st); //se crea una instancia del objeto a deserializar para que lo cargue
                     st.Close();
 
+                    txtMunicipal.Text = (facturas[UltimaFactura()].Municipal).ToString();
+                    txtProvincial.Text = (facturas[UltimaFactura()].Provincial).ToString();
+                    txtValorKwh.Text = (facturas[UltimaFactura()].PrecioUnitarioCv).ToString();
+                    txtCargoFijo.Text = (facturas[UltimaFactura()].PrecioUnitarioCf).ToString();
+
                     foreach (Factura factura in facturas)
                     {
                         CargarDataGridView(factura);
                     }
-                    Limpiar();
+                    //Limpiar();
                 }
                 else
                 {

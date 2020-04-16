@@ -44,12 +44,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtProvincial = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnCerrar = new System.Windows.Forms.Button();
             this.colIdFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Consumo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaLiquidacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalAPagar = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnGuardar = new System.Windows.Forms.Button();
-            this.btnCerrar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -68,7 +68,7 @@
             this.txtValorKwh.Location = new System.Drawing.Point(838, 51);
             this.txtValorKwh.Name = "txtValorKwh";
             this.txtValorKwh.Size = new System.Drawing.Size(169, 31);
-            this.txtValorKwh.TabIndex = 0;
+            this.txtValorKwh.TabIndex = 1;
             // 
             // lblCargoFijo
             // 
@@ -106,7 +106,7 @@
             this.btnCalcular.Location = new System.Drawing.Point(624, 336);
             this.btnCalcular.Name = "btnCalcular";
             this.btnCalcular.Size = new System.Drawing.Size(194, 48);
-            this.btnCalcular.TabIndex = 4;
+            this.btnCalcular.TabIndex = 5;
             this.btnCalcular.Text = "Calcular";
             this.btnCalcular.UseVisualStyleBackColor = true;
             this.btnCalcular.Click += new System.EventHandler(this.BtnCalcular_Click);
@@ -147,7 +147,7 @@
             this.txtLecturaMedidor.Location = new System.Drawing.Point(838, 209);
             this.txtLecturaMedidor.Name = "txtLecturaMedidor";
             this.txtLecturaMedidor.Size = new System.Drawing.Size(169, 31);
-            this.txtLecturaMedidor.TabIndex = 0;
+            this.txtLecturaMedidor.TabIndex = 4;
             // 
             // label2
             // 
@@ -165,7 +165,7 @@
             this.txtMunicipal.Location = new System.Drawing.Point(649, 128);
             this.txtMunicipal.Name = "txtMunicipal";
             this.txtMunicipal.Size = new System.Drawing.Size(169, 31);
-            this.txtMunicipal.TabIndex = 8;
+            this.txtMunicipal.TabIndex = 2;
             // 
             // label3
             // 
@@ -183,7 +183,7 @@
             this.txtProvincial.Location = new System.Drawing.Point(838, 128);
             this.txtProvincial.Name = "txtProvincial";
             this.txtProvincial.Size = new System.Drawing.Size(169, 31);
-            this.txtProvincial.TabIndex = 10;
+            this.txtProvincial.TabIndex = 3;
             // 
             // dataGridView1
             // 
@@ -195,10 +195,32 @@
             this.Consumo,
             this.fechaLiquidacion,
             this.totalAPagar});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 174);
+            this.dataGridView1.Location = new System.Drawing.Point(21, 134);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(447, 236);
+            this.dataGridView1.Size = new System.Drawing.Size(454, 276);
             this.dataGridView1.TabIndex = 12;
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
+            this.btnGuardar.Location = new System.Drawing.Point(829, 336);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(194, 48);
+            this.btnGuardar.TabIndex = 6;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // btnCerrar
+            // 
+            this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
+            this.btnCerrar.Location = new System.Drawing.Point(829, 390);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(194, 48);
+            this.btnCerrar.TabIndex = 7;
+            this.btnCerrar.Text = "Cerrar";
+            this.btnCerrar.UseVisualStyleBackColor = true;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // colIdFactura
             // 
@@ -207,7 +229,7 @@
             // 
             // Consumo
             // 
-            this.Consumo.HeaderText = "Consumo";
+            this.Consumo.HeaderText = "Consumo (kWh)";
             this.Consumo.Name = "Consumo";
             this.Consumo.ReadOnly = true;
             // 
@@ -224,28 +246,6 @@
             this.totalAPagar.HeaderText = "Total a Pagar";
             this.totalAPagar.Name = "totalAPagar";
             this.totalAPagar.ReadOnly = true;
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
-            this.btnGuardar.Location = new System.Drawing.Point(829, 336);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(194, 48);
-            this.btnGuardar.TabIndex = 13;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.UseVisualStyleBackColor = true;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // btnCerrar
-            // 
-            this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
-            this.btnCerrar.Location = new System.Drawing.Point(829, 390);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(194, 48);
-            this.btnCerrar.TabIndex = 15;
-            this.btnCerrar.Text = "Cerrar";
-            this.btnCerrar.UseVisualStyleBackColor = true;
-            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // CalculadoraConsumo
             // 

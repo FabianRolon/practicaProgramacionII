@@ -56,6 +56,18 @@ namespace Entidades
             }
         }
 
+        public double PrecioUnitarioCv
+        {
+            get
+            {
+                return precioUnitarioCv;
+            }
+            set
+            {
+                precioUnitarioCv = value;
+            }
+        }
+
         public int Consumo
         {
             get 
@@ -91,6 +103,29 @@ namespace Entidades
                 idFactura = value;
             }
         }
+        public double Municipal
+        {
+            get
+            {
+                return municipal;
+            }
+            set
+            {
+                municipal = value;
+            }
+        }
+
+        public double Provincial
+        {
+            get
+            {
+                return provincial;
+            }
+            set
+            {
+                provincial = value;
+            }
+        }
 
         public double CalculoCargoFijo(Factura f)
         {
@@ -119,7 +154,7 @@ namespace Entidades
 
         public double TotalPagar(Factura f)
         {
-            return (CalculoCargoFijo(f) + CalculoCargoVariable(f) + ContribucionMunicipal(f) + ContribucionPrivincial(f) + CalculoIva(f));
+            return Math.Round((CalculoCargoFijo(f) + CalculoCargoVariable(f) + ContribucionMunicipal(f) + ContribucionPrivincial(f) + CalculoIva(f)), 2);
         }
 
         /// <summary>
