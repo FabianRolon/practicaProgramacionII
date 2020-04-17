@@ -62,7 +62,6 @@ namespace CalculadorDeConsumoElectrico
         public void CargarDataGridView(Factura factura)
         {
             int n = dataGridView1.Rows.Add(); //adiciona renglon
-
             //coloco info
             dataGridView1.Rows[n].Cells[0].Value = factura.IdFactura.ToString();
             dataGridView1.Rows[n].Cells[1].Value = factura.Consumo.ToString();
@@ -83,12 +82,28 @@ namespace CalculadorDeConsumoElectrico
             }
             return false;
         }
-
+        /// <summary>
+        /// Compara las facturas en la lista
+        /// </summary>
+        /// <returns>Retorna el indice de la mas  reciente</returns>
         public int UltimaFactura()
         {
-            int indice = facturas.Count() - 1;
-            return indice;
+            facturas.Sort((p,q) => DateTime.Compare(p.FechaIngreso , q.FechaIngreso));
+            return facturas.Count - 1;
         }
+
+
+        public static string GetValorCelda(DataGridView dgv, int num)
+        {
+             string valor = "";
+
+             valor = dgv.Rows[dgv.CurrentRow.Index].Cells[num].Value.ToString();
+
+             return valor;
+        }
+
+
+    
         #endregion
         private void BtnCalcular_Click(object sender, EventArgs e)
         {
@@ -134,7 +149,6 @@ namespace CalculadorDeConsumoElectrico
                             MessageBox.Show("Correcto");
 
                             dataGridView1.Rows.Clear();
-
                             foreach (Factura factura in facturas)
                             {
                                 CargarDataGridView(factura);
@@ -184,7 +198,9 @@ namespace CalculadorDeConsumoElectrico
                     txtValorKwh.Text = (facturas[UltimaFactura()].PrecioUnitarioCv).ToString();
                     txtCargoFijo.Text = (facturas[UltimaFactura()].PrecioUnitarioCf).ToString();
 
-                    foreach (Factura factura in facturas)
+                    var lis = (from l in facturas orderby l.IdFactura ascending select l); //Ordena la lista segun el atributo que se elija por medio de LINQ (MAGIA!!)
+                    
+                    foreach (Factura factura in lis)
                     {
                         CargarDataGridView(factura);
                     }
