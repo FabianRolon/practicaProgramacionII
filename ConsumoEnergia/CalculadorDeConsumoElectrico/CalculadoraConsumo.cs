@@ -42,7 +42,8 @@ namespace CalculadorDeConsumoElectrico
 
         public int GenerarId()
         {
-            if(!(facturas is null))
+            var lis = (from l in facturas orderby l.IdFactura ascending select l);
+            if (!(facturas is null))
             {
                 if (facturas.Count <= 0)
                 {
@@ -50,12 +51,44 @@ namespace CalculadorDeConsumoElectrico
                 }
                 else
                 {
-                    return facturas.Count + 1;
+                    return facturas[facturas.Count() - 1].IdFactura + 1;
                 }
             }
             else
             {
                 return 1;
+            }
+        }
+
+        public void Guardar(string path)
+        {
+            try
+            {
+                //SaveFileDialog dialogo = new SaveFileDialog(); //abre ventana para elegir donde guardar el archivo
+                if (!(path is null)) //espera el resultado Ok, sino el usuario canceló
+                {
+                    FileStream st = new FileStream(path, FileMode.Create); //dialogo.FileName es la ruta completa donde se eligio guardar, FileMode.Create crea el archivo o lo reemplaza si ya existe
+                    BinaryFormatter binfor = new BinaryFormatter(); //permite hacer la serializacion
+                    binfor.Serialize(st, facturas); //Se le pasa a la instacia de binnaryFormatter el stream creado y el objeto a serializar
+                    st.Close();
+                    MessageBox.Show("Correcto");
+
+                    dataGridView1.Rows.Clear();
+                    foreach (Factura factura in facturas)
+                    {
+                        CargarDataGridView(factura);
+                    }
+
+                    Limpiar();
+                }
+                else
+                {
+                    MessageBox.Show("Se canceló la operación");
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("ERROR");
             }
         }
 
@@ -93,13 +126,27 @@ namespace CalculadorDeConsumoElectrico
         }
 
 
-        public static string GetValorCelda(DataGridView dgv, int num)
+        public int IndiceDeFilaSeleccionada()
         {
-             string valor = "";
+            int i = dataGridView1.CurrentRow.Index;
+            return i;
+        }
 
-             valor = dgv.Rows[dgv.CurrentRow.Index].Cells[num].Value.ToString();
-
-             return valor;
+        public void BorrarFacturaPorId(int indice)
+        {
+            for(int i = 0; i <= facturas.Count -1; i++)
+            {
+                if(facturas[i].IdFactura == int.Parse((string)dataGridView1.Rows[indice].Cells[0].Value))
+                {
+                    facturas.RemoveAt(i);
+                    break;
+                }
+            }
+            dataGridView1.Rows.Clear();
+            foreach (Factura factura in facturas)
+            {
+                CargarDataGridView(factura);
+            } 
         }
 
 
@@ -128,7 +175,7 @@ namespace CalculadorDeConsumoElectrico
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             string auxPath = Directory.GetCurrentDirectory();
-            string path = auxPath + @"\ConsumoElectricoInquilino.fabi";
+            string path = auxPath + @"\ConsumoElectrico.fabi";
             if (Vacio())
             {
 
@@ -136,37 +183,10 @@ namespace CalculadorDeConsumoElectrico
                 {
                     Factura f = new Factura(int.Parse(txtLecturaMedidor.Text), double.Parse(txtCargoFijo.Text), double.Parse(txtValorKwh.Text), double.Parse(txtMunicipal.Text), double.Parse(txtProvincial.Text), DateTime.Now, GenerarId());
                     facturas.Add(f);
-
-                    try
-                    {
-                        //SaveFileDialog dialogo = new SaveFileDialog(); //abre ventana para elegir donde guardar el archivo
-                        if (!(path is null)) //espera el resultado Ok, sino el usuario canceló
-                        {
-                            FileStream st = new FileStream(path, FileMode.Create); //dialogo.FileName es la ruta completa donde se eligio guardar, FileMode.Create crea el archivo o lo reemplaza si ya existe
-                            BinaryFormatter binfor = new BinaryFormatter(); //permite hacer la serializacion
-                            binfor.Serialize(st, facturas); //Se le pasa a la instacia de binnaryFormatter el stream creado y el objeto a serializar
-                            st.Close();
-                            MessageBox.Show("Correcto");
-
-                            dataGridView1.Rows.Clear();
-                            foreach (Factura factura in facturas)
-                            {
-                                CargarDataGridView(factura);
-                            }
-
-                            Limpiar();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Se canceló la operación");
-                        }
-                    }
-                    catch (Exception)
-                    {
-                        MessageBox.Show("ERROR");
-                    }
+                    Guardar(path);
+                    
                 }
-                else 
+                else
                 {
                     MessageBox.Show("Solo se admiten numeros", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
@@ -182,7 +202,7 @@ namespace CalculadorDeConsumoElectrico
         {
             //string path = @"C:\Users\Calidad\Desktop\Programas\Program\practicaProgramacionII\ConsumoEnergiaInquilino\path";
             string auxPath = Directory.GetCurrentDirectory();
-            string path = auxPath + @"\ConsumoElectricoInquilino.fabi";
+            string path = auxPath + @"\ConsumoElectrico.fabi";
             try
             {
                 //OpenFileDialog dialogo = new OpenFileDialog(); //abre ventana para elegir el archivo para cargar
@@ -220,6 +240,14 @@ namespace CalculadorDeConsumoElectrico
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void BtnBorrarDato_Click(object sender, EventArgs e)
+        {
+            string auxPath = Directory.GetCurrentDirectory();
+            string path = auxPath + @"\ConsumoElectrico.fabi";
+            BorrarFacturaPorId(IndiceDeFilaSeleccionada());
+            Guardar(path);
         }
     }
 }

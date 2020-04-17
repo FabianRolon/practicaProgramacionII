@@ -46,6 +46,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.Button();
+            this.btnBorrarDato = new System.Windows.Forms.Button();
             this.colIdFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Consumo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaLiquidacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -222,10 +223,22 @@
             this.btnCerrar.UseVisualStyleBackColor = true;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
+            // btnBorrarDato
+            // 
+            this.btnBorrarDato.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
+            this.btnBorrarDato.Location = new System.Drawing.Point(281, 80);
+            this.btnBorrarDato.Name = "btnBorrarDato";
+            this.btnBorrarDato.Size = new System.Drawing.Size(194, 48);
+            this.btnBorrarDato.TabIndex = 13;
+            this.btnBorrarDato.Text = "Borrar dato";
+            this.btnBorrarDato.UseVisualStyleBackColor = true;
+            this.btnBorrarDato.Click += new System.EventHandler(this.BtnBorrarDato_Click);
+            // 
             // colIdFactura
             // 
             this.colIdFactura.HeaderText = "ID";
             this.colIdFactura.Name = "colIdFactura";
+            this.colIdFactura.ReadOnly = true;
             // 
             // Consumo
             // 
@@ -252,6 +265,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1035, 450);
+            this.Controls.Add(this.btnBorrarDato);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.dataGridView1);
@@ -301,6 +315,7 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnCerrar;
+        private System.Windows.Forms.Button btnBorrarDato;
         private System.Windows.Forms.DataGridViewTextBoxColumn colIdFactura;
         private System.Windows.Forms.DataGridViewTextBoxColumn Consumo;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaLiquidacion;
