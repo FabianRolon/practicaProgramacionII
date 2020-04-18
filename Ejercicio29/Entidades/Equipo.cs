@@ -18,6 +18,7 @@ namespace Entidades
         }
 
         public Equipo(short cantidadDeJugadores, string nombre)
+            :this()
         {
             this.cantidadDeJugadores = cantidadDeJugadores;
             this.nombre = nombre;
@@ -36,13 +37,16 @@ namespace Entidades
                         break;
                     }
                 }
-                e.jugadores.Add(j);
+                if (flag)
+                {
+                    e.jugadores.Add(j); 
+                }
             }
             else
             {
                 flag = false;
             }
-            return flag;           
+            return flag;     
         }
     }
 }

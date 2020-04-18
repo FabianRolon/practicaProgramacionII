@@ -9,7 +9,7 @@ namespace Entidades
     public class Jugador
     {
         int dni;
-        string nombre;
+        public string nombre;
         int partidosJugados;
         float promedioGoles;
         int totalGoles;
