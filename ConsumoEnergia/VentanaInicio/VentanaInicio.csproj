@@ -79,5 +79,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CalculadorDeConsumoElectrico\CalculadorDeConsumoElectrico.csproj">
+      <Project>{43f97151-b7aa-4e68-8dde-22cdbaca10b0}</Project>
+      <Name>CalculadorDeConsumoElectrico</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entidades\Entidades.csproj">
+      <Project>{5a2d9710-c800-41c9-89df-9224f9abdfeb}</Project>
+      <Name>Entidades</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

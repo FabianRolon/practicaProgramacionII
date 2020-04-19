@@ -24,6 +24,15 @@ namespace CalculadorDeConsumoElectrico
         }
         #region Metodos auxiliares
 
+        public List<Factura> Facturas
+        {
+            get 
+            { 
+                return facturas;
+            }
+        }
+
+
         public bool Vacio()
         {
             if(txtLecturaMedidor.Text != "" && txtCargoFijo.Text != "" && txtValorKwh.Text != "" && txtMunicipal.Text != "" && txtProvincial.Text != "")
@@ -80,6 +89,42 @@ namespace CalculadorDeConsumoElectrico
                     }
 
                     Limpiar();
+                }
+                else
+                {
+                    MessageBox.Show("Se canceló la operación");
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("ERROR");
+            }
+        }
+
+        public void Cargar(string path)
+        {
+            try
+            {
+                //OpenFileDialog dialogo = new OpenFileDialog(); //abre ventana para elegir el archivo para cargar
+                if (!(path is null)) //espera el resultado Ok, sino el usuario canceló
+                {
+                    FileStream st = new FileStream(path, FileMode.Open); //dialogo.FileName es la ruta completa donde se eligio guardar, FileMode.Open indica que tiene que abrir el archivo  
+                    BinaryFormatter binfor = new BinaryFormatter(); //permite hacer la serializacion o deserialiacion
+                    facturas = (List<Factura>)binfor.Deserialize(st); //se crea una instancia del objeto a deserializar para que lo cargue
+                    st.Close();
+
+                    txtMunicipal.Text = (facturas[UltimaFactura()].Municipal).ToString();
+                    txtProvincial.Text = (facturas[UltimaFactura()].Provincial).ToString();
+                    txtValorKwh.Text = (facturas[UltimaFactura()].PrecioUnitarioCv).ToString();
+                    txtCargoFijo.Text = (facturas[UltimaFactura()].PrecioUnitarioCf).ToString();
+
+                    var lis = (from l in facturas orderby l.IdFactura ascending select l); //Ordena la lista segun el atributo que se elija por medio de LINQ (MAGIA!!)
+
+                    foreach (Factura factura in lis)
+                    {
+                        CargarDataGridView(factura);
+                    }
+                    //Limpiar();
                 }
                 else
                 {
@@ -203,38 +248,7 @@ namespace CalculadorDeConsumoElectrico
             //string path = @"C:\Users\Calidad\Desktop\Programas\Program\practicaProgramacionII\ConsumoEnergiaInquilino\path";
             string auxPath = Directory.GetCurrentDirectory();
             string path = auxPath + @"\ConsumoElectrico.fabi";
-            try
-            {
-                //OpenFileDialog dialogo = new OpenFileDialog(); //abre ventana para elegir el archivo para cargar
-                if (!(path is null)) //espera el resultado Ok, sino el usuario canceló
-                {
-                    FileStream st = new FileStream(path, FileMode.Open); //dialogo.FileName es la ruta completa donde se eligio guardar, FileMode.Open indica que tiene que abrir el archivo  
-                    BinaryFormatter binfor = new BinaryFormatter(); //permite hacer la serializacion o deserialiacion
-                    facturas = (List<Factura>)binfor.Deserialize(st); //se crea una instancia del objeto a deserializar para que lo cargue
-                    st.Close();
-
-                    txtMunicipal.Text = (facturas[UltimaFactura()].Municipal).ToString();
-                    txtProvincial.Text = (facturas[UltimaFactura()].Provincial).ToString();
-                    txtValorKwh.Text = (facturas[UltimaFactura()].PrecioUnitarioCv).ToString();
-                    txtCargoFijo.Text = (facturas[UltimaFactura()].PrecioUnitarioCf).ToString();
-
-                    var lis = (from l in facturas orderby l.IdFactura ascending select l); //Ordena la lista segun el atributo que se elija por medio de LINQ (MAGIA!!)
-                    
-                    foreach (Factura factura in lis)
-                    {
-                        CargarDataGridView(factura);
-                    }
-                    //Limpiar();
-                }
-                else
-                {
-                    MessageBox.Show("Se canceló la operación");
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("ERROR");
-            }
+            Cargar(path);
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
