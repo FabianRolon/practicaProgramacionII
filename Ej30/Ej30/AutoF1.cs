@@ -74,7 +74,7 @@ namespace Ej30
 
         public static bool operator ==(AutoF1 a1, AutoF1 a2)
         {
-            return a1.numero == a2.numero || a1.escuderia == a2.escuderia;
+            return a1.numero == a2.numero || a1.escuderia == a2.escuderia;  
         }
 
         public static bool operator !=(AutoF1 a1, AutoF1 a2)
