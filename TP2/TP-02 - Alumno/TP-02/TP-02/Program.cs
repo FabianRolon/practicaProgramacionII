@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Entidades;
 
 namespace TP_02_2018
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -46,7 +47,7 @@ namespace TP_02_2018
 
             // Quito 2 items y muestro
             estacionamiento -= c1;
-            estacionamiento -= new Moto(Vehiculo.EMarca.Honda, "ASD913", ConsoleColor.Red);
+            estacionamiento -= c2;//new Moto(Vehiculo.EMarca.Honda, "ASD913", ConsoleColor.Red);
 
             Console.WriteLine(estacionamiento.ToString());
             Console.WriteLine("<-----------PRESIONE UNA TECLA PARA CONTINUAR----------->");
@@ -57,19 +58,19 @@ namespace TP_02_2018
             estacionamiento += c2;
 
             // Muestro solo Moto
-            Console.WriteLine(Estacionamiento.Mostrar(estacionamiento, Estacionamiento.ETipo.Moto));
-            Console.WriteLine("<-----------PRESIONE UNA TECLA PARA CONTINUAR----------->       Cons
+            Console.WriteLine(estacionamiento.Mostrar(estacionamiento, Estacionamiento.ETipo.Moto));
+            Console.WriteLine("<-----------PRESIONE UNA TECLA PARA CONTINUAR----------->");
             Console.Beep();
             Console.Clear();
 
             // Muestro solo Automovil
-            Console.WriteLine(Estacionamiento.Mostrar(estacionamiento, Estacionamiento.ETipo.Automovil));
+            Console.WriteLine(estacionamiento.Mostrar(estacionamiento, Estacionamiento.ETipo.Automovil));
             Console.WriteLine("<-----------PRESIONE UNA TECLA PARA CONTINUAR----------->");
             Console.ReadKey();
             Console.Clear();
 
             // Muestro solo Camioneta
-            Console.WriteLine(Estacionamiento.Mostrar(estacionamiento, Estacionamiento.ETipo.Camioneta));
+            Console.WriteLine(estacionamiento.Mostrar(estacionamiento, Estacionamiento.ETipo.Camioneta));
             Console.WriteLine("<-------------PRESIONE UNA TECLA PARA SALIR------------->");
             Console.ReadKey();
         }

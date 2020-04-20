@@ -8,7 +8,7 @@ namespace Entidades
 {
     public class Moto : Vehiculo
     {
-        public Moto( string chasis, EMarca marca, ConsoleColor color) :base(chasis, marca, color)
+        public Moto( EMarca marca, string chasis, ConsoleColor color) :base(marca, chasis, color)
         {
             
         }
@@ -20,7 +20,7 @@ namespace Entidades
         {
             get
             {
-                return 0;
+                return ETamanio.Chico;
             }
         }
 
@@ -29,7 +29,7 @@ namespace Entidades
             StringBuilder sb = new StringBuilder();
 
             sb.AppendLine("MOTO");
-            sb.AppendLine(this.Mostrar());
+            sb.AppendLine(base.Mostrar());
             sb.AppendFormat("TAMAÑO : {0}", this.Tamanio);
             sb.AppendLine("");
             sb.AppendLine("---------------------");

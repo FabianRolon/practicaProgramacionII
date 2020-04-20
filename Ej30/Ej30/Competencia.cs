@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ej30
 {
+#pragma warning disable CS0660, CS0661
     public class Competencia
     {
         short cantidadDeCompetidores;

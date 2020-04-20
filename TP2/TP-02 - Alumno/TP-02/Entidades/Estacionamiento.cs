@@ -9,7 +9,7 @@ namespace Entidades
     /// <summary>
     /// No podrá tener clases heredadas.
     /// </summary>
-    sealed class Estacionamiento
+    public sealed class Estacionamiento
     {
         List<Vehiculo> vehiculos;
         int espacioDisponible;
@@ -24,6 +24,7 @@ namespace Entidades
             this.vehiculos = new List<Vehiculo>();
         }
         public Estacionamiento(int espacioDisponible)
+            :this()
         {
             this.espacioDisponible = espacioDisponible;
         }
@@ -34,9 +35,9 @@ namespace Entidades
         /// Muestro el estacionamiento y TODOS los vehículos
         /// </summary>
         /// <returns></returns>
-        public string ToString()
+        public override string ToString()
         {
-            return Estacionamiento.Mostrar(this, ETipo.Todos);
+            return this.Mostrar(this, ETipo.Todos);
         }
         #endregion
 
@@ -60,21 +61,23 @@ namespace Entidades
                 switch (tipo)
                 {
                     case ETipo.Camioneta:
-                        sb.AppendLine(v.Mostrar());
+                        if(v is Camioneta)
+                            sb.AppendLine(v.Mostrar());
                         break;
                     case ETipo.Moto:
-                        sb.AppendLine(v.Mostrar());
+                        if (v is Moto)
+                            sb.AppendLine(v.Mostrar());
                         break;
                     case ETipo.Automovil:
-                        sb.AppendLine(v.Mostrar());
+                        if (v is Automovil)
+                            sb.AppendLine(v.Mostrar());
                         break;
                     default:
                         sb.AppendLine(v.Mostrar());
                         break;
                 }
             }
-
-            return sb;
+            return sb.ToString();
         }
         #endregion
 
@@ -87,13 +90,17 @@ namespace Entidades
         /// <returns></returns>
         public static Estacionamiento operator +(Estacionamiento c, Vehiculo p)
         {
-            foreach (Vehiculo v in c)
+            if (c.vehiculos.Count < c.espacioDisponible)
             {
-                if (v == p)
-                    return c;
-            }
+                foreach (Vehiculo v in c.vehiculos)
+                {
+                    if (v == p)
+                        return c;
+                }
 
-            c.vehiculos.Add(p);
+                c.vehiculos.Add(p);
+                return c; 
+            }
             return c;
         }
         /// <summary>
@@ -104,14 +111,14 @@ namespace Entidades
         /// <returns></returns>
         public static Estacionamiento operator -(Estacionamiento c, Vehiculo p)
         {
-            foreach (Vehiculo v in c)
+            foreach (Vehiculo v in c.vehiculos)
             {
                 if (v == p)
                 {
+                    c.vehiculos.Remove(p);
                     break;
                 }
             }
-
             return c;
         }
         #endregion
