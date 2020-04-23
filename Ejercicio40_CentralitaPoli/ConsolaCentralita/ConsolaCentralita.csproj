@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{068A6A15-7E98-44CB-B285-0EB50417ABD5}</ProjectGuid>
+    <ProjectGuid>{23A27A15-C724-4B1E-9322-19CDF03EF8DA}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>ConsolaCentralita</RootNamespace>
     <AssemblyName>ConsolaCentralita</AssemblyName>
@@ -50,13 +50,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Ejercicio40_CentralitaPoli\Ejercicio40_CentralitaPoli\Ejercicio40_CentralitaPoli.csproj">
+    <ProjectReference Include="..\Ejercicio40_CentralitaPoli\Ejercicio40_CentralitaPoli.csproj">
       <Project>{b9ca96ba-da45-43cd-8290-65d97e711cc5}</Project>
       <Name>Ejercicio40_CentralitaPoli</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CentralitaEj37\CentralitaEj37.csproj">
-      <Project>{00f312fb-8cc6-43ec-a6e4-5b4c34a48f21}</Project>
-      <Name>CentralitaEj37</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

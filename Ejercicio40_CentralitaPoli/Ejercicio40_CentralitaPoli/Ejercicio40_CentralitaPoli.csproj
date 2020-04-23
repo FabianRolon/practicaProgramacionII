@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{068A6A15-7E98-44CB-B285-0EB50417ABD5}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>ConsolaCentralita</RootNamespace>
-    <AssemblyName>ConsolaCentralita</AssemblyName>
+    <ProjectGuid>{B9CA96BA-DA45-43CD-8290-65D97E711CC5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Ejercicio40_CentralitaPoli</RootNamespace>
+    <AssemblyName>Ejercicio40_CentralitaPoli</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,21 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Centralita.cs" />
+    <Compile Include="Llamada.cs" />
+    <Compile Include="Local.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Ejercicio40_CentralitaPoli\Ejercicio40_CentralitaPoli\Ejercicio40_CentralitaPoli.csproj">
-      <Project>{b9ca96ba-da45-43cd-8290-65d97e711cc5}</Project>
-      <Name>Ejercicio40_CentralitaPoli</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CentralitaEj37\CentralitaEj37.csproj">
-      <Project>{00f312fb-8cc6-43ec-a6e4-5b4c34a48f21}</Project>
-      <Name>CentralitaEj37</Name>
-    </ProjectReference>
+    <Compile Include="Provincial.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

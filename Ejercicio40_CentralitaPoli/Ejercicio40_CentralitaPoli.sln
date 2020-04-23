@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29306.81
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ejercicio40_CentralitaPoli", "Ejercicio40_CentralitaPoli\Ejercicio40_CentralitaPoli.csproj", "{B9CA96BA-DA45-43CD-8290-65D97E711CC5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsolaCentralita", "ConsolaCentralita\ConsolaCentralita.csproj", "{23A27A15-C724-4B1E-9322-19CDF03EF8DA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B9CA96BA-DA45-43CD-8290-65D97E711CC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9CA96BA-DA45-43CD-8290-65D97E711CC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9CA96BA-DA45-43CD-8290-65D97E711CC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9CA96BA-DA45-43CD-8290-65D97E711CC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23A27A15-C724-4B1E-9322-19CDF03EF8DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23A27A15-C724-4B1E-9322-19CDF03EF8DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23A27A15-C724-4B1E-9322-19CDF03EF8DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23A27A15-C724-4B1E-9322-19CDF03EF8DA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B06D83B8-024C-4082-B8C6-28120CE0C78E}
+	EndGlobalSection
+EndGlobal
