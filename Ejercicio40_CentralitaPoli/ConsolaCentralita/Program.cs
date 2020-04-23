@@ -20,15 +20,44 @@ namespace ConsolaCentralita
             Provincial l4 = new Provincial(Provincial.Franja.Franja_3, l2);
             // Las llamadas se irán registrando en la Centralita.
             // La centralita mostrará por pantalla todas las llamadas según las vaya registrando.
-            c.Llamadas.Add(l1);
-            Console.WriteLine(c.ToString());
-            c.Llamadas.Add(l2);
-            Console.WriteLine(c.ToString());
-            c.Llamadas.Add(l3);
-            Console.WriteLine(c.ToString());
-            c.Llamadas.Add(l4);
-            Console.WriteLine(c.ToString());
+            if(c + l1)
+            {
+                Console.WriteLine("Se agregó llamada a la lista");
+            }
+            else
+            {
+                Console.WriteLine("No se agregó la llamada");
+            }
+
+            if (c + l2)
+            {
+                Console.WriteLine("Se agregó llamada a la lista");
+            }
+            else
+            {
+                Console.WriteLine("No se agregó la llamada");
+            }
+
+            if (c + l3)
+            {
+                Console.WriteLine("Se agregó llamada a la lista");
+            }
+            else
+            {
+                Console.WriteLine("No se agregó la llamada");
+            }
+
+            if (c + l4)
+            {
+                Console.WriteLine("Se agregó llamada a la lista");
+            }
+            else
+            {
+                Console.WriteLine("No se agregó la llamada");
+            }
+
             c.OrdenarLlamadas();
+            Console.WriteLine("Todas las llamadas ordenadas en ascendente\n\n");
             Console.WriteLine(c.ToString());
             Console.ReadKey();
         }
