@@ -25,13 +25,12 @@ namespace CentralTelefonica
         private void BtnSalir_Click(object sender, EventArgs e)
         {
             Application.Exit();
-            
         }
 
         private void BtnGenerarLlamada_Click(object sender, EventArgs e)
         {
             
-            this.Hide();
+            //this.Hide();
             frmLlamador.ShowDialog();
         }
 
