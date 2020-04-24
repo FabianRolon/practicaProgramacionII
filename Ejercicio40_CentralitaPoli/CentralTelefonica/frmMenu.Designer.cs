@@ -50,7 +50,7 @@
             this.btnFacturacionTotal.Location = new System.Drawing.Point(12, 69);
             this.btnFacturacionTotal.Name = "btnFacturacionTotal";
             this.btnFacturacionTotal.Size = new System.Drawing.Size(221, 49);
-            this.btnFacturacionTotal.TabIndex = 0;
+            this.btnFacturacionTotal.TabIndex = 1;
             this.btnFacturacionTotal.Text = "Facturación Total";
             this.btnFacturacionTotal.UseVisualStyleBackColor = true;
             // 
@@ -59,7 +59,7 @@
             this.btnFacturacionLocal.Location = new System.Drawing.Point(12, 124);
             this.btnFacturacionLocal.Name = "btnFacturacionLocal";
             this.btnFacturacionLocal.Size = new System.Drawing.Size(221, 49);
-            this.btnFacturacionLocal.TabIndex = 0;
+            this.btnFacturacionLocal.TabIndex = 2;
             this.btnFacturacionLocal.Text = "Facturación Local";
             this.btnFacturacionLocal.UseVisualStyleBackColor = true;
             // 
@@ -68,7 +68,7 @@
             this.btnFacturacionProvincial.Location = new System.Drawing.Point(12, 179);
             this.btnFacturacionProvincial.Name = "btnFacturacionProvincial";
             this.btnFacturacionProvincial.Size = new System.Drawing.Size(221, 49);
-            this.btnFacturacionProvincial.TabIndex = 0;
+            this.btnFacturacionProvincial.TabIndex = 3;
             this.btnFacturacionProvincial.Text = "Facturación Provincial";
             this.btnFacturacionProvincial.UseVisualStyleBackColor = true;
             // 
@@ -77,7 +77,7 @@
             this.btnSalir.Location = new System.Drawing.Point(12, 234);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(221, 49);
-            this.btnSalir.TabIndex = 0;
+            this.btnSalir.TabIndex = 4;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.BtnSalir_Click);
@@ -97,6 +97,8 @@
             this.Name = "FrmMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Central telefonica";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmMenu_FormClosed);
+            this.Load += new System.EventHandler(this.FrmMenu_Load);
             this.ResumeLayout(false);
 
         }
