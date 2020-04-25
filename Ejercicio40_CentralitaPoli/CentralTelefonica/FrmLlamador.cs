@@ -33,15 +33,15 @@ namespace CentralTelefonica
 
         public void Limpiar()
         {
-            txtNroDestino.Text = "";
-            txtNroOrigen.Text = "";
+            txtNroDestino.Text = "Nro de Destino";
+            txtNroOrigen.Text = "Nro de Origen";
             cmbFranja.Enabled = false;
         }
 
         private void FrmLlamador_Load(object sender, EventArgs e)
         {
             cmbFranja.DataSource = Enum.GetValues(typeof(Provincial.Franja));
-            auxTxt.Text = "";
+            auxTxt.Text = "Nro de Destino";
         }
 
         private void FrmLlamador_FormClosed(object sender, FormClosedEventArgs e)
@@ -58,7 +58,7 @@ namespace CentralTelefonica
         {
             Limpiar();
         }
-
+#region Panel de botones numericos
         private void Btn1_Click(object sender, EventArgs e)
         {
             if(auxTxt == txtNroDestino)
@@ -156,7 +156,7 @@ namespace CentralTelefonica
             if (txtNroDestino.Text.IndexOf('#') == 0)
                 cmbFranja.Enabled = true;
         }
-
+        #endregion
         private void btnLlamar_Click(object sender, EventArgs e)
         {
             int duracion;
@@ -181,11 +181,13 @@ namespace CentralTelefonica
 
         private void txtNroDestino_Enter(object sender, EventArgs e)
         {
+            txtNroDestino.Text = "";
             auxTxt = txtNroDestino;
         }
 
         private void txtNroOrigen_Enter(object sender, EventArgs e)
         {
+            txtNroOrigen.Text = "";
             auxTxt = txtNroOrigen;
         }
     }

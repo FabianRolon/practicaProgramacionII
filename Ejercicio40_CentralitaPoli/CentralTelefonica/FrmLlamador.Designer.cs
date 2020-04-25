@@ -57,7 +57,8 @@
             this.txtNroDestino.Name = "txtNroDestino";
             this.txtNroDestino.ReadOnly = true;
             this.txtNroDestino.Size = new System.Drawing.Size(348, 32);
-            this.txtNroDestino.TabIndex = 0;
+            this.txtNroDestino.TabIndex = 1;
+            this.txtNroDestino.Text = "Nro de Destino";
             this.txtNroDestino.Enter += new System.EventHandler(this.txtNroDestino_Enter);
             // 
             // btn2
@@ -220,7 +221,7 @@
             this.btnLlamar.Location = new System.Drawing.Point(215, 73);
             this.btnLlamar.Name = "btnLlamar";
             this.btnLlamar.Size = new System.Drawing.Size(149, 50);
-            this.btnLlamar.TabIndex = 2;
+            this.btnLlamar.TabIndex = 0;
             this.btnLlamar.Text = "Llamar";
             this.btnLlamar.UseVisualStyleBackColor = true;
             this.btnLlamar.Click += new System.EventHandler(this.btnLlamar_Click);
@@ -240,7 +241,7 @@
             this.btnSalir.Location = new System.Drawing.Point(218, 241);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(145, 50);
-            this.btnSalir.TabIndex = 5;
+            this.btnSalir.TabIndex = 4;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
@@ -260,7 +261,8 @@
             this.txtNroOrigen.Location = new System.Drawing.Point(218, 201);
             this.txtNroOrigen.Name = "txtNroOrigen";
             this.txtNroOrigen.Size = new System.Drawing.Size(145, 20);
-            this.txtNroOrigen.TabIndex = 4;
+            this.txtNroOrigen.TabIndex = 2;
+            this.txtNroOrigen.Text = "Nro de Origen";
             this.txtNroOrigen.Enter += new System.EventHandler(this.txtNroOrigen_Enter);
             // 
             // FrmLlamador
