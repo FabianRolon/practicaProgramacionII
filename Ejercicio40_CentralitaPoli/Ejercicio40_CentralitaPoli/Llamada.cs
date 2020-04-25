@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ejercicio40_CentralitaPoli
 {
-    public enum TipoLlamda
+    public enum TipoLlamada
     {
         Local,
         Provincial,

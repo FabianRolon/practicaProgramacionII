@@ -26,7 +26,7 @@ namespace Ejercicio40_CentralitaPoli
         {
             get
             {
-                return CalcularGanancia(TipoLlamda.Local);
+                return CalcularGanancia(TipoLlamada.Local);
             }
         }
 
@@ -34,7 +34,7 @@ namespace Ejercicio40_CentralitaPoli
         {
             get
             {
-                return CalcularGanancia(TipoLlamda.Provincial);
+                return CalcularGanancia(TipoLlamada.Provincial);
             }
         }
 
@@ -42,7 +42,7 @@ namespace Ejercicio40_CentralitaPoli
         {
             get
             {
-                return CalcularGanancia(TipoLlamda.Todas);
+                return CalcularGanancia(TipoLlamada.Todas);
             }
         }
 
@@ -54,7 +54,7 @@ namespace Ejercicio40_CentralitaPoli
             }
         }
 
-        private float CalcularGanancia(TipoLlamda tipo)
+        private float CalcularGanancia(TipoLlamada tipo)
         {
             float totalLocal = 0;
             float totalProvincial = 0;
@@ -69,11 +69,11 @@ namespace Ejercicio40_CentralitaPoli
             
             switch (tipo)
             {
-                case TipoLlamda.Local:
+                case TipoLlamada.Local:
                     return totalLocal;
-                case TipoLlamda.Provincial:
+                case TipoLlamada.Provincial:
                     return totalProvincial;
-                case TipoLlamda.Todas:
+                case TipoLlamada.Todas:
                     return totalLocal + totalProvincial;
                 default:
                     return 0;
@@ -126,14 +126,14 @@ namespace Ejercicio40_CentralitaPoli
             return !(c == llamada);
         }
 
-        public static bool operator +(Centralita c, Llamada nuevaLlamada)
+        public static Centralita operator +(Centralita c, Llamada nuevaLlamada)
         {
             if (c != nuevaLlamada)
             {
                 c.AgregarLlamada(nuevaLlamada);
-                return true;
+                return c;
             }
-            return false;
+            return c;
         }
 
     }

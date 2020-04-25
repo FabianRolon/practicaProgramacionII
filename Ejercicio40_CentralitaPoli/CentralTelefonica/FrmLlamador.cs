@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,6 +15,7 @@ namespace CentralTelefonica
     public partial class FrmLlamador : Form
     {
         Centralita centralita;
+        
         public FrmLlamador(Centralita centralita)
         {
             InitializeComponent();
@@ -32,6 +34,7 @@ namespace CentralTelefonica
         {
             txtNroDestino.Text = "";
             txtNroOrigen.Text = "";
+            cmbFranja.Enabled = false;
         }
 
         private void FrmLlamador_Load(object sender, EventArgs e)
@@ -46,8 +49,7 @@ namespace CentralTelefonica
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            this.Close();
-            
+            this.Close();  
         }
 
         private void BtnLimpiar_Click(object sender, EventArgs e)
@@ -113,6 +115,30 @@ namespace CentralTelefonica
         private void BtnNumeral_Click(object sender, EventArgs e)
         {
             txtNroDestino.Text += "#";
+            if (txtNroDestino.Text.IndexOf('#') == 0)
+                cmbFranja.Enabled = true;
+        }
+
+        private void btnLlamar_Click(object sender, EventArgs e)
+        {
+            int duracion;
+            Random randomDuracion = new Random();
+            duracion = randomDuracion.Next(1,50);
+            
+            if (cmbFranja.Enabled)
+            {
+                Provincial llamadaProv = new Provincial(txtNroOrigen.Text , (Provincial.Franja)cmbFranja.SelectedValue ,duracion, txtNroDestino.Text);
+                centralita.Llamadas.Add(llamadaProv);
+            }
+            else
+            {
+                float costo;
+                Random randomCosto = new Random();
+                costo = randomCosto.Next(1, 5);
+                costo *= (float)randomCosto.NextDouble();
+                Local llamadaLocal = new Local(txtNroOrigen.Text, duracion, txtNroDestino.Text, costo);
+                centralita.Llamadas.Add(llamadaLocal);
+            }
         }
     }
 }

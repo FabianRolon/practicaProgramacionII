@@ -61,6 +61,7 @@
             // 
             // btn2
             // 
+            this.btn2.CausesValidation = false;
             this.btn2.Location = new System.Drawing.Point(62, 19);
             this.btn2.Name = "btn2";
             this.btn2.Size = new System.Drawing.Size(50, 50);
@@ -72,6 +73,7 @@
             // 
             // btn1
             // 
+            this.btn1.CausesValidation = false;
             this.btn1.Location = new System.Drawing.Point(6, 19);
             this.btn1.Name = "btn1";
             this.btn1.Size = new System.Drawing.Size(50, 50);
@@ -220,6 +222,7 @@
             this.btnLlamar.TabIndex = 2;
             this.btnLlamar.Text = "Llamar";
             this.btnLlamar.UseVisualStyleBackColor = true;
+            this.btnLlamar.Click += new System.EventHandler(this.btnLlamar_Click);
             // 
             // btnLimpiar
             // 
@@ -243,6 +246,7 @@
             // 
             // cmbFranja
             // 
+            this.cmbFranja.Enabled = false;
             this.cmbFranja.FormattingEnabled = true;
             this.cmbFranja.Location = new System.Drawing.Point(17, 324);
             this.cmbFranja.Name = "cmbFranja";
@@ -269,6 +273,7 @@
             this.Controls.Add(this.btnLlamar);
             this.Controls.Add(this.gbPanel);
             this.Controls.Add(this.txtNroDestino);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "FrmLlamador";

@@ -43,5 +43,26 @@ namespace CentralTelefonica
         {
             frmLlamador = new FrmLlamador(centralita);
         }
+
+        private void btnFacturacionTotal_Click(object sender, EventArgs e)
+        {
+            FrmMostrar frmMostrar = new FrmMostrar(centralita);
+            frmMostrar.TipoLlamada = TipoLlamada.Todas;
+            frmMostrar.ShowDialog();
+        }
+
+        private void btnFacturacionLocal_Click(object sender, EventArgs e)
+        {
+            FrmMostrar frmMostrar = new FrmMostrar(centralita);
+            frmMostrar.TipoLlamada = TipoLlamada.Local;
+            frmMostrar.ShowDialog();
+        }
+
+        private void btnFacturacionProvincial_Click(object sender, EventArgs e)
+        {
+            FrmMostrar frmMostrar = new FrmMostrar(centralita);
+            frmMostrar.TipoLlamada = TipoLlamada.Provincial;
+            frmMostrar.ShowDialog();
+        }
     }
 }
