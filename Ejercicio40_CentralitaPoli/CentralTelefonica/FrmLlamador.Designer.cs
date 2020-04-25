@@ -58,6 +58,7 @@
             this.txtNroDestino.ReadOnly = true;
             this.txtNroDestino.Size = new System.Drawing.Size(348, 32);
             this.txtNroDestino.TabIndex = 0;
+            this.txtNroDestino.Enter += new System.EventHandler(this.txtNroDestino_Enter);
             // 
             // btn2
             // 
@@ -260,6 +261,7 @@
             this.txtNroOrigen.Name = "txtNroOrigen";
             this.txtNroOrigen.Size = new System.Drawing.Size(145, 20);
             this.txtNroOrigen.TabIndex = 4;
+            this.txtNroOrigen.Enter += new System.EventHandler(this.txtNroOrigen_Enter);
             // 
             // FrmLlamador
             // 

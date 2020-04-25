@@ -15,6 +15,7 @@ namespace CentralTelefonica
     public partial class FrmLlamador : Form
     {
         Centralita centralita;
+        TextBox auxTxt = new TextBox();
         
         public FrmLlamador(Centralita centralita)
         {
@@ -40,6 +41,7 @@ namespace CentralTelefonica
         private void FrmLlamador_Load(object sender, EventArgs e)
         {
             cmbFranja.DataSource = Enum.GetValues(typeof(Provincial.Franja));
+            auxTxt.Text = "";
         }
 
         private void FrmLlamador_FormClosed(object sender, FormClosedEventArgs e)
@@ -59,62 +61,98 @@ namespace CentralTelefonica
 
         private void Btn1_Click(object sender, EventArgs e)
         {
+            if(auxTxt == txtNroDestino)
                 txtNroDestino.Text += "1";
+            if (auxTxt == txtNroOrigen)
+                txtNroOrigen.Text += "1";
         }
 
         private void Btn2_Click(object sender, EventArgs e)
         {
-            txtNroDestino.Text += "2";
+            if (auxTxt == txtNroDestino)
+                txtNroDestino.Text += "2";
+            if (auxTxt == txtNroOrigen)
+                txtNroOrigen.Text += "2";
         }
 
         private void Btn3_Click(object sender, EventArgs e)
         {
-            txtNroDestino.Text += "3";
+            if (auxTxt == txtNroDestino)
+                txtNroDestino.Text += "3";
+            if (auxTxt == txtNroOrigen)
+                txtNroOrigen.Text += "3";
         }
 
         private void Btn4_Click(object sender, EventArgs e)
         {
-            txtNroDestino.Text += "4";
+            if (auxTxt == txtNroDestino)
+                txtNroDestino.Text += "4";
+            if (auxTxt == txtNroOrigen)
+                txtNroOrigen.Text += "4";
         }
 
         private void Btn5_Click(object sender, EventArgs e)
         {
-            txtNroDestino.Text += "5";
+            if (auxTxt == txtNroDestino)
+                txtNroDestino.Text += "5";
+            if (auxTxt == txtNroOrigen)
+                txtNroOrigen.Text += "5";
         }
 
         private void Btn6_Click(object sender, EventArgs e)
         {
-            txtNroDestino.Text += "6";
+            if (auxTxt == txtNroDestino)
+                txtNroDestino.Text += "6";
+            if (auxTxt == txtNroOrigen)
+                txtNroOrigen.Text += "6";
         }
 
         private void Btn7_Click(object sender, EventArgs e)
         {
-            txtNroDestino.Text += "7";
+            if (auxTxt == txtNroDestino)
+                txtNroDestino.Text += "7";
+            if (auxTxt == txtNroOrigen)
+                txtNroOrigen.Text += "7";
         }
 
         private void Btn8_Click(object sender, EventArgs e)
         {
-            txtNroDestino.Text += "8";
+            if (auxTxt == txtNroDestino)
+                txtNroDestino.Text += "8";
+            if (auxTxt == txtNroOrigen)
+                txtNroOrigen.Text += "8";
         }
 
         private void Btn9_Click(object sender, EventArgs e)
         {
-            txtNroDestino.Text += "9";
+            if (auxTxt == txtNroDestino)
+                txtNroDestino.Text += "9";
+            if (auxTxt == txtNroOrigen)
+                txtNroOrigen.Text += "9";
         }
 
         private void BtnAsterisco_Click(object sender, EventArgs e)
         {
-            txtNroDestino.Text += "*";
+            if (auxTxt == txtNroDestino)
+                txtNroDestino.Text += "*";
+            if (auxTxt == txtNroOrigen)
+                txtNroOrigen.Text += "*";
         }
 
         private void Btn0_Click(object sender, EventArgs e)
         {
-            txtNroDestino.Text += "0";
+            if (auxTxt == txtNroDestino)
+                txtNroDestino.Text += "0";
+            if (auxTxt == txtNroOrigen)
+                txtNroOrigen.Text += "0";
         }
 
         private void BtnNumeral_Click(object sender, EventArgs e)
         {
-            txtNroDestino.Text += "#";
+            if (auxTxt == txtNroDestino)
+                txtNroDestino.Text += "#";
+            if (auxTxt == txtNroOrigen)
+                txtNroOrigen.Text += "#";
             if (txtNroDestino.Text.IndexOf('#') == 0)
                 cmbFranja.Enabled = true;
         }
@@ -139,6 +177,16 @@ namespace CentralTelefonica
                 Local llamadaLocal = new Local(txtNroOrigen.Text, duracion, txtNroDestino.Text, costo);
                 centralita.Llamadas.Add(llamadaLocal);
             }
+        }
+
+        private void txtNroDestino_Enter(object sender, EventArgs e)
+        {
+            auxTxt = txtNroDestino;
+        }
+
+        private void txtNroOrigen_Enter(object sender, EventArgs e)
+        {
+            auxTxt = txtNroOrigen;
         }
     }
 }
