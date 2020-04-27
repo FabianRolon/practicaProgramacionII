@@ -162,21 +162,31 @@ namespace CentralTelefonica
             int duracion;
             Random randomDuracion = new Random();
             duracion = randomDuracion.Next(1,50);
-            
-            if (cmbFranja.Enabled)
+
+            if (txtNroDestino.Text != "Nro de Destino" && txtNroOrigen.Text != "Nro de Origen" && txtNroDestino.Text != "" && txtNroOrigen.Text != "")
             {
-                Provincial llamadaProv = new Provincial(txtNroOrigen.Text , (Provincial.Franja)cmbFranja.SelectedValue ,duracion, txtNroDestino.Text);
-                centralita.Llamadas.Add(llamadaProv);
+                if (cmbFranja.Enabled)
+                {
+                    Provincial llamadaProv = new Provincial(txtNroOrigen.Text, (Provincial.Franja)cmbFranja.SelectedValue, duracion, txtNroDestino.Text);
+                    centralita.Llamadas.Add(llamadaProv);
+                    MessageBox.Show("La llamada fue realizada", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    float costo;
+                    Random randomCosto = new Random();
+                    costo = randomCosto.Next(1, 5);
+                    costo *= (float)randomCosto.NextDouble();
+                    Local llamadaLocal = new Local(txtNroOrigen.Text, duracion, txtNroDestino.Text, costo);
+                    centralita.Llamadas.Add(llamadaLocal);
+                    MessageBox.Show("La llamada fue realizada", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             else
             {
-                float costo;
-                Random randomCosto = new Random();
-                costo = randomCosto.Next(1, 5);
-                costo *= (float)randomCosto.NextDouble();
-                Local llamadaLocal = new Local(txtNroOrigen.Text, duracion, txtNroDestino.Text, costo);
-                centralita.Llamadas.Add(llamadaLocal);
+                MessageBox.Show("Debe completar todos los datos para llamar", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+            Limpiar();
         }
 
         private void txtNroDestino_Enter(object sender, EventArgs e)
