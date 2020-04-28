@@ -36,9 +36,54 @@ namespace Entidades
             return sb.ToString();
         }
 
-        public override bool ValidarDocumentacion(string doc)
+        protected override bool ValidarDocumentacion(string doc)
         {
-            doc.Contains("xx-xxxx-x");
+            bool retorno = false;
+            if (doc.Length == 9 && !(doc is null))
+            {
+                if (doc[2] == '-' && doc[7] == '-')
+                {
+                    for (int i = 0; i < 2; i++)
+                    {
+                        if ((int)doc[i] >= 48 && (int)doc[i] <= 57)
+                        {
+                            retorno = true;
+                        }
+                        else
+                        {
+                            retorno = false;
+                            break;
+                        }
+                    }
+                    if (retorno)
+                    {
+                        for (int i = 3; i < 7; i++)
+                        {
+                            if ((int)doc[i] >= 48 && (int)doc[i] <= 57)
+                            {
+                                retorno = true;
+                            }
+                            else
+                            {
+                                retorno = false;
+                                break;
+                            }
+                        }
+                    }
+                    if (retorno)
+                    {
+                        if ((int)doc[8] <= 57 && (int)doc[8] >= 48)
+                        {
+                            retorno = true;
+                        }
+                        else
+                        {
+                            retorno = false;
+                        }
+                    }
+                }
+            }
+            return retorno;
         }
     }
 }
