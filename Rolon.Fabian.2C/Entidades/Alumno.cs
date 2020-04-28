@@ -38,7 +38,10 @@ namespace Entidades
 
         protected override bool ValidarDocumentacion(string doc)
         {
-            bool retorno = false;
+            //Metodo viejo largo como la mía
+            #region Metodo viejo
+            //Metodo largo, queda de recuerdo.
+            /*bool retorno = false;
             if (doc.Length == 9 && !(doc is null))
             {
                 if (doc[2] == '-' && doc[7] == '-')
@@ -82,6 +85,21 @@ namespace Entidades
                         }
                     }
                 }
+            }
+            return retorno;*/
+            #endregion 
+            //Metodo corto optimizado
+            bool retorno = false;
+            if (doc.Length == 9 && doc[2] == '-' && doc[7] == '-')
+            {
+                foreach (char c in doc)
+                {
+                    if (!(char.IsDigit(c) || c == '-'))
+                    {
+                        return retorno;
+                    }
+                }
+                retorno = true;
             }
             return retorno;
         }
