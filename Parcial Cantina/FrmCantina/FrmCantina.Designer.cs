@@ -198,7 +198,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmbBotellaTipo);
             this.Controls.Add(this.barra1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FrmCantina";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cantina Rolon";
             this.Load += new System.EventHandler(this.FrmCantina_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();

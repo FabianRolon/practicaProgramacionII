@@ -37,8 +37,8 @@ namespace Entidades
             int retorno = 0;
             if (MEDIDA <= contenidoML)
             {
-                contenidoML -= (MEDIDA / 80);
-                retorno = MEDIDA / 80;
+                contenidoML -= (MEDIDA * 8/10);
+                retorno = MEDIDA * 8/10;
             }
             else if (MEDIDA > contenidoML)
             {

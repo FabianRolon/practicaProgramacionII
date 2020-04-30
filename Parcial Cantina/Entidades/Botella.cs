@@ -39,7 +39,7 @@ namespace Entidades
         {
             get
             {
-                return capacidadML * 1000;
+                return capacidadML / 1000;
             }
         }
 
@@ -47,7 +47,7 @@ namespace Entidades
         {
             get
             {
-                return contenidoML * 1000;
+                return contenidoML / 1000;
             }
             set
             {
@@ -59,7 +59,9 @@ namespace Entidades
         {
             get
             {
-                return Contenido * (1/100);
+                float retorno = 0;
+                retorno = this.Contenido * (this.capacidadML*(1 / 100));
+                return retorno;
             }
         }
 
@@ -67,8 +69,8 @@ namespace Entidades
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"Marca: {this.marca}");
-            sb.AppendLine($"Capacidad: {this.CapacidadLitros}");
-            sb.AppendLine($"Contenido: {this.Contenido}");
+            sb.AppendLine($"Capacidad: {this.capacidadML} mL");
+            sb.AppendLine($"Contenido: {this.contenidoML} mL");
             return sb.ToString();
         }
 
