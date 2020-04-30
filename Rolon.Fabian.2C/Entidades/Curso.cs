@@ -49,5 +49,8 @@ namespace Entidades
         }
 
         public implicit bool operator ==(Curso c, Alumno a)
+        {
+
+        }
     }
 }
