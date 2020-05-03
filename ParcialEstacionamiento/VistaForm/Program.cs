@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FrmCantina
+namespace VistaForm
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace FrmCantina
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmBar());
+            Application.Run(new FrmPickUp());
         }
     }
 }

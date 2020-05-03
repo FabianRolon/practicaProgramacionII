@@ -10,9 +10,9 @@ namespace Entidades
     {
         private List<Botella> botellas;
         private int espaciosTotales;
-        private static Cantina singleton;
 
-        private Cantina(int espacios)
+
+        public Cantina(int espacios)
         {
             this.espaciosTotales = espacios;
             this.botellas = new List<Botella>(espacios);
@@ -28,15 +28,7 @@ namespace Entidades
 
         public static Cantina GetCantina(int espacios)
         {
-            if(Cantina.singleton is null)
-            {
-                return new Cantina(espacios);
-            }
-            else
-            {
-                Cantina.singleton.espaciosTotales = espacios;
-                return singleton;
-            }
+             return new Cantina(espacios);
         }
 
         public static bool operator +(Cantina c,Botella b)
@@ -47,6 +39,27 @@ namespace Entidades
                 return true;
             }
             return false;
+        }
+
+        public static bool operator ==(Cantina c, Botella b)
+        {
+            if (!(c is null) && !(b is null))
+            {
+                foreach (Botella botella in c.Botellas)
+                {
+                    if (b == botella)
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+            return false;
+        }
+
+        public static bool operator !=(Cantina c, Botella b)
+        {
+            return !(c == b);
         }
     }
 }

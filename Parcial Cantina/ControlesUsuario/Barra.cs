@@ -34,6 +34,14 @@ namespace ControlCantina
             }
         }
 
+        public Cantina GetCantina
+        {
+            get
+            {
+                return cantina;
+            }
+        }
+
         public void AgregarBotella(Botella b)
         {
             if (this.cantina + b)
@@ -94,12 +102,12 @@ namespace ControlCantina
             int cantidadServida = botella.ServirMedida();
             if (cantidadServida == 0)
             {
-                MessageBox.Show(string.Format("No queda mas liquido! {1}ml\n{0}", botella.ToString(), cantidadServida), "Cantinero", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(string.Format("No queda mas liquido! {1}ml\n{0}", (string)botella, cantidadServida), "Cantinero", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
             }
             else
             {
-                MessageBox.Show(string.Format("SIRVIENDO! {1}ml\n{0}", botella.ToString(), cantidadServida), "Cantinero", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(string.Format("SIRVIENDO! {1}ml\n{0}", (string)botella, cantidadServida), "Cantinero", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
             }
 

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6C6D3BE5-E30E-44F3-8138-D90D4AAF9F9D}</ProjectGuid>
+    <ProjectGuid>{900798A2-FBD4-4403-AF4A-A8317E8D1AD7}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>FrmCantina</RootNamespace>
-    <AssemblyName>FrmCantina</AssemblyName>
+    <RootNamespace>VistaForm</RootNamespace>
+    <AssemblyName>VistaForm</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -46,34 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FrmBar.cs">
+    <Compile Include="FrmPickUP.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmBar.Designer.cs">
-      <DependentUpon>FrmBar.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmCantidadEspaciosCantina.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmCantidadEspaciosCantina.Designer.cs">
-      <DependentUpon>FrmCantidadEspaciosCantina.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmCantina.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmCantina.Designer.cs">
-      <DependentUpon>FrmCantina.cs</DependentUpon>
+    <Compile Include="FrmPickUP.Designer.cs">
+      <DependentUpon>FrmPickUP.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FrmBar.resx">
-      <DependentUpon>FrmBar.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmCantidadEspaciosCantina.resx">
-      <DependentUpon>FrmCantidadEspaciosCantina.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmCantina.resx">
-      <DependentUpon>FrmCantina.cs</DependentUpon>
+    <EmbeddedResource Include="FrmPickUP.resx">
+      <DependentUpon>FrmPickUP.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -98,12 +80,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ControlesUsuario\ControlesUsuario.csproj">
-      <Project>{52d0de5b-abfb-404a-b815-0493b4970f57}</Project>
-      <Name>ControlesUsuario</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Entidades\Entidades.csproj">
-      <Project>{1a4199b3-d5de-449f-95df-9ca646944e46}</Project>
+      <Project>{6501bb28-e111-4d6c-bc7b-36627a027ca9}</Project>
       <Name>Entidades</Name>
     </ProjectReference>
   </ItemGroup>

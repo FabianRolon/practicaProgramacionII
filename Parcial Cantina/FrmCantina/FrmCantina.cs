@@ -14,15 +14,39 @@ namespace FrmCantina
 {
     public partial class FrmCantina : Form
     {
-        public FrmCantina()
+
+        Cantina cantina;
+        public FrmCantina(int espacio)
         {
-            
+            cantina = Cantina.GetCantina(espacio);
             InitializeComponent();
+        }
+
+        public Cantina GetCantina
+        {
+            get
+            {
+                return cantina;
+            }
+            
+        }
+
+        public string GetInforme
+        {
+            get
+            {
+                StringBuilder sb = new StringBuilder();
+                foreach (Botella botella in cantina.Botellas)
+                {
+                    sb.AppendLine($"{(string)botella}");
+                }
+                return sb.ToString();
+            }
         }
 
         private void FrmCantina_Load(object sender, EventArgs e)
         {
-            this.barra1.SetCantina = Cantina.GetCantina(10);
+            this.barra1.SetCantina = cantina;
             cmbBotellaTipo.DataSource = Enum.GetValues(typeof(Botella.Tipo));
         }
 
@@ -41,5 +65,19 @@ namespace FrmCantina
                 barra1.AgregarBotella(botellaCerveza);
             }
         }
+
+        private void FrmCantina_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if(e.CloseReason == CloseReason.UserClosing)
+            {
+                e.Cancel = true;
+            }
+            else
+            {
+                e.Cancel = false;
+            }
+        }
+
+
     }
 }

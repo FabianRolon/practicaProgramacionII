@@ -203,6 +203,7 @@
             this.Name = "FrmCantina";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cantina Rolon";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmCantina_FormClosing);
             this.Load += new System.EventHandler(this.FrmCantina_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();

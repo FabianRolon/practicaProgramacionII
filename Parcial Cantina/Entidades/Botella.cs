@@ -68,17 +68,27 @@ namespace Entidades
         protected virtual string GenerarInforme()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"Marca: {this.marca}");
-            sb.AppendLine($"Capacidad: {this.capacidadML} mL");
-            sb.AppendLine($"Contenido: {this.contenidoML} mL");
+            sb.AppendFormat($"Marca: {this.marca}");
+            sb.AppendFormat($"Capacidad: {this.capacidadML} mL");
+            sb.AppendFormat($"Contenido: {this.contenidoML} mL");
             return sb.ToString();
         }
 
         public abstract int ServirMedida();
 
-        public override string ToString()
+        public static implicit operator string(Botella c)
         {
-            return GenerarInforme(); 
+            return c.GenerarInforme(); 
+        }
+
+        public static bool operator ==(Botella b1, Botella b2)
+        {
+            return b1.marca == b2.marca;
+        }
+
+        public static bool operator !=(Botella b1, Botella b2)
+        {
+            return !(b1 == b2);
         }
     }
 }
