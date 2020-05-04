@@ -56,6 +56,7 @@ namespace VistaConsola
             Console.WriteLine("--------------------------------");
             Console.WriteLine((string)e);
             Console.ReadKey();
+            Class1 ads = new Class1();
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Schema;
 
 namespace Entidades
 {
@@ -13,7 +14,7 @@ namespace Entidades
 
         public Vehiculo(string patente)
         {
-            this.patente = patente;
+            this.Patente = patente;
             DateTime.Now.AddHours(-3);
         }
         public string Patente
@@ -24,7 +25,14 @@ namespace Entidades
             }
             set
             {
-                this.patente = value;
+                if(value.Length == 6)
+                {
+                    this.patente = value;
+                }
+                else
+                {
+                    patente = string.Empty;
+                }
             }
         }
 
