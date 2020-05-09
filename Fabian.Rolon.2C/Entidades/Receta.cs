@@ -55,7 +55,7 @@ namespace Entidades
         /// <returns>Retorna la capacidad restante del contenedor</returns>
         private int CapacidadLibre(Ingrediente planta)
         {
-            return this.capacidadDelContenedor - planta.Cantidad;
+            return this.CapacidadLibre() - planta.Cantidad;
         }
         /// <summary>
         /// Metodo para saber cuanto espacio queda en el contenedor segun la lista de ingredientes.
@@ -81,7 +81,7 @@ namespace Entidades
         /// <returns>Retorna true si agrega, false caso contrario</returns>
         public static bool operator +(Receta receta, Ingrediente ingrediente)
         {
-            if(receta.CapacidadLibre() - ingrediente.Cantidad >= 0)
+            if(receta.CapacidadLibre(ingrediente) >= 0)
             {
                 receta.ingredientes.Add(ingrediente);
                 return true;
