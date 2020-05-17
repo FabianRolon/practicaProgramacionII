@@ -165,21 +165,29 @@ namespace CentralTelefonica
 
             if (txtNroDestino.Text != "Nro de Destino" && txtNroOrigen.Text != "Nro de Origen" && txtNroDestino.Text != "" && txtNroOrigen.Text != "")
             {
-                if (cmbFranja.Enabled)
+
+                try
                 {
-                    Provincial llamadaProv = new Provincial(txtNroOrigen.Text, (Provincial.Franja)cmbFranja.SelectedValue, duracion, txtNroDestino.Text);
-                    centralita.Llamadas.Add(llamadaProv);
-                    MessageBox.Show("La llamada fue realizada", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (cmbFranja.Enabled)
+                    {
+                        Provincial llamadaProv = new Provincial(txtNroOrigen.Text, (Provincial.Franja)cmbFranja.SelectedValue, duracion, txtNroDestino.Text);
+                        centralita += llamadaProv;
+                        MessageBox.Show("La llamada fue realizada", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        float costo;
+                        Random randomCosto = new Random();
+                        costo = randomCosto.Next(1, 5);
+                        costo *= (float)randomCosto.NextDouble();
+                        Local llamadaLocal = new Local(txtNroOrigen.Text, duracion, txtNroDestino.Text, costo);
+                        centralita += llamadaLocal;
+                        MessageBox.Show("La llamada fue realizada", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
-                else
+                catch (CentralitaException ex)
                 {
-                    float costo;
-                    Random randomCosto = new Random();
-                    costo = randomCosto.Next(1, 5);
-                    costo *= (float)randomCosto.NextDouble();
-                    Local llamadaLocal = new Local(txtNroOrigen.Text, duracion, txtNroDestino.Text, costo);
-                    centralita.Llamadas.Add(llamadaLocal);
-                    MessageBox.Show("La llamada fue realizada", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             else

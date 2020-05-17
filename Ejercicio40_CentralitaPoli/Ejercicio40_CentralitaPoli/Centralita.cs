@@ -128,12 +128,16 @@ namespace Ejercicio40_CentralitaPoli
 
         public static Centralita operator +(Centralita c, Llamada nuevaLlamada)
         {
+
             if (c != nuevaLlamada)
             {
                 c.AgregarLlamada(nuevaLlamada);
                 return c;
             }
-            return c;
+            else
+            {
+                throw new CentralitaException("No se agregó la llamada", "Centralita", "Sobrecarga operador +");
+            }
         }
 
     }

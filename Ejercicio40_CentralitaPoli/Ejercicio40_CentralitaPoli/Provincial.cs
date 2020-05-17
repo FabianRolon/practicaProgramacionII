@@ -60,7 +60,7 @@ namespace Ejercicio40_CentralitaPoli
             return sb.ToString();
         }
 
-        public new bool Equals(Object obj)
+        public override bool Equals(Object obj)
         {
             return obj is Provincial;
         }

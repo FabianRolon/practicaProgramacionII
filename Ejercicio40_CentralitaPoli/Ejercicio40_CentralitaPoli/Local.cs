@@ -43,7 +43,7 @@ namespace Ejercicio40_CentralitaPoli
             return this.costo * this.Duracion;
         }
 
-        public new bool Equals(Object obj)
+        public override bool Equals(Object obj)
         {
             return obj is Local;
         }
