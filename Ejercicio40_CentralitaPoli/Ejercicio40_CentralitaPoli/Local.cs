@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ejercicio40_CentralitaPoli
 {
-    public class Local : Llamada
+    public class Local : Llamada, IGuardar<Local>
     {
         protected float costo;
 
@@ -30,6 +30,8 @@ namespace Ejercicio40_CentralitaPoli
             }
         }
 
+        public string RutaDeArchivo { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
         protected override string Mostrar()
         {
             StringBuilder sb = new StringBuilder();
@@ -51,6 +53,16 @@ namespace Ejercicio40_CentralitaPoli
         public override string ToString()
         {
             return this.Mostrar();
+        }
+
+        public bool Guardar()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Local Leer()
+        {
+            throw new NotImplementedException();
         }
     }
 }

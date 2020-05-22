@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ejercicio40_CentralitaPoli
 {
-    public class Centralita
+    public class Centralita : IGuardar<string>
     {
         private List<Llamada> listaDeLLamadas;
         protected string razonSocial;
@@ -53,6 +53,8 @@ namespace Ejercicio40_CentralitaPoli
                 return this.listaDeLLamadas;
             }
         }
+
+        public string RutaDeArchivo { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         private float CalcularGanancia(TipoLlamada tipo)
         {
@@ -108,6 +110,17 @@ namespace Ejercicio40_CentralitaPoli
         private void AgregarLlamada(Llamada nuevaLlamada)
         {
             Llamadas.Add(nuevaLlamada);
+        }
+
+        public bool Guardar()
+        {
+            string datos = this.Mostrar();
+            return true;
+        }
+
+        public string Leer()
+        {
+            throw new NotImplementedException();
         }
 
         public static bool operator ==(Centralita c, Llamada llamada)

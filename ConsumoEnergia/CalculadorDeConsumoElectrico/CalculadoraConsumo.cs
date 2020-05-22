@@ -263,5 +263,10 @@ namespace CalculadorDeConsumoElectrico
             BorrarFacturaPorId(IndiceDeFilaSeleccionada());
             Guardar(path);
         }
+
+        private void CalculadoraConsumo_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

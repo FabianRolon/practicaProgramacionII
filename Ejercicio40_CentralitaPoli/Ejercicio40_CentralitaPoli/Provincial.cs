@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ejercicio40_CentralitaPoli
 {
-    public class Provincial : Llamada
+    public class Provincial : Llamada, IGuardar<Provincial>
     {
         public enum Franja
         {
@@ -51,6 +51,8 @@ namespace Ejercicio40_CentralitaPoli
             }
         }
 
+        public string RutaDeArchivo { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
         protected override string Mostrar()
         {
             StringBuilder sb = new StringBuilder();
@@ -68,6 +70,16 @@ namespace Ejercicio40_CentralitaPoli
         public override string ToString()
         {
             return this.Mostrar();
+        }
+
+        public bool Guardar()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Provincial Leer()
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -68,6 +68,14 @@ namespace Entidades
             }
         }
 
+        public List<VehiculoDeCarrera> Competidores
+        {
+            get
+            {
+                return this.competidores;
+            }
+        }
+
         public static bool operator ==(Competencia c, VehiculoDeCarrera a)
         {
 
