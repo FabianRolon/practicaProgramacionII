@@ -16,8 +16,12 @@ namespace Ejercicio52
 
         public EscrituraWrapper Escribir(string texto)
         {
-            this.tamanioMina -= 0.1f * texto.Length;
-            return new EscrituraWrapper(texto, this.Color);
+            if (this.tamanioMina >= 0.1f * texto.Length)
+            {
+                this.tamanioMina -= 0.1f * texto.Length;
+                return new EscrituraWrapper(texto, this.Color);
+            }
+            return null;
         }
 
         public bool Recargar(int unidades)

@@ -19,8 +19,12 @@ namespace Ejercicio52
 
         public EscrituraWrapper Escribir(string texto)
         {
-            this.tinta -= 0.3f * texto.Length;
-            return new EscrituraWrapper(texto, this.Color);
+            if (this.tinta >= 0.3f * texto.Length)
+            {
+                this.tinta -= 0.3f * texto.Length;
+                return new EscrituraWrapper(texto, this.Color);
+            }
+            return null;
         }
 
         public bool Recargar(int unidades)
