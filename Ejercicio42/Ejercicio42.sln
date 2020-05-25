@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30002.166
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ejercicio42", "Ejercicio42\Ejercicio42.csproj", "{17A78686-D99B-4CE9-BC2C-4A8F928A0FBA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VistaConsola", "VistaConsola\VistaConsola.csproj", "{9DE4B9DC-E46A-4B7C-A44C-A705947EC841}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{58A60C70-CB97-4051-9231-5FF373CCC4AD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{17A78686-D99B-4CE9-BC2C-4A8F928A0FBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17A78686-D99B-4CE9-BC2C-4A8F928A0FBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17A78686-D99B-4CE9-BC2C-4A8F928A0FBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17A78686-D99B-4CE9-BC2C-4A8F928A0FBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DE4B9DC-E46A-4B7C-A44C-A705947EC841}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DE4B9DC-E46A-4B7C-A44C-A705947EC841}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DE4B9DC-E46A-4B7C-A44C-A705947EC841}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DE4B9DC-E46A-4B7C-A44C-A705947EC841}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58A60C70-CB97-4051-9231-5FF373CCC4AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58A60C70-CB97-4051-9231-5FF373CCC4AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58A60C70-CB97-4051-9231-5FF373CCC4AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58A60C70-CB97-4051-9231-5FF373CCC4AD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5E3D40CA-912E-4FE0-9164-D4A038B1DDC8}
+	EndGlobalSection
+EndGlobal
