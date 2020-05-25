@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -30,6 +31,7 @@ namespace Entidades
         {
             this.cantidadVueltas = cantidadVueltas;
             this.cantidadCompetidores = cantidadCompetidores;
+            this.tipo = tipo;
         }
 
         public short CantidadCompetidores
@@ -78,34 +80,48 @@ namespace Entidades
 
         public static bool operator ==(Competencia c, VehiculoDeCarrera a)
         {
+            bool retorno = false;
 
-              switch (c.Tipo)
-              {
-                   case TipoCompetencia.F1:
+            if (!retorno)
+            {
+                switch (c.Tipo)
+                {
+                    case TipoCompetencia.F1:
+                        {
+                            if (a is AutoF1)
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                throw new CompetenciaNoDisponibleException("El vehiculo no corresponde a la competencia", "Competencia", "Sobrecarga el ==");
+                            }
+                        }
+                    case TipoCompetencia.MotoCross:
+                        {
+                            if (a is MotoCross)
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                throw new CompetenciaNoDisponibleException("El vehiculo no corresponde a la competencia", "Competencia", "Sobrecarga el ==");
+                            }
+                        }
+                    default:
+                        retorno = false;
+                        break;
+                }
+                foreach (VehiculoDeCarrera vehiculo in c.Competidores)
+                {
+                    if (vehiculo == a)
                     {
-                        if (a is AutoF1)
-                        {
-                            return true;
-                        }
-                        else
-                        {
-                            throw new CompetenciaNoDisponibleException("El vehiculo no corresponde a la competencia", "Competencia", "Sobrecarga el ==");
-                        }
-                    }
-                   case TipoCompetencia.MotoCross:
-                    {
-                        if (a is MotoCross)
-                        {
-                            return true;
-                        }
-                        else
-                        {
-                            throw new CompetenciaNoDisponibleException("El vehiculo no corresponde a la competencia", "Competencia", "Sobrecarga el ==");
-                        }
-                    }
-                default:
-                    return false;
-              }
+                        retorno = true;
+                        break;
+                    } 
+                }
+            }
+            return retorno;
         }
 
         public static bool operator !=(Competencia c, VehiculoDeCarrera a)
@@ -129,16 +145,10 @@ namespace Entidades
         public static bool operator +(Competencia c, VehiculoDeCarrera a)
         {
             Random combustible = new Random();
-
             try
             {
-                if (c == a && c.CantidadCompetidores > c.competidores.Count)
+                if (c != a && c.CantidadCompetidores > c.competidores.Count)
                 {
-                    foreach (VehiculoDeCarrera vehiculo in c.competidores)
-                    {
-                        if (vehiculo == a)
-                            return false;
-                    }
                     a.EnCompetencia = true;
                     a.CantidadCombustible = (short)combustible.Next(15, 100);
                     a.VueltasRestantes = c.CantidadVueltas;
@@ -158,13 +168,10 @@ namespace Entidades
 
         public static bool operator -(Competencia c, VehiculoDeCarrera a)
         {
-            foreach (VehiculoDeCarrera competidor in c.Competidores)
+            if(c == a)
             {
-                if(a == competidor)
-                {
-                    c.Competidores.Remove(competidor);
-                    return true;
-                }
+                c.Competidores.Remove(a);
+                return true;
             }
             return false;
         }
