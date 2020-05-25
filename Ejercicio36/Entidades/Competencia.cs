@@ -155,5 +155,18 @@ namespace Entidades
                 throw new CompetenciaNoDisponibleException("Competencia Incorrecta", "Competencia", "Sobrecarga de +", ex);
             }
         }
+
+        public static bool operator -(Competencia c, VehiculoDeCarrera a)
+        {
+            foreach (VehiculoDeCarrera competidor in c.Competidores)
+            {
+                if(a == competidor)
+                {
+                    c.Competidores.Remove(competidor);
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

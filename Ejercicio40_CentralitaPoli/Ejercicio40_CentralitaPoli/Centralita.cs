@@ -149,7 +149,7 @@ namespace Ejercicio40_CentralitaPoli
             }
             else
             {
-                throw new CentralitaException("No se agregó la llamada", "Centralita", "Sobrecarga operador +");
+                throw new CentralitaException("No se agregó la llamada", "Clase: Centralita", "Método: Sobrecarga operador +");
             }
         }
 

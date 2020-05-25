@@ -89,6 +89,16 @@ namespace VistaConsola
             {
                 Console.WriteLine("ANDA BIEN");
             }
+
+            if (competencia - a6)
+            {
+                Console.WriteLine("ANDA BIEN");
+            }
+            else
+            {
+                Console.WriteLine("ANDA MAL");
+            }
+
             Console.WriteLine(competencia.MostrarDatos());
             Console.ReadKey();
         }
