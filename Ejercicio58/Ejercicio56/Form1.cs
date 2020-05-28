@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-using Ejercicio56;
+using IO;
 
 namespace Ejercicio56
 {
@@ -28,19 +28,20 @@ namespace Ejercicio56
 
         private void guardarComoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            StreamWriter writer;
             SaveFileDialog ventanaGuardado = new SaveFileDialog();
 
-            ventanaGuardado.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-            ventanaGuardado.FilterIndex = 2;
+            ventanaGuardado.Filter = "binary files (*.dat)|*.dat|txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            ventanaGuardado.FilterIndex = 3;
             ventanaGuardado.RestoreDirectory = true;
 
             if (ventanaGuardado.ShowDialog() == DialogResult.OK)
             {
-                path = ventanaGuardado.FileName;
-                writer = new StreamWriter(path);
-                writer.Write(rtbEscritura.Text);
-                writer.Close();
+                if (ventanaGuardado.FilterIndex == 2)
+                {
+                    path = ventanaGuardado.FileName;
+                    PuntoTxt puntoTxt = new PuntoTxt();
+                    puntoTxt.GuardarComo(path, rtbEscritura.Text);
+                }
             }
         }
 
@@ -49,13 +50,12 @@ namespace Ejercicio56
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.InitialDirectory = "c:\\";
-                openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-                openFileDialog.FilterIndex = 2;
+                openFileDialog.Filter = "binary files (*.dat)|*.dat|txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                openFileDialog.FilterIndex = 3;
                 openFileDialog.RestoreDirectory = true;
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    
                     path = openFileDialog.FileName;
                 }
             }
@@ -64,11 +64,10 @@ namespace Ejercicio56
 
         private void guardarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (File.Exists(path))
+            PuntoTxt puntoTxt = new PuntoTxt();
+            if (puntoTxt.Guardar(path, rtbEscritura.Text))
             {
-                StreamWriter writer = new StreamWriter(path);
-                writer.Write(rtbEscritura.Text);
-                writer.Close();
+                
             }
             else
             {

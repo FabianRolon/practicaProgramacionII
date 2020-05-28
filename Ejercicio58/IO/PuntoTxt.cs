@@ -29,11 +29,11 @@ namespace IO
                     throw new ArchivoIncorrectoException("El archivo no es correcto", ex);
                 }
             }
-            return false;
+            return true;
         }
         public bool Guardar(string ruta, string objeto)
         {
-            if (File.Exists(ruta))
+            if (ValidarArchivo(ruta, true))
             {
                 StreamWriter writer = new StreamWriter(ruta);
                 writer.Write(objeto);
@@ -49,7 +49,7 @@ namespace IO
 
         public bool GuardarComo(string ruta, string objeto)
         {
-            if (ValidarArchivo(ruta, true))
+            if (ValidarArchivo(ruta, false))
             {
                 StreamWriter writer = new StreamWriter(ruta);
                 writer.Write(objeto);

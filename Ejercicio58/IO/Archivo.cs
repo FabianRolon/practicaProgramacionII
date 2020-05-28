@@ -22,7 +22,7 @@ namespace IO
                     throw new FileNotFoundException();
                 } 
             }
-            return false;
+            return true;
         }
     }
 }
