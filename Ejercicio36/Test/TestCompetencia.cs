@@ -5,7 +5,7 @@ using Entidades;
 namespace Test
 {
     [TestClass]
-    public class UnitTest1
+    public class TestCompetencia
     {
         [TestMethod]
         public void TestInstanciaList()
