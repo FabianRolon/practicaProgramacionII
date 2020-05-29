@@ -54,19 +54,21 @@ namespace IO
                 StreamWriter writer = new StreamWriter(ruta);
                 writer.Write(objeto);
                 writer.Close();
-                return true; 
+                return true;
             }
             return false;
         }
 
         public string Leer(string ruta)
         {
+            string retorno = String.Empty;
             if (File.Exists(ruta))
             {
                 StreamReader reader = new StreamReader(ruta);
-                return reader.ReadToEnd();
+                retorno = reader.ReadToEnd();
+                reader.Close();
             }
-            return String.Empty;
+            return retorno;
         }
     }
 }

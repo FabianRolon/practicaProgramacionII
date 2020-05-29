@@ -15,9 +15,13 @@ namespace Ejercicio56
     public partial class Form1 : Form
     {
         string path;
+        PuntoDat puntoDat;
+        PuntoTxt puntoTxt;
         public Form1()
         {
             InitializeComponent();
+            puntoDat = new PuntoDat();
+            puntoTxt = new PuntoTxt();
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
@@ -36,11 +40,20 @@ namespace Ejercicio56
 
             if (ventanaGuardado.ShowDialog() == DialogResult.OK)
             {
+                path = ventanaGuardado.FileName;
                 if (ventanaGuardado.FilterIndex == 2)
                 {
-                    path = ventanaGuardado.FileName;
-                    PuntoTxt puntoTxt = new PuntoTxt();
                     puntoTxt.GuardarComo(path, rtbEscritura.Text);
+                }
+                else if (ventanaGuardado.FilterIndex == 1)
+                {
+                    puntoDat.Contenido = rtbEscritura.Text;
+                    puntoDat.GuardarComo(path, puntoDat);
+                }
+                else
+                {
+                    MessageBox.Show("Para guardar asigne un tipo y un nombre al archivo", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    guardarComoToolStripMenuItem_Click(sender, e);
                 }
             }
         }
@@ -57,6 +70,16 @@ namespace Ejercicio56
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     path = openFileDialog.FileName;
+
+                    if (path.Contains(".dat"))
+                    {
+                        puntoDat = puntoDat.Leer(path);
+                        rtbEscritura.Text = puntoDat.Contenido;
+                    }
+                    else if (path.Contains(".txt"))
+                    {
+                        rtbEscritura.Text = puntoTxt.Leer(path);
+                    }
                 }
             }
             MessageBox.Show("Se cargó con éxito", " ", MessageBoxButtons.OK);
@@ -64,10 +87,18 @@ namespace Ejercicio56
 
         private void guardarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PuntoTxt puntoTxt = new PuntoTxt();
-            if (puntoTxt.Guardar(path, rtbEscritura.Text))
+
+            if (!(path is null))
             {
-                
+                if (path.Contains(".txt"))
+                {
+                    puntoTxt.Guardar(path, rtbEscritura.Text);
+                }
+                else if (path.Contains(".dat"))
+                {
+                    puntoDat.Contenido = rtbEscritura.Text;
+                    puntoDat.Guardar(path, puntoDat);
+                }
             }
             else
             {
