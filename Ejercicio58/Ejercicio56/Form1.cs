@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using IO;
 
-namespace Ejercicio56
+namespace Ejercicio58
 {
     public partial class Form1 : Form
     {

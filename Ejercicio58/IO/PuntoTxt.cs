@@ -64,7 +64,7 @@ namespace IO
             string retorno = String.Empty;
             if (File.Exists(ruta))
             {
-                StreamReader reader = new StreamReader(ruta);
+                StreamReader reader = new StreamReader(ruta, Encoding.UTF8);
                 retorno = reader.ReadToEnd();
                 reader.Close();
             }
