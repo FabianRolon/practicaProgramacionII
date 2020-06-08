@@ -20,7 +20,7 @@ namespace Ejercicio60
         public TablaProducto()
         {
             miComando = new SqlCommand();
-            miConexion = new SqlConnection("Data Source = FAO\\SQLEXPRESS; Database = AdventureWorks2017; Trusted_Connection = true;");
+            miConexion = new SqlConnection("Data Source = CALIDAD\\SQLEXPRESS; Database = AdventureWorks2017; Trusted_Connection = true;");
             InitializeComponent();
             tabla = new DataTable();
         }
@@ -57,6 +57,7 @@ namespace Ejercicio60
 
         private void dgvTabla_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            dgvTabla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             txtNombre.Text = dgvTabla.CurrentRow.Cells[1].Value.ToString();
             txtCodigo.Text = dgvTabla.CurrentRow.Cells[2].Value.ToString();
             chkbFabricar.Checked = (bool)dgvTabla.CurrentRow.Cells[3].Value;
@@ -140,7 +141,7 @@ namespace Ejercicio60
             else
             {
                 dtpFinalizaVenta.Enabled = false;
-            }    
+            }
         }
 
         private void chkbDiscontinua_CheckedChanged(object sender, EventArgs e)
@@ -157,16 +158,19 @@ namespace Ejercicio60
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+            dgvTabla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            miConexion = new SqlConnection("Data Source = CALIDAD\\SQLEXPRESS; Database = AdventureWorks2017; Trusted_Connection = true;");
+
             try
             {
                 SqlCommand command = new SqlCommand();
                 command.Connection = miConexion;
                 command.CommandType = CommandType.Text;
 
-                command.CommandText = "INSERT INTO Production.Product VALUES(@'Name', @'ProductNumber', @MakeFlag, " +
-                "@FinishedGoodsFlag, @'Color', @SafetyStockLevel, @ReorderPoint, @StandardCost, @ListPrice, @'Size', " +
-                "@SizeUnitMeasureCode, @WeightUnitMeasureCode, @Weight, @DaysToManufacture, @'ProductLine', @'Class', " +
-                "@'Style', @ProductSubcategoryID, @ProductModelID, @SellStartDate, @SellEndDate, @DiscontinuedDate," +
+                command.CommandText = "INSERT INTO Production.Product VALUES(@Name, @ProductNumber, @MakeFlag, " +
+                "@FinishedGoodsFlag, @Color, @SafetyStockLevel, @ReorderPoint, @StandardCost, @ListPrice, @Size, " +
+                "@SizeUnitMeasureCode, @WeightUnitMeasureCode, @Weight, @DaysToManufacture, @ProductLine, @Class, " +
+                "@Style, @ProductSubcategoryID, @ProductModelID, @SellStartDate, @SellEndDate, @DiscontinuedDate," +
                 " @rowguid, @ModifiedDate)";//con el @ pasamos parametros
                 command.Parameters.Add(new SqlParameter("Name", txtNombre.Text));
                 command.Parameters.Add(new SqlParameter("ProductNumber", txtCodigo.Text));
@@ -180,24 +184,57 @@ namespace Ejercicio60
                 command.Parameters.Add(new SqlParameter("Size", txtTamanio.Text));
                 command.Parameters.Add(new SqlParameter("SizeUnitMeasureCode", cbUniMedida.Text));
                 command.Parameters.Add(new SqlParameter("WeightUnitMeasureCode", cbUniPeso.Text));
-                command.Parameters.Add(new SqlParameter("Weight", decimal.Parse(txtPeso.Text)));
+                if (txtPeso.Text == "")
+                {
+                    command.Parameters.Add(new SqlParameter("Weight", DBNull.Value));
+                }
+                else
+                {
+                    command.Parameters.Add(new SqlParameter("Weight", decimal.Parse(txtPeso.Text)));
+                }
                 command.Parameters.Add(new SqlParameter("DaysToManufacture", int.Parse(txtDiasFabri.Text)));
                 command.Parameters.Add(new SqlParameter("ProductLine", cbLineaProdc.Text));
                 command.Parameters.Add(new SqlParameter("Class", cbClase.Text));
                 command.Parameters.Add(new SqlParameter("Style", cbEstilo.Text));
-                command.Parameters.Add(new SqlParameter("ProductSubcategoryID", int.Parse(cbIDSub.Text)));
-                command.Parameters.Add(new SqlParameter("ProductModelID", int.Parse(cbIdModelo.Text)));
+                if (cbIDSub.Text == "")
+                {
+                    command.Parameters.Add(new SqlParameter("ProductSubcategoryID", DBNull.Value));
+                }
+                else
+                {
+                    command.Parameters.Add(new SqlParameter("ProductSubcategoryID", int.Parse(cbIDSub.Text)));
+                }
+                if (cbIdModelo.Text == "")
+                {
+                    command.Parameters.Add(new SqlParameter("ProductModelID", DBNull.Value)); 
+                }
+                else
+                {
+                    command.Parameters.Add(new SqlParameter("ProductModelID", int.Parse(cbIdModelo.Text)));
+                }
                 command.Parameters.Add(new SqlParameter("SellStartDate", dtpIniVenta.Value));
-                command.Parameters.Add(new SqlParameter("SellEndDate", dtpFinalizaVenta.Value));
-                command.Parameters.Add(new SqlParameter("DiscontinuedDate", dtpDiscon.Value));
+                if (dtpFinalizaVenta.Text == "")
+                {
+                    command.Parameters.Add(new SqlParameter("SellEndDate", DBNull.Value)); 
+                }
+                else
+                {
+                    command.Parameters.Add(new SqlParameter("SellEndDate", dtpFinalizaVenta.Value));
+                }
+                if (dtpDiscon.Text == "")
+                {
+                    command.Parameters.Add(new SqlParameter("DiscontinuedDate", DBNull.Value)); 
+                }
+                else
+                {
+                    command.Parameters.Add(new SqlParameter("DiscontinuedDate", dtpDiscon.Value));
+                }
                 command.Parameters.Add(new SqlParameter("rowguid", Guid.Parse(txtGuid.Text)));
                 command.Parameters.Add(new SqlParameter("ModifiedDate", dtpModificaVenta.Value));
 
 
-                if (miConexion.State !=ConnectionState.Open
-)
+                if (miConexion.State != ConnectionState.Open)
                 {
-
                     miConexion.Open();
                 }
 
