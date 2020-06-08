@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Ejercicio40_CentralitaPoli
 {
@@ -10,6 +11,7 @@ namespace Ejercicio40_CentralitaPoli
     {
         private List<Llamada> listaDeLLamadas;
         protected string razonSocial;
+        private string rutaDeArchivo;
 
         public Centralita()
         {
@@ -54,7 +56,17 @@ namespace Ejercicio40_CentralitaPoli
             }
         }
 
-        public string RutaDeArchivo { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string RutaDeArchivo 
+        {
+            get
+            {
+                return this.rutaDeArchivo;     
+            }
+            set
+            {
+                this.rutaDeArchivo = value;
+            }
+        }
 
         private float CalcularGanancia(TipoLlamada tipo)
         {
@@ -114,13 +126,19 @@ namespace Ejercicio40_CentralitaPoli
 
         public bool Guardar()
         {
-            string datos = this.Mostrar();
+            StreamWriter sw = new StreamWriter(this.RutaDeArchivo, true, Encoding.UTF8);
+            sw.WriteLine($"{DateTime.Now.ToString($"dddd dd 'de' MMMM 'de' yyyy HH:MM'hs'")} - Se realizo una llamada");
+            sw.Close();
             return true;
         }
 
         public string Leer()
         {
-            throw new NotImplementedException();
+            string retorno = String.Empty;
+            StreamReader sr = new StreamReader(this.RutaDeArchivo);
+            retorno = (string)sr.ReadToEnd();
+            sr.Close();
+            return retorno;
         }
 
         public static bool operator ==(Centralita c, Llamada llamada)
@@ -145,6 +163,25 @@ namespace Ejercicio40_CentralitaPoli
             if (c != nuevaLlamada)
             {
                 c.AgregarLlamada(nuevaLlamada);
+                try
+                {
+                    c.Guardar();
+                    if(nuevaLlamada is Local)
+                    {
+                        ((Local)nuevaLlamada).Guardar();
+                    }else if(nuevaLlamada is Provincial)
+                    {
+                        ((Provincial)nuevaLlamada).Guardar();
+                    }
+                    else
+                    {
+                        throw new InvalidCastException();
+                    }
+                }
+                catch (Exception e)
+                {
+                    throw new FallaLogException("Error al guardar", e);
+                }
                 return c;
             }
             else

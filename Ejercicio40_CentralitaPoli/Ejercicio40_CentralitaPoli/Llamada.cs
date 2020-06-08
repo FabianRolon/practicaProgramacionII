@@ -18,7 +18,10 @@ namespace Ejercicio40_CentralitaPoli
         protected float duracion;
         protected string nroDestino;
         protected string nroOrigen;
+        public Llamada()
+        {
 
+        }
         public Llamada(float duracion, string nroDestino, string nroOrigen)
         {
             this.duracion = duracion;

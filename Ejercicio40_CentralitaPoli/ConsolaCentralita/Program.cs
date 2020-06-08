@@ -13,6 +13,7 @@ namespace ConsolaCentralita
         {
             // Mi central
             Centralita c = new Centralita("Fede Center");
+            c.RutaDeArchivo = "log.txt";
             // Mis 4 llamadas
             Local l1 = new Local("Bernal", 30, "Rosario", 2.65f);
             Provincial l2 = new Provincial("Morón", Provincial.Franja.Franja_1, 21, "Bernal");
@@ -23,11 +24,20 @@ namespace ConsolaCentralita
             c += l1;
             c += l2;
             c += l3;
-            c += l4;
+            try
+            {
+                c += l4;
+            }
+            catch (CentralitaException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
 
             c.OrdenarLlamadas();
             Console.WriteLine("Todas las llamadas ordenadas en ascendente\n\n");
             Console.WriteLine(c.ToString());
+            Console.ReadKey();
+            c.Leer();
             Console.ReadKey();
         }
     }

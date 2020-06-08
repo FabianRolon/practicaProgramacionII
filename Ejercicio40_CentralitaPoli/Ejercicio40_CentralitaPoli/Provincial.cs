@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace Ejercicio40_CentralitaPoli
 {
@@ -16,16 +19,23 @@ namespace Ejercicio40_CentralitaPoli
         }
 
         protected Franja franjaHoraria;
+        private string rutaDeArchivo;
                 
         public Provincial(string origen, Franja miFranja, float duracion, string destino)
             : base(duracion, destino, origen)
         {
-
+            this.rutaDeArchivo = "LlamadaProvinciales.xml";
         }
         public Provincial(Franja miFranja, Llamada llamada)
             : this(llamada.NroOrigen, miFranja, llamada.Duracion, llamada.NroDestino)
         {
 
+        }
+
+        public Provincial()
+            :base()
+        {
+            
         }
 
         private float CalcularCosto()
@@ -51,7 +61,17 @@ namespace Ejercicio40_CentralitaPoli
             }
         }
 
-        public string RutaDeArchivo { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string RutaDeArchivo 
+        {
+            get 
+            {
+                return this.rutaDeArchivo; 
+            }
+            set
+            {
+                this.rutaDeArchivo = value;
+            } 
+        }
 
         protected override string Mostrar()
         {
@@ -74,12 +94,35 @@ namespace Ejercicio40_CentralitaPoli
 
         public bool Guardar()
         {
-            throw new NotImplementedException();
+            try
+            {
+                XmlTextWriter xmlTextWriter = new XmlTextWriter(this.RutaDeArchivo, Encoding.UTF8);
+                XmlSerializer serializer = new XmlSerializer(typeof(Provincial));
+                serializer.Serialize(xmlTextWriter, this);
+                xmlTextWriter.Close();
+            }
+            catch (Exception e)
+            {
+                throw new InvalidCastException(" ", e);
+            }
+            return true;
         }
 
         public Provincial Leer()
         {
-            throw new NotImplementedException();
+            Provincial provincial = new Provincial();
+            try
+            {
+                XmlTextReader xmlTextReader = new XmlTextReader(this.RutaDeArchivo);
+                XmlSerializer serializer = new XmlSerializer(typeof(Provincial));
+                provincial = (Provincial)serializer.Deserialize(xmlTextReader);
+                xmlTextReader.Close();
+            }
+            catch (Exception e)
+            {
+                throw new InvalidCastException(" ", e);
+            }
+            return provincial;
         }
     }
 }
