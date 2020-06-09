@@ -20,7 +20,7 @@ namespace Ejercicio60
         public TablaProducto()
         {
             miComando = new SqlCommand();
-            miConexion = new SqlConnection("Data Source = CALIDAD\\SQLEXPRESS; Database = AdventureWorks2017; Trusted_Connection = true;");
+            miConexion = new SqlConnection("Data Source = FAO\\SQLEXPRESS; Database = AdventureWorks2017; Trusted_Connection = true;");
             InitializeComponent();
             tabla = new DataTable();
         }
@@ -57,7 +57,6 @@ namespace Ejercicio60
 
         private void dgvTabla_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            dgvTabla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             txtNombre.Text = dgvTabla.CurrentRow.Cells[1].Value.ToString();
             txtCodigo.Text = dgvTabla.CurrentRow.Cells[2].Value.ToString();
             chkbFabricar.Checked = (bool)dgvTabla.CurrentRow.Cells[3].Value;
@@ -158,9 +157,6 @@ namespace Ejercicio60
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            dgvTabla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            miConexion = new SqlConnection("Data Source = CALIDAD\\SQLEXPRESS; Database = AdventureWorks2017; Trusted_Connection = true;");
-
             try
             {
                 SqlCommand command = new SqlCommand();
@@ -206,7 +202,7 @@ namespace Ejercicio60
                 }
                 if (cbIdModelo.Text == "")
                 {
-                    command.Parameters.Add(new SqlParameter("ProductModelID", DBNull.Value)); 
+                    command.Parameters.Add(new SqlParameter("ProductModelID", DBNull.Value));
                 }
                 else
                 {
@@ -215,7 +211,7 @@ namespace Ejercicio60
                 command.Parameters.Add(new SqlParameter("SellStartDate", dtpIniVenta.Value));
                 if (dtpFinalizaVenta.Text == "")
                 {
-                    command.Parameters.Add(new SqlParameter("SellEndDate", DBNull.Value)); 
+                    command.Parameters.Add(new SqlParameter("SellEndDate", DBNull.Value));
                 }
                 else
                 {
@@ -223,7 +219,7 @@ namespace Ejercicio60
                 }
                 if (dtpDiscon.Text == "")
                 {
-                    command.Parameters.Add(new SqlParameter("DiscontinuedDate", DBNull.Value)); 
+                    command.Parameters.Add(new SqlParameter("DiscontinuedDate", DBNull.Value));
                 }
                 else
                 {
@@ -241,23 +237,226 @@ namespace Ejercicio60
                 int cantidadInsert = command.ExecuteNonQuery();
 
 
-                MessageBox.Show
-                ("Lineas insertadas " + cantidadInsert, "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Lineas insertadas " + cantidadInsert, "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
             catch (Exception ex)
             {
 
-                MessageBox.Show
-                ("No se pudo abrir la conexion", "Error",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                MessageBox.Show
-                (ex.Message);
+                MessageBox.Show("No se pudo abrir la conexion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message);
             }
             finally
             {
                 miConexion.Close();
+            }
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (miConexion.State != ConnectionState.Open)
+                {
+                    miConexion.Open();
+                }
+                SqlCommand comando = new SqlCommand();
+                comando.Connection = miConexion;
+                comando.CommandType = CommandType.Text;
+                comando.CommandText = "UPDATE Production.Product SET Name = @Name, ProductNumber = @ProductNumber, MakeFlag = @MakeFlag, " +
+                    "FinishedGoodsFlag = @FinishedGoodsFlag, Color = @Color, SafetyStockLevel = @SafetyStockLevel, ReorderPoint = @ReorderPoint, StandardCost = @StandardCost, ListPrice = @ListPrice, Size = @Size, " +
+                    "SizeUnitMeasureCode = @SizeUnitMeasureCode, WeightUnitMeasureCode = @WeightUnitMeasureCode, Weight = @Weight, DaysToManufacture = @DaysToManufacture, ProductLine = @ProductLine, Class = @Class, " +
+                    "Style =@Style, ProductSubcategoryID = @ProductSubcategoryID, ProductModelID = @ProductModelID, SellStartDate = @SellStartDate, SellEndDate = @SellEndDate, DiscontinuedDate = @DiscontinuedDate," +
+                    " rowguid = @rowguid, ModifiedDate = @ModifiedDate WHERE ProductID = @idTabla";
+                comando.Parameters.Add(new SqlParameter("idTabla", (int)dgvTabla.CurrentRow.Cells[0].Value));
+                comando.Parameters.Add(new SqlParameter("Name", txtNombre.Text));
+                comando.Parameters.Add(new SqlParameter("ProductNumber", txtCodigo.Text));
+                comando.Parameters.Add(new SqlParameter("MakeFlag", chkbFabricar.Checked));
+                comando.Parameters.Add(new SqlParameter("FinishedGoodsFlag", chkbFabricar.Checked));
+                if (cbColor.Text == "" || cbColor.Text == "Ninguno")
+                {
+                    comando.Parameters.Add(new SqlParameter("Color", DBNull.Value));
+                }
+                else
+                {
+                    comando.Parameters.Add(new SqlParameter("Color", cbColor.Text));
+                }
+                comando.Parameters.Add(new SqlParameter("SafetyStockLevel", Int16.Parse(txtStock.Text)));
+                comando.Parameters.Add(new SqlParameter("ReorderPoint", Int16.Parse(txtOrdenMin.Text)));
+                comando.Parameters.Add(new SqlParameter("StandardCost", decimal.Parse(txtCosto.Text)));
+                comando.Parameters.Add(new SqlParameter("ListPrice", decimal.Parse(txtPrecio.Text)));
+                comando.Parameters.Add(new SqlParameter("Size", txtTamanio.Text));
+                if (cbUniMedida.Text == "" || cbUniMedida.Text == "Ninguno")
+                {
+                    comando.Parameters.Add(new SqlParameter("SizeUnitMeasureCode", DBNull.Value));
+                }
+                else
+                {
+                    comando.Parameters.Add(new SqlParameter("SizeUnitMeasureCode", cbUniMedida.Text));
+                }
+                if (cbUniPeso.Text == "" || cbUniPeso.Text == "Ninguno")
+                {
+                    comando.Parameters.Add(new SqlParameter("WeightUnitMeasureCode", DBNull.Value));
+                }
+                else
+                {
+                    comando.Parameters.Add(new SqlParameter("WeightUnitMeasureCode", cbUniPeso.Text));
+                }
+                if (txtPeso.Text == "")
+                {
+                    comando.Parameters.Add(new SqlParameter("Weight", DBNull.Value));
+                }
+                else
+                {
+                    comando.Parameters.Add(new SqlParameter("Weight", decimal.Parse(txtPeso.Text)));
+                }
+                comando.Parameters.Add(new SqlParameter("DaysToManufacture", int.Parse(txtDiasFabri.Text)));
+                if (cbLineaProdc.Text == "" || cbLineaProdc.Text == "Ninguno")
+                {
+                    comando.Parameters.Add(new SqlParameter("ProductLine", DBNull.Value));
+                }
+                else
+                {
+                    comando.Parameters.Add(new SqlParameter("ProductLine", cbLineaProdc.Text));
+                }
+                if (cbClase.Text == "" || cbClase.Text == "Ninguno")
+                {
+                    comando.Parameters.Add(new SqlParameter("Class", DBNull.Value));
+                }
+                else
+                {
+                    comando.Parameters.Add(new SqlParameter("Class", cbClase.Text));
+                }
+                if (cbEstilo.Text == "" || cbEstilo.Text == "Ninguno")
+                {
+                    comando.Parameters.Add(new SqlParameter("Style", DBNull.Value));
+                }
+                else
+                {
+                    comando.Parameters.Add(new SqlParameter("Style", cbEstilo.Text));
+                }
+                if (cbIDSub.Text == "")
+                {
+                    comando.Parameters.Add(new SqlParameter("ProductSubcategoryID", DBNull.Value));
+                }
+                else
+                {
+                    comando.Parameters.Add(new SqlParameter("ProductSubcategoryID", int.Parse(cbIDSub.Text)));
+                }
+                if (cbIdModelo.Text == "")
+                {
+                    comando.Parameters.Add(new SqlParameter("ProductModelID", DBNull.Value));
+                }
+                else
+                {
+                    comando.Parameters.Add(new SqlParameter("ProductModelID", int.Parse(cbIdModelo.Text)));
+                }
+                comando.Parameters.Add(new SqlParameter("SellStartDate", dtpIniVenta.Value));
+                if (dtpFinalizaVenta.Text == "")
+                {
+                    comando.Parameters.Add(new SqlParameter("SellEndDate", DBNull.Value));
+                }
+                else
+                {
+                    comando.Parameters.Add(new SqlParameter("SellEndDate", dtpFinalizaVenta.Value));
+                }
+                if (dtpDiscon.Text == "")
+                {
+                    comando.Parameters.Add(new SqlParameter("DiscontinuedDate", DBNull.Value));
+                }
+                else
+                {
+                    comando.Parameters.Add(new SqlParameter("DiscontinuedDate", dtpDiscon.Value));
+                }
+                comando.Parameters.Add(new SqlParameter("rowguid", Guid.Parse(txtGuid.Text)));
+                comando.Parameters.Add(new SqlParameter("ModifiedDate", dtpModificaVenta.Value));
+
+
+                comando.ExecuteNonQuery();
+                MessageBox.Show("Se modificó con éxito");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se pudo abrir la conexion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                miConexion.Close();
+            }
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            tabla.Clear();
+            dgvTabla.DataSource = null;
+            TablaProducto_Load(sender, e);
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            txtNombre.Text = String.Empty;
+            txtCodigo.Text = String.Empty;
+            chkbFabricar.Checked = false;
+            chkbFinalizado.Checked = false;
+            cbColor.Text = String.Empty;
+            txtStock.Text = String.Empty;
+            txtOrdenMin.Text = String.Empty;
+            txtCosto.Text = String.Empty;
+            txtPrecio.Text = String.Empty;
+            txtTamanio.Text = String.Empty;
+            cbUniMedida.Text = String.Empty;
+            cbUniPeso.Text = String.Empty;
+            txtPeso.Text = String.Empty;
+            txtDiasFabri.Text = String.Empty;
+            cbLineaProdc.Text = String.Empty;
+            cbClase.Text = String.Empty;
+            cbEstilo.Text = String.Empty;
+            cbIDSub.Text = String.Empty;
+            cbIdModelo.Text = String.Empty;
+            dtpIniVenta.Value = DateTime.Now;
+            dtpFinalizaVenta.Value = DateTime.Now;
+            dtpFinalizaVenta.Enabled = false;
+            dtpDiscon.Value = DateTime.Now;
+            dtpDiscon.Enabled = false;
+            txtGuid.Text = String.Empty;
+            dtpModificaVenta.Value = DateTime.Now;
+        }
+
+        private void btnBorrar_Click(object sender, EventArgs e)
+        {
+            if (dgvTabla.CurrentRow.Cells[0].Value.ToString() != "" || !(dgvTabla.CurrentRow.Cells[0].Value is null))
+            {    
+                try
+                {
+                    if (MessageBox.Show("¿Está seguro que quiere borrar este dato? Será irrecuperable", "¡ATENCION!", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                    {
+                        if (miConexion.State != ConnectionState.Open)
+                        {
+                            miConexion.Open();
+                        }
+                        SqlCommand comando = new SqlCommand();
+                        comando.Connection = miConexion;
+                        comando.CommandType = CommandType.Text;
+                        comando.CommandText = "DELETE FROM Production.Product WHERE ProductID = @idTabla";
+                        comando.Parameters.Add(new SqlParameter("idTabla", (int)dgvTabla.CurrentRow.Cells[0].Value));
+                        comando.ExecuteNonQuery();
+                        MessageBox.Show("Se Borró con éxito"); 
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("No se pudo abrir la conexion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    miConexion.Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un dato para borrar");
             }
         }
     }
