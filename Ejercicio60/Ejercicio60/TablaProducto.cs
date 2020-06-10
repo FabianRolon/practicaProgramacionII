@@ -172,13 +172,27 @@ namespace Ejercicio60
                 command.Parameters.Add(new SqlParameter("ProductNumber", txtCodigo.Text));
                 command.Parameters.Add(new SqlParameter("MakeFlag", chkbFabricar.Checked));
                 command.Parameters.Add(new SqlParameter("FinishedGoodsFlag", chkbFabricar.Checked));
-                command.Parameters.Add(new SqlParameter("Color", cbColor.Text));
+                if (cbColor.Text == "" || cbColor.Text == "Ninguno")
+                {
+                    command.Parameters.Add(new SqlParameter("Color", DBNull.Value));
+                }
+                else
+                {
+                    command.Parameters.Add(new SqlParameter("Color", cbColor.Text));
+                }
                 command.Parameters.Add(new SqlParameter("SafetyStockLevel", Int16.Parse(txtStock.Text)));
                 command.Parameters.Add(new SqlParameter("ReorderPoint", Int16.Parse(txtOrdenMin.Text)));
                 command.Parameters.Add(new SqlParameter("StandardCost", decimal.Parse(txtCosto.Text)));
                 command.Parameters.Add(new SqlParameter("ListPrice", decimal.Parse(txtPrecio.Text)));
                 command.Parameters.Add(new SqlParameter("Size", txtTamanio.Text));
-                command.Parameters.Add(new SqlParameter("SizeUnitMeasureCode", cbUniMedida.Text));
+                if (cbUniMedida.Text == "" || cbUniMedida.Text == "Ninguno")
+                {
+                    command.Parameters.Add(new SqlParameter("SizeUnitMeasureCode", DBNull.Value));
+                }
+                else
+                {
+                    command.Parameters.Add(new SqlParameter("SizeUnitMeasureCode", cbUniMedida.Text));
+                }
                 command.Parameters.Add(new SqlParameter("WeightUnitMeasureCode", cbUniPeso.Text));
                 if (txtPeso.Text == "")
                 {
@@ -189,9 +203,30 @@ namespace Ejercicio60
                     command.Parameters.Add(new SqlParameter("Weight", decimal.Parse(txtPeso.Text)));
                 }
                 command.Parameters.Add(new SqlParameter("DaysToManufacture", int.Parse(txtDiasFabri.Text)));
-                command.Parameters.Add(new SqlParameter("ProductLine", cbLineaProdc.Text));
-                command.Parameters.Add(new SqlParameter("Class", cbClase.Text));
-                command.Parameters.Add(new SqlParameter("Style", cbEstilo.Text));
+                if (cbLineaProdc.Text == "" || cbLineaProdc.Text == "Ninguno")
+                {
+                    command.Parameters.Add(new SqlParameter("ProductLine", DBNull.Value));
+                }
+                else
+                {
+                    command.Parameters.Add(new SqlParameter("ProductLine", cbLineaProdc.Text));
+                }
+                if (cbClase.Text == "" || cbClase.Text == "Ninguno")
+                {
+                    command.Parameters.Add(new SqlParameter("Class", DBNull.Value));
+                }
+                else
+                {
+                    command.Parameters.Add(new SqlParameter("Class", cbClase.Text));
+                }
+                if (cbEstilo.Text == "" || cbEstilo.Text == "Ninguno")
+                {
+                    command.Parameters.Add(new SqlParameter("Style", DBNull.Value));
+                }
+                else
+                {
+                    command.Parameters.Add(new SqlParameter("Style", cbEstilo.Text));
+                }
                 if (cbIDSub.Text == "")
                 {
                     command.Parameters.Add(new SqlParameter("ProductSubcategoryID", DBNull.Value));
@@ -240,9 +275,18 @@ namespace Ejercicio60
                 MessageBox.Show("Lineas insertadas " + cantidadInsert, "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
+            catch (ArgumentNullException ex)
+            {
+                MessageBox.Show("El argumento no puede ser nulo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message);
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show("El formato del argumento no era el esperado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message);
+            }
             catch (Exception ex)
             {
-
                 MessageBox.Show("No se pudo abrir la conexion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 MessageBox.Show(ex.Message);
             }
@@ -375,6 +419,16 @@ namespace Ejercicio60
                 comando.ExecuteNonQuery();
                 MessageBox.Show("Se modificó con éxito");
             }
+            catch (ArgumentNullException ex)
+            {
+                MessageBox.Show("El argumento no puede ser nulo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message);
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show("El formato del argumento no era el esperado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message);
+            }
             catch (Exception ex)
             {
                 MessageBox.Show("No se pudo abrir la conexion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -417,8 +471,10 @@ namespace Ejercicio60
             dtpIniVenta.Value = DateTime.Now;
             dtpFinalizaVenta.Value = DateTime.Now;
             dtpFinalizaVenta.Enabled = false;
+            chkbFinalizaVenta.Checked = false;
             dtpDiscon.Value = DateTime.Now;
             dtpDiscon.Enabled = false;
+            chkbDiscontinua.Checked = false;
             txtGuid.Text = String.Empty;
             dtpModificaVenta.Value = DateTime.Now;
         }
@@ -444,6 +500,26 @@ namespace Ejercicio60
                         MessageBox.Show("Se Borró con éxito"); 
                     }
                 }
+                catch (ArgumentNullException ex)
+                {
+                    MessageBox.Show("El argumento no puede ser nulo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message);
+                }
+                catch(SqlException ex)
+                {
+                    MessageBox.Show("Error con la base de datos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message);
+                }
+                catch(InvalidCastException ex)
+                {
+                    MessageBox.Show("Ocurrió un error de casteo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message);
+                }
+                catch (FormatException ex)
+                {
+                    MessageBox.Show("El formato del argumento no era el esperado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message);
+                }
                 catch (Exception ex)
                 {
                     MessageBox.Show("No se pudo abrir la conexion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -457,6 +533,39 @@ namespace Ejercicio60
             else
             {
                 MessageBox.Show("Seleccione un dato para borrar");
+            }
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SqlCommand command = new SqlCommand();
+                dgvTabla.DataSource = null;
+                dgvTabla.Rows.Clear();
+                tabla.Rows.Clear();
+                if (miConexion.State != ConnectionState.Open)
+                {
+                    miConexion.Open();
+                }
+                command.Connection = miConexion;
+                command.CommandType = CommandType.Text;
+                command.CommandText = "SELECT * FROM Production.Product WHERE ProductNumber = @codigo";//con el @ pasamos parametros
+                command.Parameters.Clear();//antes de cargar uno nueva por las dudas los limpio por si intento cargar el mismo
+                command.Parameters.Add(new SqlParameter("codigo", txtBuscar.Text));
+                objetoQueRecibe = command.ExecuteReader();
+                tabla.Load(objetoQueRecibe);
+                dgvTabla.DataSource = tabla;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se pudo abrir la conexion", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                miConexion.Close();//tambien se puede usar el using para no tener que usar el Close()
             }
         }
     }

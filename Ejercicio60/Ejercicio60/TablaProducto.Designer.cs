@@ -82,11 +82,16 @@
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnBorrar = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTabla)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvTabla
             // 
+            this.dgvTabla.AllowUserToAddRows = false;
             this.dgvTabla.AllowUserToDeleteRows = false;
             this.dgvTabla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTabla.Location = new System.Drawing.Point(20, 190);
@@ -249,7 +254,7 @@
             this.cbUniMedida.Items.AddRange(new object[] {
             "Ninguno",
             "CM"});
-            this.cbUniMedida.Location = new System.Drawing.Point(1078, 25);
+            this.cbUniMedida.Location = new System.Drawing.Point(1079, 25);
             this.cbUniMedida.Name = "cbUniMedida";
             this.cbUniMedida.Size = new System.Drawing.Size(121, 21);
             this.cbUniMedida.TabIndex = 5;
@@ -257,7 +262,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(1075, 9);
+            this.label9.Location = new System.Drawing.Point(1076, 9);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(93, 13);
             this.label9.TabIndex = 4;
@@ -616,7 +621,7 @@
             // chkbFabricar
             // 
             this.chkbFabricar.AutoSize = true;
-            this.chkbFabricar.Location = new System.Drawing.Point(1135, 69);
+            this.chkbFabricar.Location = new System.Drawing.Point(602, 98);
             this.chkbFabricar.Name = "chkbFabricar";
             this.chkbFabricar.Size = new System.Drawing.Size(64, 17);
             this.chkbFabricar.TabIndex = 9;
@@ -626,7 +631,7 @@
             // chkbFinalizado
             // 
             this.chkbFinalizado.AutoSize = true;
-            this.chkbFinalizado.Location = new System.Drawing.Point(1019, 69);
+            this.chkbFinalizado.Location = new System.Drawing.Point(486, 98);
             this.chkbFinalizado.Name = "chkbFinalizado";
             this.chkbFinalizado.Size = new System.Drawing.Size(91, 17);
             this.chkbFinalizado.TabIndex = 10;
@@ -657,7 +662,7 @@
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(1124, 136);
+            this.btnAgregar.Location = new System.Drawing.Point(1124, 102);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(156, 23);
             this.btnAgregar.TabIndex = 13;
@@ -667,7 +672,7 @@
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(1285, 136);
+            this.btnModificar.Location = new System.Drawing.Point(1285, 102);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 23);
             this.btnModificar.TabIndex = 13;
@@ -725,7 +730,7 @@
             // 
             // btnActualizar
             // 
-            this.btnActualizar.Location = new System.Drawing.Point(1205, 107);
+            this.btnActualizar.Location = new System.Drawing.Point(1205, 73);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(75, 23);
             this.btnActualizar.TabIndex = 14;
@@ -735,7 +740,7 @@
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(1286, 107);
+            this.btnLimpiar.Location = new System.Drawing.Point(1286, 73);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(75, 23);
             this.btnLimpiar.TabIndex = 14;
@@ -745,7 +750,7 @@
             // 
             // btnBorrar
             // 
-            this.btnBorrar.Location = new System.Drawing.Point(1124, 107);
+            this.btnBorrar.Location = new System.Drawing.Point(1124, 73);
             this.btnBorrar.Name = "btnBorrar";
             this.btnBorrar.Size = new System.Drawing.Size(75, 23);
             this.btnBorrar.TabIndex = 15;
@@ -753,11 +758,40 @@
             this.btnBorrar.UseVisualStyleBackColor = true;
             this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
             // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Location = new System.Drawing.Point(111, 16);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(131, 23);
+            this.btnBuscar.TabIndex = 16;
+            this.btnBuscar.Text = "Buscar por codigo";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // txtBuscar
+            // 
+            this.txtBuscar.Location = new System.Drawing.Point(6, 19);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(100, 20);
+            this.txtBuscar.TabIndex = 17;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.txtBuscar);
+            this.groupBox1.Controls.Add(this.btnBuscar);
+            this.groupBox1.Location = new System.Drawing.Point(1118, 131);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(252, 49);
+            this.groupBox1.TabIndex = 18;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Busqueda";
+            // 
             // TablaProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1372, 727);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnBorrar);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnActualizar);
@@ -817,6 +851,8 @@
             this.Text = "Tabla Producto";
             this.Load += new System.EventHandler(this.TablaProducto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTabla)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -878,6 +914,9 @@
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Button btnBorrar;
+        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.TextBox txtBuscar;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
 
