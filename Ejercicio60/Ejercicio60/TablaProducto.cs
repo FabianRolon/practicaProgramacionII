@@ -27,7 +27,6 @@ namespace Ejercicio60
 
         private void TablaProducto_Load(object sender, EventArgs e)
         {
-
             try
             {
                 miComando.Connection = miConexion;
@@ -557,6 +556,30 @@ namespace Ejercicio60
                 tabla.Load(objetoQueRecibe);
                 dgvTabla.DataSource = tabla;
             }
+            catch (ArgumentNullException ex)
+            {
+                MessageBox.Show("El argumento no puede ser nulo", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message);
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show("Uno de los argumentos no fue el esperado", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message);
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Error con la base de datos", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message);
+            }
+            catch (InvalidCastException ex)
+            {
+                MessageBox.Show("Casteo invalido", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message);
+            }
             catch (Exception ex)
             {
                 MessageBox.Show("No se pudo abrir la conexion", "Error",
@@ -567,6 +590,11 @@ namespace Ejercicio60
             {
                 miConexion.Close();//tambien se puede usar el using para no tener que usar el Close()
             }
+        }
+
+        private void TablaProducto_Resize(object sender, EventArgs e)
+        {
+            dgvTabla.Size = new Size(ActiveForm.Size.Width - 50, ActiveForm.Size.Height - 250);
         }
     }
 }

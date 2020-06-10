@@ -850,6 +850,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tabla Producto";
             this.Load += new System.EventHandler(this.TablaProducto_Load);
+            this.Resize += new System.EventHandler(this.TablaProducto_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTabla)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
