@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Ejercicio64
@@ -23,12 +24,12 @@ namespace Ejercicio64
             }
 
         }
-
         public void AtenderClientes()
         {
             foreach (string item in this.FilaClientes)
             {
-                Console.WriteLine($"{item}");
+                Console.WriteLine($"{item} {Thread.CurrentThread.Name}");
+                Thread.Sleep(2000);
             }
         }
     }

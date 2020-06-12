@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Runtime.CompilerServices;
 
 namespace Ejercicio64
 {
@@ -11,14 +12,18 @@ namespace Ejercicio64
     {
         static void Main(string[] args)
         {
-            Thread hilo1 = new Thread();
-            hilo1.Name = "caja1"; 
-            Thread hilo2 = new Thread();
-            hilo2.Name
-            Thread hilo3 = new Thread();
             Caja caja1 = new Caja();
             Caja caja2 = new Caja();
+            
             Negocio negocio = new Negocio(caja1, caja2);
+            
+            Thread hiloAtenderCaja1 = new Thread(negocio.CajaUno.AtenderClientes);
+            hiloAtenderCaja1.Name = "Caja 1"; 
+            Thread hiloAtenderCaja2 = new Thread(negocio.CajaDos.AtenderClientes);
+            hiloAtenderCaja2.Name = "Caja 2";
+            Thread hiloAsignarCaja = new Thread(negocio.AsignarCaja);
+            
+            
             negocio.Clientes.Add("Sabina");
             negocio.Clientes.Add("Honoria");
             negocio.Clientes.Add("Tránsito");
@@ -31,6 +36,7 @@ namespace Ejercicio64
             negocio.Clientes.Add("Cástulo");
             negocio.Clientes.Add("Gervasia");
             negocio.Clientes.Add("Epifanio");
+            negocio.Clientes.Add("Audelia");
             negocio.Clientes.Add("Eufemio");
             negocio.Clientes.Add("Eustaquio");
             negocio.Clientes.Add("Brígida");
@@ -41,12 +47,16 @@ namespace Ejercicio64
             negocio.Clientes.Add("Régulo");
             negocio.Clientes.Add("Teodora");
             negocio.Clientes.Add("Teódulo");
-            negocio.Clientes.Add("Tiburcio ");
+            negocio.Clientes.Add("Tiburcio");
             negocio.Clientes.Add("Celso");
 
+            hiloAsignarCaja.Start();
+            hiloAsignarCaja.Join();
+            hiloAtenderCaja1.Start();
+            hiloAtenderCaja2.Start();
 
-
-
+            Console.ReadKey();
+        
         }
     }
 }

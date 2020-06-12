@@ -20,17 +20,6 @@ namespace Ejercicio63
         {
             InitializeComponent();
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            r1 = new Random();
-            ThreadStart ts = new ThreadStart(ModificarHora);
-            ThreadStart tsDos = new ThreadStart(ModificarColor);
-            primerHilo = new Thread(ts);
-            segundoHilo = new Thread(tsDos);
-            primerHilo.Start();
-            segundoHilo.Start();
-        }
         delegate void DelegadoHora();
         public void AgregarHora()
         {
@@ -84,6 +73,17 @@ namespace Ejercicio63
                 AgregarColor();
                 Thread.Sleep(100);
             } while (true);
+        }
+
+        private void Form1_Load_1(object sender, EventArgs e)
+        {
+            r1 = new Random();
+            ThreadStart ts = new ThreadStart(ModificarHora);
+            ThreadStart tsDos = new ThreadStart(ModificarColor);
+            primerHilo = new Thread(ts);
+            segundoHilo = new Thread(tsDos);
+            primerHilo.Start();
+            segundoHilo.Start();
         }
     }
 }

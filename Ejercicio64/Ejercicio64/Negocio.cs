@@ -45,10 +45,12 @@ namespace Ejercicio64
             Console.WriteLine("Asignando cajas...");
             foreach (string item in this.Clientes)
             {
-                if (CajaUno.FilaClientes.Count < CajaDos.FilaClientes.Count)
-                    CajaUno.FilaClientes.Add(item);
-                if (CajaDos.FilaClientes.Count < CajaUno.FilaClientes.Count)
-                    CajaDos.FilaClientes.Add(item);
+                if (CajaUno.FilaClientes.Count <= CajaDos.FilaClientes.Count)
+                { 
+                    this.CajaUno.FilaClientes.Add(item); 
+                }
+                else if (CajaDos.FilaClientes.Count < CajaUno.FilaClientes.Count)
+                    this.CajaDos.FilaClientes.Add(item);
                 Thread.Sleep(1000);
             }
         }
