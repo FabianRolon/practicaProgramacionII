@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Schema;
 
 namespace Ejercicio68
 {
@@ -20,7 +16,6 @@ namespace Ejercicio68
             this.apellido = String.Empty;
 
         }
-
         public string Nombre
         {
             get
@@ -61,13 +56,11 @@ namespace Ejercicio68
                 }
             }
         }
-
         public string Mostrar()
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"{this.nombre} {this.apellido}");
             return sb.ToString();
         }
-
     }
 }
