@@ -45,8 +45,8 @@ namespace Ejercicio63
                 int c1 = r1.Next(0, 255);
                 int c2 = r1.Next(0, 255);
                 int c3 = r1.Next(0, 255);
-                int x = r1.Next(10, 340);
-                int y = r1.Next(10, 300);
+                int x = r1.Next(20, 340);
+                int y = r1.Next(20, 300);
 
                 lblHora.Text = DateTime.Now.ToString();
                 lblHora.ForeColor = Color.FromArgb(c1, c2, c3);
