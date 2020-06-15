@@ -10,10 +10,9 @@ using System.Windows.Forms;
 
 namespace Ejercicio69
 {
+    public delegate void DelegadoMostrarManejador(string dato);
     public partial class FrmMostrar : Form
     {
-        public delegate void DelegadoMostrarManejador(string dato);
-        public event DelegadoMostrarManejador ActualizarLbl; 
         public FrmMostrar()
         {
             InitializeComponent();

@@ -13,6 +13,7 @@ namespace Ejercicio69
     public partial class FrmTestDelegados : Form
     {
         FrmMostrar frmMostrar;
+        public event DelegadoMostrarManejador Actualizar;
         public FrmTestDelegados()
         {
             frmMostrar = new FrmMostrar();
@@ -21,7 +22,8 @@ namespace Ejercicio69
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            frmMostrar.ActualizarLb
+            if(Actualizar != null)
+                Actualizar.Invoke(txtDatos.Text);
         }
     }
 }

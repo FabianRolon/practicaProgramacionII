@@ -17,19 +17,22 @@ namespace Ejercicio69
         public FormPrincipal()
         {
             InitializeComponent();
-            frmTestDelegados.MdiParent = this;
-            frmMostrar.MdiParent = this;
         }
 
         private void testDelegadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmTestDelegados = new FrmTestDelegados();
-            menuPrincipal.Enabled = true;
+            frmTestDelegados.MdiParent = this;
+            frmTestDelegados.Visible = true;
+            mostrarToolStripMenuItem.Enabled = true;
         }
 
         private void mostrarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmMostrar = new FrmMostrar();
+            frmMostrar.MdiParent = this;
+            frmTestDelegados.Actualizar += frmMostrar.ActualizarNombre;
+            frmMostrar.Visible = true;
         }
     }
 }
