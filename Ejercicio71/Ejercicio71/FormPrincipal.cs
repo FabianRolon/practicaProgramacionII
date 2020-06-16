@@ -14,6 +14,8 @@ namespace Ejercicio69
     {
         FrmTestDelegados frmTestDelegados;
         FrmMostrar frmMostrar;
+        FrmAltaAlumno frmAltaAlumno;
+        FrmDatosAlumnos frmDatos;
         public FormPrincipal()
         {
             InitializeComponent();
@@ -34,6 +36,22 @@ namespace Ejercicio69
             frmTestDelegados.ActualizarEtiqueta += frmMostrar.ActualizarNombre;
             frmTestDelegados.ActualizarImagen += frmMostrar.ActualizarFoto;
             frmMostrar.Visible = true;
+        }
+
+        private void alumnosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAltaAlumno = new FrmAltaAlumno();
+            frmAltaAlumno.MdiParent = this;
+            frmAltaAlumno.Visible = true;
+            datosAlumnosToolStripMenuItem.Enabled = true;
+        }
+
+        private void datosAlumnosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmDatos = new FrmDatosAlumnos();
+            frmDatos.MdiParent = this;
+            frmAltaAlumno.ActualizarAlumno += frmDatos.InstanciarAlumno;
+            frmDatos.Visible = true;
         }
     }
 }

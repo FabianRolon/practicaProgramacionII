@@ -43,5 +43,27 @@ namespace Entidades
                 this.apellido = value;
             }
         }
+        public string RutaDeLaFoto
+        {
+            get
+            {
+                return this.fotoAlumno;
+            }
+            set
+            {
+                this.fotoAlumno = value;
+            }
+        }
+        public int Dni
+        {
+            get
+            {
+                return this.dni;
+            }
+            set
+            {
+                this.dni = value;
+            }
+        }
     }
 }
