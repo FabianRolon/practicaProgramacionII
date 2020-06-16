@@ -37,6 +37,7 @@ namespace Ejercicio67
             else
             {
                 label1.Text = DateTime.Now.ToString();
+                richTextBox1.Text = DateTime.Now.ToString();
             }
         }
 
