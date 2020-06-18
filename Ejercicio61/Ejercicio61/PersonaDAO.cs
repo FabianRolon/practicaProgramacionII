@@ -9,18 +9,18 @@ using System.Windows.Forms;
 
 namespace Ejercicio61
 {
-    public class PersonaDAO
+    public static class PersonaDAO
     {
-        SqlConnection connection = new SqlConnection("Data Source = CALIDAD\\SQLEXPRESS; Database = Persona; Trusted_Connection = true;");
-        public void Guardar(Persona persona)
+        public static void Guardar(Persona persona)
         {
+            SqlConnection connection = new SqlConnection("Data Source = CALIDAD\\SQLEXPRESS; Database = Persona; Trusted_Connection = true;");
+
             try
             {
                 SqlCommand command = new SqlCommand();
                 command.Connection = connection;
                 command.CommandType = CommandType.Text;
-                command.CommandText = "INSERT INTO Datos VALUES(@ID, @Nombre, @Apellido)";
-                command.Parameters.Add(new SqlParameter("ID", persona.Id));
+                command.CommandText = "INSERT INTO Datos VALUES(@Nombre, @Apellido)";
                 command.Parameters.Add(new SqlParameter("Nombre", persona.Nombre));
                 command.Parameters.Add(new SqlParameter("Apellido", persona.Apellido));
                 if (connection.State != ConnectionState.Open)
@@ -47,8 +47,10 @@ namespace Ejercicio61
                 connection.Close();
             }
         }
-        public List<Persona> Leer()
+        public static List<Persona> Leer()
         {
+            SqlConnection connection = new SqlConnection("Data Source = CALIDAD\\SQLEXPRESS; Database = Persona; Trusted_Connection = true;");
+
             SqlDataReader aux = null;
             List<Persona> personas = new List<Persona>();
             try
@@ -87,8 +89,10 @@ namespace Ejercicio61
             }
             return personas;
         }
-        public Persona LeerPorID(int id)
+        public static Persona LeerPorID(int id)
         {
+            SqlConnection connection = new SqlConnection("Data Source = CALIDAD\\SQLEXPRESS; Database = Persona; Trusted_Connection = true;");
+
             SqlDataReader aux = null;
             try
             {
@@ -123,8 +127,10 @@ namespace Ejercicio61
             return new Persona((int)aux["ID"], aux["Nombre"].ToString(), aux["Apellido"].ToString());
         }
 
-        public void Borrar(int id)
+        public static void Borrar(int id)
         {
+            SqlConnection connection = new SqlConnection("Data Source = CALIDAD\\SQLEXPRESS; Database = Persona; Trusted_Connection = true;");
+
             try
             {
                 SqlCommand command = new SqlCommand();

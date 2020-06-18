@@ -16,5 +16,16 @@ namespace Ejercicio61
         {
             InitializeComponent();
         }
+
+        private void BtnLeer_Click(object sender, EventArgs e)
+        {
+            lstPersonas.DataSource = PersonaDAO.Leer();
+        }
+
+        private void BtnGuardar_Click(object sender, EventArgs e)
+        {
+            Persona persona = new Persona(txtNombre.Text, txtApellido.Text);
+            PersonaDAO.Guardar(persona);
+        }
     }
 }
