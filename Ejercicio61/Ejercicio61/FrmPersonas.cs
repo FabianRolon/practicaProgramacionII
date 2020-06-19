@@ -20,6 +20,10 @@ namespace Ejercicio61
         private void BtnLeer_Click(object sender, EventArgs e)
         {
             lstPersonas.DataSource = PersonaDAO.Leer();
+            //foreach (Persona pers in PersonaDAO.Leer())
+            //{
+            //    lstPersonas.Add(pers);
+            //}
         }
 
         private void BtnGuardar_Click(object sender, EventArgs e)

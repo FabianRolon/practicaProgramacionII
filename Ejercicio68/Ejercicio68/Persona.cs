@@ -14,7 +14,6 @@ namespace Ejercicio68
         {
             this.nombre = String.Empty;
             this.apellido = String.Empty;
-
         }
         public string Nombre
         {

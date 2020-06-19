@@ -13,7 +13,7 @@ namespace Ejercicio61
     {
         public static void Guardar(Persona persona)
         {
-            SqlConnection connection = new SqlConnection("Data Source = CALIDAD\\SQLEXPRESS; Database = Persona; Trusted_Connection = true;");
+            SqlConnection connection = new SqlConnection("Data Source = FAO\\SQLEXPRESS; Database = Persona; Trusted_Connection = true;");
 
             try
             {
@@ -49,7 +49,7 @@ namespace Ejercicio61
         }
         public static List<Persona> Leer()
         {
-            SqlConnection connection = new SqlConnection("Data Source = CALIDAD\\SQLEXPRESS; Database = Persona; Trusted_Connection = true;");
+            SqlConnection connection = new SqlConnection("Data Source = FAO\\SQLEXPRESS; Database = Persona; Trusted_Connection = true;");
 
             SqlDataReader aux = null;
             List<Persona> personas = new List<Persona>();
@@ -91,7 +91,7 @@ namespace Ejercicio61
         }
         public static Persona LeerPorID(int id)
         {
-            SqlConnection connection = new SqlConnection("Data Source = CALIDAD\\SQLEXPRESS; Database = Persona; Trusted_Connection = true;");
+            SqlConnection connection = new SqlConnection("Data Source = FAO\\SQLEXPRESS; Database = Persona; Trusted_Connection = true;");
 
             SqlDataReader aux = null;
             try
@@ -129,7 +129,7 @@ namespace Ejercicio61
 
         public static void Borrar(int id)
         {
-            SqlConnection connection = new SqlConnection("Data Source = CALIDAD\\SQLEXPRESS; Database = Persona; Trusted_Connection = true;");
+            SqlConnection connection = new SqlConnection("Data Source = FAO\\SQLEXPRESS; Database = Persona; Trusted_Connection = true;");
 
             try
             {
