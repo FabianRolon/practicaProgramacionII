@@ -19,7 +19,9 @@ namespace Entidades
         double precioUnitarioCv;
         double municipal;
         double provincial;
+        int diferenciaConsumo;
         DateTime fechaIngreso;
+        double totalPago;
         
         public Factura()
         {
@@ -127,6 +129,9 @@ namespace Entidades
             }
         }
 
+        public int DiferenciaConsumo { get => diferenciaConsumo; set => diferenciaConsumo = value; }
+        public double TotalPago { get => totalPago; set => totalPago = value; }
+
         public double CalculoCargoFijo(Factura f)
         {
             return f.precioUnitarioCf;     
@@ -163,9 +168,10 @@ namespace Entidades
         /// <param name="f1"></param>
         /// <param name="f2"></param>
         /// <returns>Devuelve la diferencia de consumo de la primera respecto la segunda</returns>
-        public static double operator -(Factura f1, Factura f2)
+        public static Factura operator -(Factura f1, Factura f2)
         {
-            return f1.consumo - f2.consumo;
+            int resultado = f2.consumo - f1.consumo;
+            return new Factura(resultado, f2.PrecioUnitarioCf, f2.PrecioUnitarioCv, f2.Municipal, f2.Provincial, f2.FechaIngreso);
         }
 
         public int Guardar() 

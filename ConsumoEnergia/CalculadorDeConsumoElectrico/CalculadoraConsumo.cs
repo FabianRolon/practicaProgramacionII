@@ -142,9 +142,10 @@ namespace CalculadorDeConsumoElectrico
             int n = dataGridView1.Rows.Add(); //adiciona renglon
             //coloco info
             dataGridView1.Rows[n].Cells[0].Value = factura.IdFactura.ToString();
-            dataGridView1.Rows[n].Cells[1].Value = factura.Consumo.ToString();
-            dataGridView1.Rows[n].Cells[2].Value = factura.FechaIngreso.ToString();
-            dataGridView1.Rows[n].Cells[3].Value = factura.TotalPagar(factura).ToString();
+            dataGridView1.Rows[n].Cells[1].Value = factura.DiferenciaConsumo.ToString();
+            dataGridView1.Rows[n].Cells[2].Value = factura.Consumo.ToString();
+            dataGridView1.Rows[n].Cells[3].Value = factura.FechaIngreso.ToString();
+            dataGridView1.Rows[n].Cells[4].Value = factura.TotalPago.ToString();
         }
         public bool ValidarNumero()
         {
@@ -194,6 +195,20 @@ namespace CalculadorDeConsumoElectrico
             } 
         }
 
+        public Factura GenerarFacturaConConsumo()
+        {
+            if (UltimaFactura() >= 0)
+            {
+                Factura f2 = facturas.ElementAt<Factura>(UltimaFactura());
+                Factura f1 = new Factura(int.Parse(txtLecturaMedidor.Text), double.Parse(txtCargoFijo.Text), double.Parse(txtValorKwh.Text), double.Parse(txtMunicipal.Text), double.Parse(txtProvincial.Text), DateTime.Now);
+                return f2 - f1;
+            }
+            else
+            {
+                return  new Factura(int.Parse(txtLecturaMedidor.Text), double.Parse(txtCargoFijo.Text), double.Parse(txtValorKwh.Text), double.Parse(txtMunicipal.Text), double.Parse(txtProvincial.Text), DateTime.Now);
+            }
+        }
+
 
     
         #endregion
@@ -202,9 +217,9 @@ namespace CalculadorDeConsumoElectrico
             if (Vacio())
             {
                 if (ValidarNumero())
-                {
-                    Factura f = new Factura(int.Parse(txtLecturaMedidor.Text), double.Parse(txtCargoFijo.Text), double.Parse(txtValorKwh.Text), double.Parse(txtMunicipal.Text), double.Parse(txtProvincial.Text), DateTime.Now);
-                    lblResultado.Text = f.TotalPagar(f).ToString() + "$"; 
+                {             
+                    Factura f = GenerarFacturaConConsumo();
+                    lblResultado.Text = f.TotalPagar(f).ToString() + "$";
                 }
                 else
                 {
@@ -227,6 +242,9 @@ namespace CalculadorDeConsumoElectrico
                 if (ValidarNumero())
                 {
                     Factura f = new Factura(int.Parse(txtLecturaMedidor.Text), double.Parse(txtCargoFijo.Text), double.Parse(txtValorKwh.Text), double.Parse(txtMunicipal.Text), double.Parse(txtProvincial.Text), DateTime.Now, GenerarId());
+                    Factura f1 = GenerarFacturaConConsumo();
+                    f.DiferenciaConsumo = f1.Consumo;
+                    f.TotalPago = f1.TotalPagar(f1);
                     facturas.Add(f);
                     Guardar(path);
                     
@@ -262,11 +280,6 @@ namespace CalculadorDeConsumoElectrico
             string path = auxPath + @"\ConsumoElectrico.fabi";
             BorrarFacturaPorId(IndiceDeFilaSeleccionada());
             Guardar(path);
-        }
-
-        private void CalculadoraConsumo_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

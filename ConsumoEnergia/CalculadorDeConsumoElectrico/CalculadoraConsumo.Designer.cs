@@ -44,13 +44,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtProvincial = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.colIdFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Consumo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechaLiquidacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalAPagar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.btnBorrarDato = new System.Windows.Forms.Button();
+            this.colIdFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.consumo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lectura = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaLiquidacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalAPagar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -193,39 +194,14 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colIdFactura,
-            this.Consumo,
+            this.consumo,
+            this.lectura,
             this.fechaLiquidacion,
             this.totalAPagar});
             this.dataGridView1.Location = new System.Drawing.Point(21, 134);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(454, 276);
+            this.dataGridView1.Size = new System.Drawing.Size(597, 276);
             this.dataGridView1.TabIndex = 12;
-            // 
-            // colIdFactura
-            // 
-            this.colIdFactura.HeaderText = "ID";
-            this.colIdFactura.Name = "colIdFactura";
-            this.colIdFactura.ReadOnly = true;
-            // 
-            // Consumo
-            // 
-            this.Consumo.HeaderText = "Consumo (kWh)";
-            this.Consumo.Name = "Consumo";
-            this.Consumo.ReadOnly = true;
-            // 
-            // fechaLiquidacion
-            // 
-            this.fechaLiquidacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.fechaLiquidacion.HeaderText = "Fecha Liquidacion";
-            this.fechaLiquidacion.Name = "fechaLiquidacion";
-            this.fechaLiquidacion.ReadOnly = true;
-            this.fechaLiquidacion.Width = 109;
-            // 
-            // totalAPagar
-            // 
-            this.totalAPagar.HeaderText = "Total a Pagar";
-            this.totalAPagar.Name = "totalAPagar";
-            this.totalAPagar.ReadOnly = true;
             // 
             // btnGuardar
             // 
@@ -260,6 +236,36 @@
             this.btnBorrarDato.UseVisualStyleBackColor = true;
             this.btnBorrarDato.Click += new System.EventHandler(this.BtnBorrarDato_Click);
             // 
+            // colIdFactura
+            // 
+            this.colIdFactura.HeaderText = "ID";
+            this.colIdFactura.Name = "colIdFactura";
+            this.colIdFactura.ReadOnly = true;
+            // 
+            // consumo
+            // 
+            this.consumo.HeaderText = "Consumo (kWh)";
+            this.consumo.Name = "consumo";
+            // 
+            // lectura
+            // 
+            this.lectura.HeaderText = "Lectura (kWh)";
+            this.lectura.Name = "lectura";
+            this.lectura.ReadOnly = true;
+            // 
+            // fechaLiquidacion
+            // 
+            this.fechaLiquidacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.fechaLiquidacion.HeaderText = "Fecha Liquidacion";
+            this.fechaLiquidacion.Name = "fechaLiquidacion";
+            this.fechaLiquidacion.ReadOnly = true;
+            // 
+            // totalAPagar
+            // 
+            this.totalAPagar.HeaderText = "Total a Pagar";
+            this.totalAPagar.Name = "totalAPagar";
+            this.totalAPagar.ReadOnly = true;
+            // 
             // CalculadoraConsumo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -289,7 +295,6 @@
             this.Name = "CalculadoraConsumo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consumo Energía Eléctrica";
-            this.Load += new System.EventHandler(this.CalculadoraConsumo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -318,7 +323,8 @@
         private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.Button btnBorrarDato;
         private System.Windows.Forms.DataGridViewTextBoxColumn colIdFactura;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Consumo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn consumo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lectura;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaLiquidacion;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalAPagar;
     }

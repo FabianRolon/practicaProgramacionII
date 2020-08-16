@@ -136,7 +136,7 @@ namespace Ejercicio61
                 SqlCommand command = new SqlCommand();
                 command.Connection = connection;
                 command.CommandType = CommandType.Text;
-                command.CommandText = $"DELETE * FROM Datos WHERE ID = " + id.ToString();
+                command.CommandText = $"DELETE FROM Datos WHERE ID = " + id.ToString();
                 if (connection.State != ConnectionState.Open)
                 {
                     connection.Open();
